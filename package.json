@@ -1,0 +1,19 @@
+{
+  "name": "frontendcapstone-bears",
+  "version": "1.0.0",
+  "description": "FEC Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FEC-Team-Bears/FrontEndCapstone-Bears.git"
+  },
+  "author": "Matt, Cindy, John, Steve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FEC-Team-Bears/FrontEndCapstone-Bears/issues"
+  },
+  "homepage": "https://github.com/FEC-Team-Bears/FrontEndCapstone-Bears#readme"
+}
