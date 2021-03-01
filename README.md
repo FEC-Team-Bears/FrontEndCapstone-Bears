@@ -16,7 +16,7 @@ cd FrontEndCapstone-Bears
 ```
 3. If you haven't already created an individual branch, create a branch:
 ```sh
-git branch -b <your_branch_name>
+git checkout -b <your_branch_name>
 ```
 4. If you have already created an individual branch, navigate to that branch:
 ```sh
