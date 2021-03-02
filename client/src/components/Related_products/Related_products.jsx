@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
-import token from '../../config/config.js';
+import token from '../../../../config.js';
 
 const Related_products = ({ current_Id }) => {
 
@@ -9,14 +9,18 @@ const Related_products = ({ current_Id }) => {
 
   const axiosGetRelatedProductDetails = () => {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx54/products/${current_Id}/related`, {
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${current_Id}/related`, {
         headers: {
           'Authorization': token
         }
       })
-      .then((productsArray) => getRelatedProducts(productsArray))
+      .then((productsArray) => getRelatedProducts(productsArray.data))
       .catch((error) => console.error(error))
   }
+
+  useEffect(() => {
+    axiosGetRelatedProductDetails();
+  });
 
   return (
     <div>

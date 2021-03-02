@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
-import token from '../../config/config.js';
+import token from '../../../../config.js';
 
 const Related_product_card = ({ related_product_Id }) => {
 
