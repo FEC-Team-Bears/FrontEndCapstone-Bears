@@ -17,7 +17,7 @@ const Ratings_Reviews = () => {
       }
     })
     .then(reviews => {
-      console.log(reviews.data.results);
+      // console.log(reviews.data.results);
       getAllReviews(reviews.data.results)
     })
     .catch((error) => console.error(error))
