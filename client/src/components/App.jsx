@@ -5,7 +5,14 @@ import axios from 'axios';
 const App = (prop) => {
 
   return (
-    <div></div>
+    <div>
+      <Related_products
+        related_products_star_rating={}
+      />
+      <Your_outfit
+        your_outfit_star_rating={}
+      />
+    </div>
   )
 }
 
