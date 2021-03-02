@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 
-const App = (prop) => {
+const Related_product_card = (prop) => {
 
   return (
     <div></div>
   )
 }
 
-export default App;
+export default Related_product_card;
