@@ -34,11 +34,7 @@ npm run start-client
 ```sh
 npm run start-server
 ```
-8. After filling out the database file, seed the database:
-```sh
-npm run seed
-```
-9. View the client on the browser at the following address:
+8. View the client on the browser at the following address:
 ```sh
 localhost:3000
 ```
