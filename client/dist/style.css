@@ -25,3 +25,10 @@
   max-height: 700px;
   object-fit: contain;
 }
+
+/* MAIN CAROUSEL THUMBNAILS ===================================================== */
+
+#thumbnailList {
+  position: absolute;
+  z-index: 1;
+}
