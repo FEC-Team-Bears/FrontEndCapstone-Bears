@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 
 
-const Thumbnail = ({style}) => {
-
+const Thumbnail = ({styleThumb}) => {
+  console.log('STYLETHUMB IN THUMBNAIL: ', styleThumb);
   return (
-    <div id="thumbnailList">
-      thumbnailList goes here
+    <div className="thumbnail">
+      <img className="style-thumb" src={styleThumb}></img>
     </div>
   );
 

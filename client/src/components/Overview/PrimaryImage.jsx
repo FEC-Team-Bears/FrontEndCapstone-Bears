@@ -6,20 +6,21 @@ import ThumbnailList from './ThumbnailList.jsx';
 
 const PrimaryImage = ({foculProduct, styles}) => {
 
-  const [mainImage, setMainImage] = useState(foculProduct);
 
   // seperating the first image from the the rest of the images is necessary for carousel setup
   let photoArr = styles.results[0].photos;
 
+  const [stylesPhotos, setStylesPhotos] = useState(photoArr);
 
   useEffect(() => {
     console.log('Log in Use Effect', styles);
-  }, [foculProduct, styles]);
+    setStylesPhotos(photoArr);
+  }, [foculProduct, styles, photoArr]);
 
 
   return (
     <div id="mainImage">
-      <ThumbnailList />
+      <ThumbnailList stylesPhotos={stylesPhotos}/>
       <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>

@@ -31,4 +31,15 @@
 #thumbnailList {
   position: absolute;
   z-index: 1;
+  width: 60px;
+}
+
+.thumbnail {
+  width: 60px;
+}
+
+.style-thumb {
+  max-height: 90px;
+  object-fit: contain;
+  margin: 15px;
 }
