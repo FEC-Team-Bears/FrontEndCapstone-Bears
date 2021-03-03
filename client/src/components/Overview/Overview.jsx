@@ -33,7 +33,7 @@ var Overview = (props) => {
   }, []);
 
   return (
-    <div class="container">
+    <div className="container">
       <div className="row">
         <div className="col-8 main_pic">
           {/* <button onClick={fetchStyles}>Fetch Styles</button>
