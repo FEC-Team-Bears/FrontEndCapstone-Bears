@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
-import token from '../../../../config.js';
+import API_KEY from '../../../../config.js';
 import PrimaryImage from './PrimaryImage.jsx';
+import sampleData from './sampleData';
 
 var Overview = (props) => {
 
-  const [products, getProducts] = useState([{data: 'hello'}]);
-  const [counter, getCounter] = useState(0);
+  const [styles, getStyles] = useState(sampleData);
+  const [foculProduct, getFoculProduct] = useState('randomurl.com');
 
-  let fetchProducts = () => {
+  let fetchStyles = (style = '21111') => {
     axios
-      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx54/products', {
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${style}/styles`, {
         headers: {
-          'Authorization': token
+          'Authorization': API_KEY
         }
       })
       .then((results) => {
-        getProducts(results);
-        getCounter(counter + 1);
-        console.log(results);
-        console.log(`ran the request ${counter} times`);
+        getStyles(results.data);
+        getFoculProduct(results.data.results[0].photos[0].url);
+        console.log('Photo Url?', results.data.results[0].photos[0].url);
       })
       .catch((err) => {
         console.log('there was an error in your axios call: ', err);
@@ -28,17 +28,17 @@ var Overview = (props) => {
   };
 
   useEffect(() => {
-    fetchProducts();
-    // document.getElementsByClassName('product-data')[0].innerHTML = `the product is ${products.data}`;
+    fetchStyles();
+    // document.getElementsByClassName('product-data')[0].innerHTML = `the product is ${Styles.data}`;
   }, []);
 
   return (
     <div class="container">
       <div className="row">
         <div className="col-8 main_pic">
-          {/* <button onClick={fetchProducts}>Fetch products</button>
-          <p className="product-data">print products here: </p> */}
-          <PrimaryImage />
+          {/* <button onClick={fetchStyles}>Fetch Styles</button>
+          <p className="product-data">print Styles here: </p> */}
+          <PrimaryImage styles={styles} foculProduct={foculProduct}/>
         </div>
         <div className="col-4 main_details">
           Product Details go here
