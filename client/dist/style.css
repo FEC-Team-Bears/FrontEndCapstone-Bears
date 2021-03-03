@@ -1,5 +1,5 @@
 .main_pic {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 700px;
 }
 
@@ -24,6 +24,12 @@
 .carousel-item img {
   max-height: 700px;
   object-fit: contain;
+  margin-left: 50px;
+  padding: 10px;
+}
+
+.carousel-control-prev {
+  left: 100px;
 }
 
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
@@ -32,6 +38,7 @@
   position: absolute;
   z-index: 1;
   width: 60px;
+  margin-left: 30px;
 }
 
 .thumbnail {
