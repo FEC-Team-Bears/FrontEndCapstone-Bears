@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answer from './Answer.jsx';
 
-const Answers_list = ({ answers }) => {
+const AnswersList = ({ answers }) => {
   // initialize state / declare variables
   const arrayOfAnswers = Object.values(answers);
 
@@ -20,4 +20,4 @@ const Answers_list = ({ answers }) => {
   );
 };
 
-export default Answers_list;
+export default AnswersList;

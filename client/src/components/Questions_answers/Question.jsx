@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Answers_list from './Answers_list.jsx';
+import AnswersList from './AnswersList.jsx';
 
 const Question = ({ question }) => {
   // initialize state variables / declare variables
@@ -10,8 +10,8 @@ const Question = ({ question }) => {
   // return HTML/JSX to be rendered on browser
   return (
     <div>
-      <div>Q: {question.body}</div>
-      <div>A: <Answers_list answers={question.answers}/></div>
+      <div>Q: {question.question_body}</div>
+      <div>A: <AnswersList answers={question.answers}/></div>
     </div>
   );
 };

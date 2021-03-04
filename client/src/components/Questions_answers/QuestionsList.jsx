@@ -3,7 +3,7 @@ import axios from 'axios';
 import API_KEY from '/config.js';
 import Question from './Question.jsx';
 
-const Questions_list = (productId) => {
+const QuestionsList = (productId) => {
   // initialize state variables
   // number of questions to be shown
   // list of questions
@@ -45,4 +45,4 @@ const Questions_list = (productId) => {
   );
 };
 
-export default Questions_list;
+export default QuestionsList;

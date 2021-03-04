@@ -3,7 +3,7 @@ import $ from 'jquery';
 import axios from 'axios';
 // import Related_products from './Related_products/Related_products.jsx';
 // import Your_outfit from './Your_outfit/Your_outfit.jsx';
-import Questions_list from './Questions_answers/Questions_list.jsx';
+import QuestionsList from './Questions_answers/QuestionsList.jsx';
 
 const App = (prop) => {
 
@@ -16,7 +16,7 @@ const App = (prop) => {
       <Your_outfit
         // your_outfit_star_rating={}
       /> */}
-      <Questions_list />
+      <QuestionsList />
     </div>
   );
 };
