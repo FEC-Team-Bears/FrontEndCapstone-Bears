@@ -15,3 +15,5 @@ const Answer = ({ name, body, date, helpfulness, photos }) => {
     </div>
   );
 };
+
+export default Answer;
