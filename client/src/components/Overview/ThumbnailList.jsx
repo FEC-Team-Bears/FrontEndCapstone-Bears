@@ -4,7 +4,7 @@ import Thumbnail from './Thumbnail.jsx';
 
 const ThumbnailList = ({stylesPhotos}) => {
 
-  console.log('STYLESPHOTOS: ', stylesPhotos);
+  // console.log('STYLESPHOTOS: ', stylesPhotos);
   let styleThumb;
 
   const [thumbIndShowing, setThumbIndShowing] = useState([0, 3]);
