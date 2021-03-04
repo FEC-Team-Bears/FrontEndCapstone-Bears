@@ -28,6 +28,9 @@ const QuestionsList = (productId) => {
       })
       .then(response => {
         const allQuestions = response.data.results;
+        allQuestions.sort((a, b) => {
+          (a.question_helpfulness > b.question_helpfulness) ? 1 : (a.question_helpfulness === b.question_helpfulness) ? ((a.question_id > b.question_id) ? 1 : -1 ) : -1;
+        });
         setQuestions(allQuestions);
       })
       .catch(err => {
@@ -35,12 +38,18 @@ const QuestionsList = (productId) => {
       });
   };
 
+  const showMoreQuestions = () => {
+    setCount(count + 2);
+  };
+
   // return HTML/JSX to be rendered on browser
   return (
     <div>
-      {questions.map(question => (
+      {(questions.length === 0) ? <button>Submit a New Question</button> : questions.slice(0, count).map(question => (
         <Question key={question.question_id} question={question}/>
       ))}
+      {(questions.length > 2 && questions.slice(0, count).length < questions.length) ? <button onClick={showMoreQuestions}>More Answered Questions</button> : null}
+      <button>Add a Question</button>
     </div>
   );
 };

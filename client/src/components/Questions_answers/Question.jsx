@@ -11,6 +11,7 @@ const Question = ({ question }) => {
   return (
     <div>
       <div>Q: {question.question_body}</div>
+      <a>Helpful? Yes({question.question_helpfulness})</a>
       <div>A: <AnswersList answers={question.answers}/></div>
     </div>
   );
