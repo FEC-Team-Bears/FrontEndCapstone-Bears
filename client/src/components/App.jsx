@@ -9,13 +9,13 @@ const App = (prop) => {
 
   return (
     <div>
-      <Related_products
+      {/* <Related_products
         // related_products_star_rating={}
         // current_Id={}
       />
       <Your_outfit
         // your_outfit_star_rating={}
-      />
+      /> */}
       <Questions_list />
     </div>
   );

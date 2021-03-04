@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import Answers_list from './Answers_list.jsx';
+import Answers_list from './Answers_list.jsx';
 
 const Question = ({ body, answers }) => {
   // initialize state variables / declare variables
