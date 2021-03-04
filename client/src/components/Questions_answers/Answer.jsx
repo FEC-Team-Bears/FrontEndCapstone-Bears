@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Answer = ({ name, body, date, helpfulness, photos }) => {
+const Answer = ({ answer }) => {
   // initialize state / declare variables
 
   // HTTP requests, hooks, other functions
@@ -9,9 +9,10 @@ const Answer = ({ name, body, date, helpfulness, photos }) => {
   // return HTML/JSX to be rendered on browser
   return (
     <div>
-      <div>{body}</div>
-      <div>by {name}, {date}</div>
-      <a>Helpful? Yes({helpfulness})</a>
+      <div>{answer.body}</div>
+      <div>by {answer.answerer_name}, {answer.date}</div>
+      <a>Helpful? Yes({answer.helpfulness})</a>
+      {/* <img>{answer.photos}</img> */}
     </div>
   );
 };

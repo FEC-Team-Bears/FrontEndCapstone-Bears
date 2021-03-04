@@ -39,7 +39,7 @@ const Questions_list = (productId) => {
   return (
     <div>
       {questions.map(question => (
-        <Question key={question.question_id} body={question.question_body} answers={question.answers}/>
+        <Question key={question.question_id} question={question}/>
       ))}
     </div>
   );

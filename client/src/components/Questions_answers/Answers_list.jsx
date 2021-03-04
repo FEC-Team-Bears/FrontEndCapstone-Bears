@@ -13,7 +13,7 @@ const Answers_list = ({ answers }) => {
     <div>
       {arrayOfAnswers.map(answer => {
         return (
-          <Answer key={answer.id} name={answer.answerer_name} body={answer.body} date={answer.date} helpfulness={answer.helpfulness} photos={answer.photos} />
+          <Answer key={answer.id} answer={answer} />
         );
       })}
     </div>
