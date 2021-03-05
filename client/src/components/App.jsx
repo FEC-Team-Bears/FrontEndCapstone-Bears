@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
-import Related_products from './Related_products/Related_products.jsx';
-import Your_outfit from './Your_outfit/Your_outfit.jsx';
+// import Related_products from './Related_products/Related_products.jsx';
+// import Your_outfit from './Your_outfit/Your_outfit.jsx';
 import RatingsReviews from './Reviews_Ratings/Ratings_Reviews.jsx';
 import API_KEY from '/config.js';
+import QuestionsList from './Questions_answers/QuestionsList.jsx';
 
 const App = () => {
   const [currentProductId, changeCurrentProductId] = useState(21111);
@@ -15,11 +16,11 @@ const App = () => {
         'Authorization': API_KEY
       }
     })
-    .then(response => {
-      changeCurrentProductId(response.data.id)
-    })
-    .catch((error) => console.error(error))
-  }
+      .then(response => {
+        changeCurrentProductId(response.data.id);
+      })
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     axiosGetProductId(currentProductId);
@@ -27,10 +28,15 @@ const App = () => {
 
   return (
     <div>
-
+      {/* <Related_products
+        // related_products_star_rating={}
+        // current_Id={}
+      />
+      <Your_outfit
+        // your_outfit_star_rating={}
+      /> */}
+      <QuestionsList productId={currentProductId}/>
       <RatingsReviews productId={currentProductId} changeId={changeCurrentProductId}/>
-
-
     </div>
   );
 };
