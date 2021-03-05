@@ -15,8 +15,8 @@ const RelatedProducts = ({ currentId, handleClick }) => {
         }
       })
       .then((products) => getRelatedProducts(products.data))
-      .catch((error) => console.error(error))
-  }
+      .catch((error) => console.error(error));
+  };
 
   const relatedCarousel = $(function() {
     $('.jcarousel').jcarousel();
@@ -24,10 +24,6 @@ const RelatedProducts = ({ currentId, handleClick }) => {
 
   $('.jcarousel').jcarousel({
     wrap: 'none'
-  });
-
-  const reload = $('.jcarousel').jcarousel('reload', {
-    animation: 'slow'
   });
 
   useEffect(() => {
@@ -51,7 +47,7 @@ const RelatedProducts = ({ currentId, handleClick }) => {
       <a href="#" className="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
       <a href="#" className="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
     </div>
-  )
-}
+  );
+};
 
 export default RelatedProducts;

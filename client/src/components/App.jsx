@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
-import RelatedProduct_card from './RelatedProducts/RelatedProductCard.jsx'
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import API_KEY from '/config.js';
@@ -16,9 +15,9 @@ const App = (props) => {
         'Authorization': API_KEY
       }
     })
-    .then(response => changeCurrentProductId(response.data.id))
-    .catch((error) => console.error(error))
-  }
+      .then(response => changeCurrentProductId(response.data.id))
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     axiosGetProductId(currentProductId);
@@ -28,7 +27,7 @@ const App = (props) => {
   // Function needed for ressetting
   const setNewId = (e) => {
     changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
-  }
+  };
 
   return (
     <div>
