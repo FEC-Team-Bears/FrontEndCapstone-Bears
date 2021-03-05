@@ -18,7 +18,7 @@ const Question = ({ question }) => {
       .put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${questionId}/helpful`,
         {
           data: {
-            question_id: questionId
+            'question_id': questionId
           }
         },
         {
