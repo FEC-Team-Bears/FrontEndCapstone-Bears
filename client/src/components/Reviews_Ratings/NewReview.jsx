@@ -3,25 +3,46 @@ import Review from './review.jsx';
 import { Modal, Button, Form } from 'react-bootstrap';
 import Rating from '@material-ui/lab/Rating';
 
-const NewReview = () => {
+const NewReview = ({ productId }) => {
   const [show, setShow] = useState(false);
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [size, setSize] = useState(0);
-  const [width, setWidth] = useState(0)
-  const [comfort, setComfort] = useState(0)
-  const [quality, setQuality] = useState(0)
-  const [length, setLength] = useState(0)
+  const [width, setWidth] = useState(0);
+  const [comfort, setComfort] = useState(0);
+  const [quality, setQuality] = useState(0);
+  const [length, setLength] = useState(0);
   const [fit, setFit] = useState(0)
   const [recommend, setRecommend] = useState('');
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
-  const [fileList, setFileList] = useState({});
+  const [fileList, setFileList] = useState([]);
   console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody, fileList);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const axiosPostNewReview = () => {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews`, {
+      headers: {
+        'Authorization': API_KEY
+      },
+      params: {
+        'product_id': `${productId}`,
+        'rating': starValue,
+        'summary': reviewSummary,
+        'body': reviewBody,
+        'recommend': recommend,
+        'name': name,
+        'email': email,
+        'photos': fileList,
+        'characteristics': {
+
+        }
+      }
+    })
+  }
 
 
   return (
@@ -51,7 +72,7 @@ const NewReview = () => {
               }} />
             <br />
             <label>Size:</label>
-            <select placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value) }}> }
+            <select placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value) }}>
               <option value="">Select Option</option>
               <option value="1">A size too small</option>
               <option value="2">½ a size too small</option>
@@ -123,19 +144,22 @@ const NewReview = () => {
             <Form.Label>Review:</Form.Label>
             <Form.Control as="textarea" maxLength="1000" minLength="50" rows={3} placeholder="Why did you like the product or not?"
               onChange={(e) => { setReviewBody(e.target.value) }} />
-            <label >Upload Pictures:</label>
-            <input id="browse" type="file" onChange={() => {previewFiles()}} multiple/>
+            <label>Upload Pictures:</label>
+            <input id="browse" type="file" onChange={() => {
+              setFileList(oldArray => [...oldArray, URL.createObjectURL(event.target.files[0])])
+              previewFiles()
+            }} multiple />
             <div id="preview"></div>
           </Form>
         </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
           </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
           </Button>
-          </Modal.Footer>
+        </Modal.Footer>
       </Modal>
     </div>
   )
@@ -148,12 +172,13 @@ export default NewReview;
 function previewFiles() {
 
   var preview = document.querySelector('#preview');
-  var files   = document.querySelector('input[type=file]').files;
+  var files = document.querySelector('input[type=file]').files;
+
 
   function readAndPreview(file) {
 
     // Make sure `file.name` matches our extensions criteria
-    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+    if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
       var reader = new FileReader();
 
       reader.addEventListener("load", function () {
@@ -161,13 +186,10 @@ function previewFiles() {
         image.height = 100;
         image.title = file.name;
         image.src = this.result;
-        // console.log(image.src)
-        preview.appendChild( image );
+        preview.appendChild(image);
       }, false);
 
       reader.readAsDataURL(file);
-      // let newPicture = reader.readAsDataURL(file);
-      // setFileList(newPicture);
     }
 
   }

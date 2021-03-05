@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 const StarRating = ({ review }) => {
-  const [ratings, setRating] = useState(review.rating);
+  const [reviewRating, setRating] = useState(review.rating);
 
   let stars = [];
-  let rating = ratings
+  let rating = reviewRating;
   while (stars.length < 5) {
     if (rating >= 1) {
       stars.push(1);

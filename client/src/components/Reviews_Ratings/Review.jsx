@@ -3,11 +3,11 @@ import Moment from 'moment';
 import StarRating from './StarRating.jsx';
 import ReviewPhotos from './ReviewPhotos.jsx';
 import axios from 'axios';
-import API_KEY from '../../../../config.js';
+import API_KEY from '/config.js';
 
 const Review = ({ review }) => {
 
-  const [recommendCount, setCount] = useState(review.helpfulness)
+  const [recommendCount, setRecommendCount] = useState(review.helpfulness)
 
   const axiosUpdateRecommended = () => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${review.review_id}/helpful`, {helpfulness: 0}, {
@@ -16,14 +16,14 @@ const Review = ({ review }) => {
       },
     })
       .then(reviews => {
-        console.log(reviews);
+        setRecommendCount(recommendCount + 1)
         // getAllReviews(reviews.data.results)
       })
       .catch((error) => console.error(error))
   }
 
   // useEffect(() => {
-  //   axiosUpdateRecommended();
+  //   // axiosUpdateRecommended();
 
   // }, [recommendCount]);
 
@@ -38,7 +38,7 @@ const Review = ({ review }) => {
       {review.photos.map((photo, index) => {
         return <ReviewPhotos key={index} photo={photo} />
       })}
-      <p>Helpful? <a onClick={() => axiosUpdateRecommended()}  href="#">Yes</a> ({review.helpfulness})</p>
+      <p>Helpful? <a onClick={() => axiosUpdateRecommended()} href="#">Yes</a> ({recommendCount})</p>
       <hr />
     </div>
   )
