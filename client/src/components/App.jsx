@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import $ from 'jquery';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Related_products from './Related_products/Related_products.jsx';
-import Related_product_card from './Related_products/Related_product_card.jsx'
-import Your_outfit from './Your_outfit/Your_outfit.jsx';
+import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
+import RelatedProduct_card from './RelatedProducts/RelatedProductCard.jsx'
+import YourOutfit from './YourOutfit/YourOutfit.jsx';
 
-const App = (prop) => {
+const App = (props) => {
+
+  const [currentId, setCurrentId] = useState(21116);
+
+  const setNewId = (e) => {
+    setCurrentId(e.currentTarget.attributes[0].nodeValue);
+  }
 
   return (
     <div>
-      <Related_products
-        // related_products_star_rating={}
-        // current_Id={}
-      />
-      <Your_outfit
-        // your_outfit_star_rating={}
-      />
+      <RelatedProducts currentId={ currentId } handleClick={ setNewId } />
+      <YourOutfit />
     </div>
   )
 }
