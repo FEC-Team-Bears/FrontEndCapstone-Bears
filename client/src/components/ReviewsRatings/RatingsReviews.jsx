@@ -16,7 +16,6 @@ const RatingsReviews = ({productId, changeId}) => {
       }
     })
     .then(reviews => {
-      // console.log(reviews.data.results);
       getAllReviews(reviews.data.results)
     })
     .catch((error) => console.error(error))
@@ -32,7 +31,7 @@ const RatingsReviews = ({productId, changeId}) => {
       }
     })
     .then(reviews => {
-      console.log(reviews.data);
+      // console.log(reviews.data);
       // getAllReviews(reviews.data.results)
     })
     .catch((error) => console.error(error))

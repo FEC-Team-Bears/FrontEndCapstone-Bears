@@ -18,7 +18,6 @@ const NewReview = ({ productId }) => {
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [fileList, setFileList] = useState([]);
-  console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody, fileList);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

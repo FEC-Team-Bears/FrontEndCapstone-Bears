@@ -27,7 +27,7 @@ const App = (props) => {
 
   // Function needed for ressetting
   const setNewId = (e) => {
-    setCurrentId(e.currentTarget.attributes[0].nodeValue);
+    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
   }
 
   return (

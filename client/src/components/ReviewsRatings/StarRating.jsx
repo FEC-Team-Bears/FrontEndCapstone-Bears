@@ -28,7 +28,7 @@ const StarRating = ({ review }) => {
           stars.push(0.75);
           break;
         default:
-          console.log("OOPS");
+          console.error("OOPS");
           stars.push(0);
           break;
       }
