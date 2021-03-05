@@ -15,22 +15,22 @@ const StarRating = ({ review }) => {
       let three = Math.abs(0.75 - rating);
       let closest = Math.min(empty, quart, half, three);
       switch (closest) {
-        case (empty):
-          stars.push(0);
-          break;
-        case quart:
-          stars.push(0.25);
-          break;
-        case half:
-          stars.push(0.5);
-          break;
-        case three:
-          stars.push(0.75);
-          break;
-        default:
-          console.error("OOPS");
-          stars.push(0);
-          break;
+      case (empty):
+        stars.push(0);
+        break;
+      case quart:
+        stars.push(0.25);
+        break;
+      case half:
+        stars.push(0.5);
+        break;
+      case three:
+        stars.push(0.75);
+        break;
+      default:
+        console.log('OOPS');
+        stars.push(0);
+        break;
       }
     } else {
       stars.push(0);
@@ -43,7 +43,7 @@ const StarRating = ({ review }) => {
       {stars.map((item, i) => {
         return (
           <div className="single-star-container" key={i}>
-            <div className="single-star-fill" style={{ "width": `${Number(item * 23)}px` }}>
+            <div className="single-star-fill" style={{ 'width': `${Number(item * 23)}px` }}>
               <img className="single-star-outline" src="star.png"></img>
             </div>
           </div>
@@ -51,7 +51,6 @@ const StarRating = ({ review }) => {
       })}
     </div>
   );
-}
-
+};
 
 export default StarRating;
