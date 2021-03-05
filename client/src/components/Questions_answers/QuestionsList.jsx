@@ -16,7 +16,7 @@ const QuestionsList = (productId) => {
   }, []);
 
   // axios request
-  const getAllQuestions = () => {
+  const getAllQuestions = (productId) => {
     axios
       // url for a variable productId
       // .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${productId}`)
