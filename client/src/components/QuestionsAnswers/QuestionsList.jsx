@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import Question from './Question.jsx';
+import QuestionForm from './QuestionForm.jsx';
 
 const QuestionsList = ({productId}) => {
   // initialize state variables
@@ -9,11 +10,13 @@ const QuestionsList = ({productId}) => {
   const [questions, setQuestions] = useState([]);
   const [page, setPage] = useState(1);
   const [remainingQ, setRemainingQ] = useState(true);
+  // const [form, setForm] = useState(false);
 
   // useEffect hooks to retrieve data from API
   useEffect(() => {
     getAllQuestions();
   }, []);
+
   useEffect(() => {
     if (count > questions.length) {
       getAllQuestions();
@@ -55,11 +58,11 @@ const QuestionsList = ({productId}) => {
   // return HTML/JSX to be rendered on browser
   return (
     <div>
-      {(questions.length === 0) ? <button>Submit a New Question</button> : questions.slice(0, count).map(question => (
+      {(questions.length !== 0) ? questions.slice(0, count).map(question => (
         <Question key={question.question_id} question={question}/>
-      ))}
+      )) : null}
       {(questions.length > 2 && remainingQ) ? <button onClick={showMoreQuestions}>More Answered Questions</button> : null}
-      {(questions.length !== 0) ? <button>Add a Question</button> : null}
+      <QuestionForm productId={productId} length={questions.length}/>
     </div>
   );
 };

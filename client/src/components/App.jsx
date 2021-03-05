@@ -3,9 +3,9 @@ import $ from 'jquery';
 import axios from 'axios';
 // import Related_products from './Related_products/Related_products.jsx';
 // import Your_outfit from './Your_outfit/Your_outfit.jsx';
-import RatingsReviews from './Reviews_Ratings/Ratings_Reviews.jsx';
+import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import API_KEY from '/config.js';
-import QuestionsList from './Questions_answers/QuestionsList.jsx';
+import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 
 const App = () => {
   const [currentProductId, changeCurrentProductId] = useState(21111);
