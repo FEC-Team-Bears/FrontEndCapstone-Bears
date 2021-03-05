@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import Review from './review.jsx';
 import { Modal, Button, Form } from 'react-bootstrap';
 import Rating from '@material-ui/lab/Rating';
-import $ from 'jquery';
+const NewReview = ({ productId }) => {
 
-const NewReview = ({ productId, reviewChar }) => {
   const [show, setShow] = useState(false);
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
@@ -19,9 +19,6 @@ const NewReview = ({ productId, reviewChar }) => {
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [fileList, setFileList] = useState([]);
-  // console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody, fileList);
-  console.log(reviewChar);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -44,7 +41,6 @@ const NewReview = ({ productId, reviewChar }) => {
       }
     });
   };
-
 
   return (
     <div>
@@ -72,7 +68,6 @@ const NewReview = ({ productId, reviewChar }) => {
                 setStarValue(newValue);
               }} />
             <br />
-
             <label>Size:</label>
             <select name="Size" placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value); }}>
               <option value="">Select Option</option>
@@ -82,7 +77,6 @@ const NewReview = ({ productId, reviewChar }) => {
               <option value="4">½ a size too big</option>
               <option value="5">A size too wide</option>
             </select>
-
             <br />
             <label>Width:</label>
             <select placeholder="select one" value={width} onChange={(e) => { setWidth(e.target.value); }}>
@@ -169,8 +163,6 @@ const NewReview = ({ productId, reviewChar }) => {
 };
 
 export default NewReview;
-
-
 
 const previewFiles = () => {
   var preview = document.querySelector('#preview');

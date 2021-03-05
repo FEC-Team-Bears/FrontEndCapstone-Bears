@@ -17,7 +17,6 @@ const RatingsReviews = ({ productId, changeId }) => {
       }
     })
       .then(reviews => {
-        // console.log(reviews.data.results);
         getAllReviews(reviews.data.results);
       })
       .catch((error) => console.error(error));
@@ -33,7 +32,6 @@ const RatingsReviews = ({ productId, changeId }) => {
       }
     })
       .then(reviews => {
-        // console.log(reviews.data);
         useReviewMetaData(reviews.data);
       })
       .catch((error) => console.error(error));

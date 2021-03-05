@@ -7,9 +7,9 @@ import API_KEY from '/config.js';
 
 const Review = ({ review }) => {
 
-  const [recommendCount, setRecommendCount] = useState(review.helpfulness);
+const [recommendCount, setRecommendCount] = useState(review.helpfulness);
 
-  const axiosUpdateRecommended = () => {
+const axiosUpdateRecommended = () => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${review.review_id}/helpful`, {helpfulness: 0}, {
       headers: {
         'Authorization': API_KEY
@@ -17,15 +17,9 @@ const Review = ({ review }) => {
     })
       .then(reviews => {
         setRecommendCount(recommendCount + 1);
-        // getAllReviews(reviews.data.results)
       })
       .catch((error) => console.error(error));
   };
-
-  // useEffect(() => {
-  //   // axiosUpdateRecommended();
-
-  // }, [recommendCount]);
 
   return (
     <div>

@@ -31,7 +31,7 @@ const QuestionsList = (productId) => {
         setQuestions(allQuestions);
       })
       .catch(err => {
-        console.log('Error: Cannot retrieve questions from API');
+        console.error('Error: Cannot retrieve questions from API');
       });
   };
 
