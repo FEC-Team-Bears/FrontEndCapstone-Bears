@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
-import RelatedProduct_card from './RelatedProducts/RelatedProductCard.jsx'
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
+
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import API_KEY from '/config.js';
 
@@ -23,7 +23,6 @@ const App = (props) => {
   useEffect(() => {
     axiosGetProductId(currentProductId);
   }, []);
-
 
   // Function needed for ressetting
   const setNewId = (e) => {
