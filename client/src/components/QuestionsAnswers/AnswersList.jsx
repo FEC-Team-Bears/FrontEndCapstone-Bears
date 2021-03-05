@@ -3,12 +3,8 @@ import axios from 'axios';
 import Answer from './Answer.jsx';
 
 const AnswersList = ({ answers }) => {
-  // initialize state / declare variables
   const arrayOfAnswers = Object.values(answers);
 
-  // HTTP requests, hooks, other functions
-
-  // return HTML/JSX to be rendered on browser
   return (
     <div>
       {arrayOfAnswers.map(answer => {

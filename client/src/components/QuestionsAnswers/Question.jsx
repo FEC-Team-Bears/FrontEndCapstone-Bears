@@ -4,11 +4,9 @@ import API_KEY from '/config.js';
 import AnswersList from './AnswersList.jsx';
 
 const Question = ({ question }) => {
-  // initialize state variables / declare variables
   const [count, setCount] = useState(question.question_helpfulness);
   const [helpful, setHelpful] = useState(true);
 
-  // HTTP requests, hooks, other functions
   const handleClick = () => {
     (helpful) ? (increaseHelpfulness(question.question_id), setHelpful(false)) : null;
   };
@@ -34,7 +32,6 @@ const Question = ({ question }) => {
       });
   };
 
-  // return HTML/JSX to be rendered on browser
   return (
     <div>
       <div>Q: {question.question_body}</div>

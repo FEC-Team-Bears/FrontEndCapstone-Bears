@@ -4,10 +4,8 @@ import API_KEY from '/config.js';
 import { Modal, Button } from 'react-bootstrap';
 
 const QuestionForm = () => {
-  // initialize state variables
   const [show, setShow] = useState(false);
 
-  // HTTP requests, hooks, other functions
   const handleShow = () => {
     setShow(true);
   };
@@ -16,7 +14,6 @@ const QuestionForm = () => {
     setShow(false);
   };
 
-  // return HTML/JSX to be rendered on browser
   return (
     <div>
       {(!length) ? <Button onClick={handleShow}>Submit a New Question</Button> : <Button onClick={handleShow}>Add a Question + </Button>}

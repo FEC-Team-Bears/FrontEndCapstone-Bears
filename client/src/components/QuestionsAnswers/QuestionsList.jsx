@@ -5,14 +5,12 @@ import Question from './Question.jsx';
 import QuestionForm from './QuestionForm.jsx';
 
 const QuestionsList = ({productId}) => {
-  // initialize state variables
   const [count, setCount] = useState(4);
   const [questions, setQuestions] = useState([]);
   const [page, setPage] = useState(1);
   const [remainingQ, setRemainingQ] = useState(true);
   // const [form, setForm] = useState(false);
 
-  // useEffect hooks to retrieve data from API
   useEffect(() => {
     getAllQuestions();
   }, []);
@@ -23,7 +21,6 @@ const QuestionsList = ({productId}) => {
     }
   }, [count]);
 
-  // axios request
   const getAllQuestions = (productId) => {
     axios
       // url for a variable productId
@@ -55,7 +52,6 @@ const QuestionsList = ({productId}) => {
     setCount(count + 2);
   };
 
-  // return HTML/JSX to be rendered on browser
   return (
     <div>
       {(questions.length !== 0) ? questions.slice(0, count).map(question => (
