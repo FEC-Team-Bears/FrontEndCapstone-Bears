@@ -4,7 +4,7 @@ import axios from 'axios';
 import Related_products from './Related_products/Related_products.jsx';
 import Your_outfit from './Your_outfit/Your_outfit.jsx';
 import RatingsReviews from './Reviews_Ratings/Ratings_Reviews.jsx';
-import API_KEY from '../../../config.js';
+import API_KEY from '/config.js';
 // import Related_products from './Related_products/Related_products.jsx';
 // import Your_outfit from './Your_outfit/Your_outfit.jsx';
 
