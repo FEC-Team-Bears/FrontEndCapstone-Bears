@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+// import { Modal, Button} from 'react-bootstrap';
 import API_KEY from '../../../../config.js';
 
 const RelatedProductCard = ({ relatedProductId, handleClick }) => {

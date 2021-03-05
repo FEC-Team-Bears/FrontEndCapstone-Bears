@@ -82,3 +82,32 @@
 .jcarousel-control-next {
   right: 15px;
 }
+
+/* Raings and Reviews components */
+.single-star-outline {
+  height: 27px;
+  width: 23px;
+}
+
+.single-star-fill {
+  position: relative;
+  display: inline-block;
+  height: 27px;
+  background-color: #333333;
+}
+
+.single-star-container {
+  height: 27px;
+  width: 23px;
+  display: inline-block;
+}
+
+.review-photos-container {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.review-photos-container a:hover {
+  cursor: pointer;
+}
+
