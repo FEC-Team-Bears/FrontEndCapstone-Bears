@@ -25,7 +25,6 @@ const App = () => {
     axiosGetProductId(currentProductId);
   }, []);
 
-
   return (
     <div>
       <RatingsReviews productId={currentProductId} changeId={changeCurrentProductId}/>

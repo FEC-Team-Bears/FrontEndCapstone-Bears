@@ -17,7 +17,8 @@ const NewReview = () => {
   const [recommend, setRecommend] = useState('');
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
-  console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody);
+  const [fileList, setFileList] = useState({});
+  console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody, fileList);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -123,7 +124,8 @@ const NewReview = () => {
             <Form.Control as="textarea" maxLength="1000" minLength="50" rows={3} placeholder="Why did you like the product or not?"
               onChange={(e) => { setReviewBody(e.target.value) }} />
             <label >Upload Pictures:</label>
-            <input type="file" accept="image/png, image/jpeg"/>
+            <input id="browse" type="file" onChange={() => {previewFiles()}} multiple/>
+            <div id="preview"></div>
           </Form>
         </Modal.Body>
           <Modal.Footer>
@@ -140,3 +142,38 @@ const NewReview = () => {
 }
 
 export default NewReview;
+
+
+
+function previewFiles() {
+
+  var preview = document.querySelector('#preview');
+  var files   = document.querySelector('input[type=file]').files;
+
+  function readAndPreview(file) {
+
+    // Make sure `file.name` matches our extensions criteria
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        var image = new Image();
+        image.height = 100;
+        image.title = file.name;
+        image.src = this.result;
+        // console.log(image.src)
+        preview.appendChild( image );
+      }, false);
+
+      reader.readAsDataURL(file);
+      // let newPicture = reader.readAsDataURL(file);
+      // setFileList(newPicture);
+    }
+
+  }
+
+  if (files) {
+    [].forEach.call(files, readAndPreview);
+  }
+
+}
