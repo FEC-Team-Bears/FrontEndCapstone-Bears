@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { Modal, Button} from 'react-bootstrap';
+import { Modal, Button} from 'react-bootstrap';
 import API_KEY from '../../../../config.js';
 
 const RelatedProductCard = ({ relatedProductId, handleClick }) => {
@@ -10,10 +10,11 @@ const RelatedProductCard = ({ relatedProductId, handleClick }) => {
   const [productDetails, getProductDetails] = useState({
     category: null,
     name: null,
+    // eslint-disable-next-line camelcase
     default_price: null
   });
 
-const [productImage, getProductImage] = useState({});
+  const [productImage, getProductImage] = useState({});
 
   const axiosGetRelatedProductDetails = () => {
     axios
@@ -23,8 +24,8 @@ const [productImage, getProductImage] = useState({});
         }
       })
       .then((product) => getProductDetails(product.data))
-      .catch((error) => console.error(error))
-  }
+      .catch((error) => console.error(error));
+  };
 
   const axiosGetRelatedProductImage = () => {
     axios
@@ -34,8 +35,8 @@ const [productImage, getProductImage] = useState({});
         }
       })
       .then((product) => getProductImage(product.data.results[0].photos[0]))
-      .catch((error) => console.error(error))
-  }
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     axiosGetRelatedProductDetails();
@@ -56,7 +57,7 @@ const [productImage, getProductImage] = useState({});
         {/* <StarComponent productId={ relatedProductId } /> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RelatedProductCard;

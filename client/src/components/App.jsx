@@ -16,9 +16,9 @@ const App = (props) => {
         'Authorization': API_KEY
       }
     })
-    .then(response => changeCurrentProductId(response.data.id))
-    .catch((error) => console.error(error))
-  }
+      .then(response => changeCurrentProductId(response.data.id))
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     axiosGetProductId(currentProductId);
@@ -27,7 +27,7 @@ const App = (props) => {
   // Function needed for ressetting
   const setNewId = (e) => {
     changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
-  }
+  };
 
   return (
     <div>
