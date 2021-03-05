@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Review from './review.jsx';
 import { Modal, Button, Form } from 'react-bootstrap';
 import Rating from '@material-ui/lab/Rating';
+import $ from 'jquery';
 
-const NewReview = ({ productId }) => {
+const NewReview = ({ productId, reviewChar }) => {
   const [show, setShow] = useState(false);
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
@@ -13,18 +14,19 @@ const NewReview = ({ productId }) => {
   const [comfort, setComfort] = useState(0);
   const [quality, setQuality] = useState(0);
   const [length, setLength] = useState(0);
-  const [fit, setFit] = useState(0)
+  const [fit, setFit] = useState(0);
   const [recommend, setRecommend] = useState('');
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [fileList, setFileList] = useState([]);
-  console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody, fileList);
+  // console.log(size, width, comfort, quality, length, fit, recommend, reviewSummary, reviewBody, fileList);
+  console.log(reviewChar);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const axiosPostNewReview = () => {
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews`, {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
       headers: {
         'Authorization': API_KEY
       },
@@ -38,11 +40,10 @@ const NewReview = ({ productId }) => {
         'email': email,
         'photos': fileList,
         'characteristics': {
-
         }
       }
-    })
-  }
+    });
+  };
 
 
   return (
@@ -57,10 +58,10 @@ const NewReview = ({ productId }) => {
         <Modal.Body>
           <Form>
             <Form.Label>What is your nickname? </Form.Label>
-            <Form.Control value={name} type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value) }} />
+            <Form.Control value={name} type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value); }} />
             <br />
             <Form.Label>What is your Email? </Form.Label>
-            <Form.Control value={email} type="email" placeholder="name@example.com" onChange={(e) => { setEmail(e.target.value) }} />
+            <Form.Control value={email} type="email" placeholder="name@example.com" onChange={(e) => { setEmail(e.target.value); }} />
             <br />
             <p>Rate this product.</p>
             <Rating
@@ -71,8 +72,9 @@ const NewReview = ({ productId }) => {
                 setStarValue(newValue);
               }} />
             <br />
+
             <label>Size:</label>
-            <select placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value) }}>
+            <select name="Size" placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value); }}>
               <option value="">Select Option</option>
               <option value="1">A size too small</option>
               <option value="2">½ a size too small</option>
@@ -80,9 +82,10 @@ const NewReview = ({ productId }) => {
               <option value="4">½ a size too big</option>
               <option value="5">A size too wide</option>
             </select>
+
             <br />
             <label>Width:</label>
-            <select placeholder="select one" value={width} onChange={(e) => { setWidth(e.target.value) }}>
+            <select placeholder="select one" value={width} onChange={(e) => { setWidth(e.target.value); }}>
               <option value="">Select Option</option>
               <option value="1">Too narrow</option>
               <option value="2">Slightly narrow</option>
@@ -92,7 +95,7 @@ const NewReview = ({ productId }) => {
             </select>
             <br />
             <label>Comfort:</label>
-            <select placeholder="select one" value={comfort} onChange={(e) => { setComfort(e.target.value) }}>
+            <select placeholder="select one" value={comfort} onChange={(e) => { setComfort(e.target.value); }}>
               <option value="">Select Option</option>
               <option value="1">Uncomfortable</option>
               <option value="2">Slightly uncomfortable</option>
@@ -102,7 +105,7 @@ const NewReview = ({ productId }) => {
             </select>
             <br />
             <label>Quality:</label>
-            <select placeholder="select one" value={quality} onChange={(e) => { setQuality(e.target.value) }}>
+            <select placeholder="select one" value={quality} onChange={(e) => { setQuality(e.target.value); }}>
               <option value="">Select Option</option>
               <option value="1">Poor</option>
               <option value="2">Below average</option>
@@ -112,7 +115,7 @@ const NewReview = ({ productId }) => {
             </select>
             <br />
             <label>Length:</label>
-            <select placeholder="select one" value={length} onChange={(e) => { setLength(e.target.value) }}>
+            <select placeholder="select one" value={length} onChange={(e) => { setLength(e.target.value); }}>
               <option value="">Select Option</option>
               <option value="1">Runs Short</option>
               <option value="2">Runs slightly short</option>
@@ -122,7 +125,7 @@ const NewReview = ({ productId }) => {
             </select>
             <br />
             <label>Fit:</label>
-            <select placeholder="select one" value={fit} onChange={(e) => { setFit(e.target.value) }}>
+            <select placeholder="select one" value={fit} onChange={(e) => { setFit(e.target.value); }}>
               <option value="">Select Option</option>
               <option value="1">Runs tight</option>
               <option value="2">Runs slightly tight</option>
@@ -133,21 +136,21 @@ const NewReview = ({ productId }) => {
             <br />
             <br />
             <p>Do you recommend this product?</p>
-            <input type="radio" name="helpfulness" value="true" onClick={() => { setRecommend(true) }}></input>Yes
-            <input type="radio" name="helpfulness" value="false" onClick={() => { setRecommend(false) }}></input>No
+            <input type="radio" name="helpfulness" value="true" onClick={() => { setRecommend(true); }}></input>Yes
+            <input type="radio" name="helpfulness" value="false" onClick={() => { setRecommend(false); }}></input>No
             <br />
             <br />
             <Form.Label>Review Summary: </Form.Label>
             <Form.Control value={reviewSummary} type="text" maxLength="60" placeholder="Example: Best purchase ever!"
-              onChange={(e) => { setReviewSummary(e.target.value) }} />
+              onChange={(e) => { setReviewSummary(e.target.value); }} />
             <br />
             <Form.Label>Review:</Form.Label>
             <Form.Control as="textarea" maxLength="1000" minLength="50" rows={3} placeholder="Why did you like the product or not?"
-              onChange={(e) => { setReviewBody(e.target.value) }} />
+              onChange={(e) => { setReviewBody(e.target.value); }} />
             <label>Upload Pictures:</label>
             <input id="browse" type="file" onChange={() => {
-              setFileList(oldArray => [...oldArray, URL.createObjectURL(event.target.files[0])])
-              previewFiles()
+              setFileList(oldArray => [...oldArray, URL.createObjectURL(event.target.files[0])]);
+              previewFiles();
             }} multiple />
             <div id="preview"></div>
           </Form>
@@ -162,40 +165,32 @@ const NewReview = ({ productId }) => {
         </Modal.Footer>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
 export default NewReview;
 
 
 
-function previewFiles() {
-
+const previewFiles = () => {
   var preview = document.querySelector('#preview');
   var files = document.querySelector('input[type=file]').files;
-
-
-  function readAndPreview(file) {
-
+  const readAndPreview = (file) => {
     // Make sure `file.name` matches our extensions criteria
     if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
       var reader = new FileReader();
-
-      reader.addEventListener("load", function () {
+      reader.addEventListener('load', function () {
         var image = new Image();
         image.height = 100;
         image.title = file.name;
         image.src = this.result;
         preview.appendChild(image);
       }, false);
-
       reader.readAsDataURL(file);
     }
-
-  }
-
+  };
   if (files) {
     [].forEach.call(files, readAndPreview);
   }
+};
 
-}

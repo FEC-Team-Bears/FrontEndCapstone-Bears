@@ -22,7 +22,7 @@ const ReviewPhotos = ({photo}) => {
       </Modal>
     </div>
   );
-}
+};
 
 export default ReviewPhotos;
 

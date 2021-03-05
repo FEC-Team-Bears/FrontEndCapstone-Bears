@@ -24,6 +24,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.13.8",
     "@babel/preset-react": "^7.12.13",
+    "@material-ui/core": "^4.11.3",
     "babel-loader": "^8.2.2",
     "babel-preset-react": "^6.24.1",
     "nodemon": "^2.0.7",
