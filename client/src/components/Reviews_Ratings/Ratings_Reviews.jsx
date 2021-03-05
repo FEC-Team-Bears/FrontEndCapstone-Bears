@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '../../../../config.js';
-import reviews_data from './sample_review_data.js';
 import ReviewList from './ReviewList.jsx'
 
-const Ratings_Reviews = () => {
+const RatingsReviews = ({productId, changeId}) => {
   const [reviews, getAllReviews] = useState([]);
 
   const axiosGetAllReviews = () => {
@@ -13,7 +12,7 @@ const Ratings_Reviews = () => {
         'Authorization': API_KEY
       },
       params: {
-        'product_id': 21112
+        'product_id': `${productId}`
       }
     })
     .then(reviews => {
@@ -26,13 +25,14 @@ const Ratings_Reviews = () => {
   useEffect(() => {
     axiosGetAllReviews();
 
-  }, []);
+  }, [productId]);
 
   return (
     <div>
       <ReviewList reviews={reviews}/>
+      <button onClick={() => {changeId(21114)}}>Hello</button>
     </div>
   )
 }
 
-export default Ratings_Reviews;
+export default RatingsReviews;
