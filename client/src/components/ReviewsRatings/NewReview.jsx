@@ -72,17 +72,19 @@ const NewReview = ({ productId, reviewChar }) => {
                 setStarValue(newValue);
               }} />
             <br />
-
-            <label>Size:</label>
-            <select name="Size" placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value); }}>
-              <option value="">Select Option</option>
-              <option value="1">A size too small</option>
-              <option value="2">½ a size too small</option>
-              <option value="3">Perfect</option>
-              <option value="4">½ a size too big</option>
-              <option value="5">A size too wide</option>
-            </select>
-
+            {reviewChar.Size ?
+              <div>
+                <label>Size:</label>
+                <select name="Size" placeholder="select one" value={size} onChange={(e) => { setSize(e.target.value); }}>
+                  <option value="">Select Option</option>
+                  <option value="1">A size too small</option>
+                  <option value="2">½ a size too small</option>
+                  <option value="3">Perfect</option>
+                  <option value="4">½ a size too big</option>
+                  <option value="5">A size too wide</option>
+                </select>
+              </div>
+              : null}
             <br />
             <label>Width:</label>
             <select placeholder="select one" value={width} onChange={(e) => { setWidth(e.target.value); }}>
@@ -124,15 +126,17 @@ const NewReview = ({ productId, reviewChar }) => {
               <option value="5">Runs long</option>
             </select>
             <br />
-            <label>Fit:</label>
-            <select placeholder="select one" value={fit} onChange={(e) => { setFit(e.target.value); }}>
-              <option value="">Select Option</option>
-              <option value="1">Runs tight</option>
-              <option value="2">Runs slightly tight</option>
-              <option value="3">Perfect</option>
-              <option value="4">Runs slightly long</option>
-              <option value="5">Runs long</option>
-            </select>
+            <div>
+              <label>Fit:</label>
+              <select placeholder="select one" value={fit} onChange={(e) => { setFit(e.target.value); }}>
+                <option value="">Select Option</option>
+                <option value="1">Runs tight</option>
+                <option value="2">Runs slightly tight</option>
+                <option value="3">Perfect</option>
+                <option value="4">Runs slightly long</option>
+                <option value="5">Runs long</option>
+              </select>
+            </div>
             <br />
             <br />
             <p>Do you recommend this product?</p>

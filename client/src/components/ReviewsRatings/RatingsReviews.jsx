@@ -39,8 +39,6 @@ const RatingsReviews = ({ productId, changeId }) => {
       .catch((error) => console.error(error));
   };
 
-
-
   useEffect(() => {
     axiosGetAllReviews();
     axiosGetAllMetaData();
