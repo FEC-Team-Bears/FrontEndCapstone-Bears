@@ -15,6 +15,26 @@ let sampleData = {
         {
           "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
           "url": "urlplaceholder/style_1_photo_number.jpg"
+        },
+        {
+          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+          "url": "urlplaceholder/style_1_photo_number.jpg"
+        },
+        {
+          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+          "url": "urlplaceholder/style_1_photo_number.jpg"
+        },
+        {
+          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+          "url": "urlplaceholder/style_1_photo_number.jpg"
+        },
+        {
+          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+          "url": "urlplaceholder/style_1_photo_number.jpg"
+        },
+        {
+          "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+          "url": "urlplaceholder/style_1_photo_number.jpg"
         }
       // ...
       ],

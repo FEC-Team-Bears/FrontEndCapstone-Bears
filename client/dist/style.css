@@ -34,23 +34,6 @@
 
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
 
-#thumbnailList {
-  position: absolute;
-  z-index: 1;
-  width: 60px;
-  margin-left: 30px;
-}
-
-.thumbnail {
-  width: 60px;
-}
-
-.style-thumb {
-  max-height: 90px;
-  object-fit: contain;
-  margin: 15px;
-}
-
 
 
 /** Stage container **/
@@ -61,16 +44,6 @@
   position: relative;
 }
 
-.connected-carousels .photo-credits {
-  position: absolute;
-  right: 15px;
-  bottom: 0;
-  font-size: 13px;
-  color: #fff;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.85);
-  opacity: .66;
-}
-
 .connected-carousels .photo-credits a {
   color: #fff;
 }
@@ -78,9 +51,11 @@
 /** Navigation container **/
 
 .connected-carousels .navigation {
-  width: 260px;
-  margin: 20px auto;
+  width: 80px;
+  margin: -600px 20px auto;
   position: relative;
+  float: left;
+  height: 345px;
 }
 
 /** Shared carousel styles **/
@@ -101,33 +76,22 @@
 .connected-carousels .carousel li {
   float: left;
 }
+.connected-carousels .carousel-navigation li {
+  float: none;
+}
 
 /** Stage carousel specific styles **/
 
 .connected-carousels .carousel-stage {
   height: 700px;
-  border: 10px solid #fff;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
-  -webkit-box-shadow: 0 0 2px #999;
-     -moz-box-shadow: 0 0 2px #999;
-          box-shadow: 0 0 2px #999;
+  margin-left: 30px;
 }
 
 /** Navigation carousel specific styles **/
 
 .connected-carousels .carousel-navigation {
-  height: 60px;
-  width: 240px;
-  background: #fff;
-  border: 10px solid #fff;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
-  -webkit-box-shadow: 0 0 2px #999;
-     -moz-box-shadow: 0 0 2px #999;
-          box-shadow: 0 0 2px #999;
+  height: 345px;
+  width: 80px;
 }
 
 .connected-carousels .carousel-navigation li {
@@ -136,11 +100,11 @@
 
 .connected-carousels .carousel-navigation li img {
   display: block;
-  border: 5px solid #fff;
+  border: none;
 }
 
 .connected-carousels .carousel-navigation li.active img {
-  border-color: #ccc;
+  box-shadow: 0 10px 4px -4px black;
 }
 
 /** Stage carousel controls **/
@@ -190,7 +154,7 @@
 }
 
 .connected-carousels .prev-stage span {
-  left: 20px;
+  left: 100px;
 }
 
 .connected-carousels .next-stage span {
@@ -224,15 +188,15 @@
 }
 
 .connected-carousels .prev-navigation {
-  left: -15px;
-  top: 22px;
-  text-indent: 6px;
+  left: 25px;
+  top: -20px;
+  text-indent: 8px;
 }
 
 .connected-carousels .next-navigation {
-  right: -15px;
-  top: 22px;
-  text-indent: 20px;
+  left: 25px;
+  bottom: -35px;
+  text-indent: 8px;
 }
 
 .connected-carousels .prev-navigation.inactive,
@@ -247,3 +211,15 @@
   margin-left: 50px;
   padding: 10px;
 }
+.style-thumb {
+  height: auto;
+  max-height: 70px;
+  object-fit: contain;
+  margin: 15px;
+}
+
+/* .jcarousel img {
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+} */

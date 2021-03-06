@@ -12,10 +12,10 @@
   var rRelativeTarget = /^([+\-]=)?(.+)$/;
 
   jCarousel.parseTarget = function(target) {
-      var relative = false,
-          parts    = typeof target !== 'object' ?
-                         rRelativeTarget.exec(target) :
-                         null;
+    var relative = false,
+      parts    = typeof target !== 'object' ?
+        rRelativeTarget.exec(target) :
+        null;
 
       if (parts) {
           target = parseInt(parts[2], 10) || 0;
