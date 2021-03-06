@@ -3,6 +3,7 @@ import axios from 'axios';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
 import Overview from './Overview/Overview.jsx';
+import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import API_KEY from '/config.js';
@@ -38,6 +39,7 @@ const App = (props) => {
       <Overview />
       <RelatedProducts currentId={ currentProductId } handleClick={ setNewId } />
       <YourOutfit />
+      <QuestionsList />
       <RatingsReviews productId={ currentProductId } changeId={ changeCurrentProductId }/>
     </div>
   );
