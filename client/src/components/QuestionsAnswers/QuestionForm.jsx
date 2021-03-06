@@ -34,13 +34,10 @@ const QuestionForm = ({ productId, length }) => {
     setValidated(true);
     // submit axios request
   };
-
   const getProductName = (productId) => {
     axios
-      // url for a variable productId
-      // .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products?product_id=${productId}`)
-      // currently hardcoding a productId during development phase:
-      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/21113', {
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products?product_id=${productId}`, {
+      // .get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/21113', {
         headers: {
           'Authorization': API_KEY
         }
@@ -54,11 +51,9 @@ const QuestionForm = ({ productId, length }) => {
   };
 
   useEffect(() => {
-    // for a variable productId, use the following:
-    // getProductName(productId);
-    getProductName();
+    getProductName(productId);
+    // getProductName();
   }, []);
-
 
   return (
     <div>
