@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
 import axios from 'axios';
-// import Related_products from './Related_products/Related_products.jsx';
-// import Your_outfit from './Your_outfit/Your_outfit.jsx';
+import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
+import YourOutfit from './YourOutfit/YourOutfit.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import API_KEY from '/config.js';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 
-const App = () => {
+const App = (props) => {
+
   const [currentProductId, changeCurrentProductId] = useState(21111);
 
   const axiosGetProductId = (id) => {
@@ -16,9 +16,7 @@ const App = () => {
         'Authorization': API_KEY
       }
     })
-      .then(response => {
-        changeCurrentProductId(response.data.id);
-      })
+      .then(response => changeCurrentProductId(response.data.id))
       .catch((error) => console.error(error));
   };
 
@@ -26,17 +24,17 @@ const App = () => {
     axiosGetProductId(currentProductId);
   }, []);
 
+  // Function needed for ressetting
+  const setNewId = (e) => {
+    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
+  };
+
   return (
     <div>
-      {/* <Related_products
-        // related_products_star_rating={}
-        // current_Id={}
-      />
-      <Your_outfit
-        // your_outfit_star_rating={}
-      /> */}
+      <RelatedProducts currentId={ currentProductId } handleClick={ setNewId } />
+      <YourOutfit />
       <QuestionsList productId={currentProductId}/>
-      <RatingsReviews productId={currentProductId} changeId={changeCurrentProductId}/>
+      <RatingsReviews productId={ currentProductId } changeId={ changeCurrentProductId }/>
     </div>
   );
 };
