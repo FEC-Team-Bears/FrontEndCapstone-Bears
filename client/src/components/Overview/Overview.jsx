@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
 import axios from 'axios';
 import API_KEY from '../../../../config.js';
 import PrimaryImage from './PrimaryImage.jsx';
@@ -29,15 +28,12 @@ var Overview = ({ productId }) => {
 
   useEffect(() => {
     fetchStyles(productId);
-    // document.getElementsByClassName('product-data')[0].innerHTML = `the product is ${Styles.data}`;
   }, [productId]);
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-8 main_pic">
-          {/* <button onClick={fetchStyles}>Fetch Styles</button>
-          <p className="product-data">print Styles here: </p> */}
           <PrimaryImage styles={ styles } foculProduct={ foculProduct }/>
         </div>
         <div className="col-4 main_details">

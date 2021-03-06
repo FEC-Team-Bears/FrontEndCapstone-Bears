@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
 import Thumbnail from './Thumbnail.jsx';
 
-const ThumbnailList = ({stylesPhotos, currentThumbs = [0, 3]}) => {
+const ThumbnailList = ({stylesPhotos, currentThumbs = [0, 3], activeThumb, setActiveThumb, makeActive}) => {
 
   let styleThumb;
 
@@ -12,7 +11,7 @@ const ThumbnailList = ({stylesPhotos, currentThumbs = [0, 3]}) => {
         styleThumb = stylePhoto.thumbnail_url;
         if (index >= currentThumbs[0] && index <= currentThumbs[1]) {
           return (
-            <Thumbnail styleThumb={styleThumb} key={index} />
+            <Thumbnail styleThumb={ styleThumb } index={ index } key={ index } makeActive={ makeActive }/>
           );
         }
       })}

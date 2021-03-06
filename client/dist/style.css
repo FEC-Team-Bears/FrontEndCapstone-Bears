@@ -51,8 +51,15 @@
   max-height: 90px;
   object-fit: contain;
   margin: 15px;
+
 }
-/* Related Products cards */
+
+.activeThumb {
+  box-shadow: 0 10px 0 cyan;
+}
+
+
+/* Related Products cards  =====================================================*/
 .card-image-top {
   height: 200px;
   width: 100%;

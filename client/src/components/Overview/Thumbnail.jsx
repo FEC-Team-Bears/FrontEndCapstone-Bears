@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
 
 
-const Thumbnail = ({styleThumb}) => {
+const Thumbnail = ({ styleThumb, activeThumb, setActiveThumb, index, makeActive}) => {
+
 
   return (
     <div className="thumbnail">
-      <img className="style-thumb" src={styleThumb}></img>
+      <img className="style-thumb" src={ styleThumb } onClick={ makeActive } data-index={index}></img>
     </div>
   );
 
