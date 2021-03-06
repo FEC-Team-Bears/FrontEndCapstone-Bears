@@ -11,16 +11,32 @@ const PrimaryImage = ({foculProduct, styles}) => {
   let photoArr = styles.results[0].photos;
 
   const [stylesPhotos, setStylesPhotos] = useState(photoArr);
+  const [picCount, setPicCount] = useState(photoArr.length);
+  const [currentThumbs, setCurrentThumbs] = useState([0, 3]);
 
   useEffect(() => {
-    console.log('Log in Use Effect', styles);
     setStylesPhotos(photoArr);
+    setPicCount(photoArr.length);
   }, [foculProduct, styles, photoArr]);
+
+  const slideUp = () => {
+    if (currentThumbs[0] > 0) {
+      setCurrentThumbs([currentThumbs[0] - 4, currentThumbs[1] - 4]);
+    }
+  };
+
+  const slideDown = () => {
+    if (currentThumbs[1] < picCount) {
+      setCurrentThumbs([currentThumbs[0] + 4, currentThumbs[1] + 4]);
+    }
+  };
 
 
   return (
     <div id="mainImage">
-      <ThumbnailList stylesPhotos={stylesPhotos}/>
+      <p className="upButton" onClick={ slideUp }>&#8963;</p>
+      <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={currentThumbs}/>
+      <p className="downButton" onClick={ slideDown }>	&#8964;</p>
       <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>

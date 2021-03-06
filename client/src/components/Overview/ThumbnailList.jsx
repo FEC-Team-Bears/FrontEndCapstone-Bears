@@ -2,18 +2,15 @@ import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import Thumbnail from './Thumbnail.jsx';
 
-const ThumbnailList = ({stylesPhotos}) => {
+const ThumbnailList = ({stylesPhotos, currentThumbs = [0, 3]}) => {
 
-  console.log('STYLESPHOTOS: ', stylesPhotos);
   let styleThumb;
-
-  const [thumbIndShowing, setThumbIndShowing] = useState([0, 3]);
 
   return (
     <div id="thumbnailList">
       {stylesPhotos.map((stylePhoto, index) => {
         styleThumb = stylePhoto.thumbnail_url;
-        if (index >= thumbIndShowing[0] && index <= thumbIndShowing[1]) {
+        if (index >= currentThumbs[0] && index <= currentThumbs[1]) {
           return (
             <Thumbnail styleThumb={styleThumb} key={index} />
           );

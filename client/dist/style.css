@@ -37,12 +37,14 @@
 #thumbnailList {
   position: absolute;
   z-index: 1;
-  width: 60px;
+  width: 120px;
   margin-left: 30px;
+  height: 600px;
+  overflow: hidden;
 }
 
 .thumbnail {
-  width: 60px;
+  height: 150px;
 }
 
 .style-thumb {

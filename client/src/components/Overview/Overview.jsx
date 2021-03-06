@@ -5,7 +5,7 @@ import API_KEY from '../../../../config.js';
 import PrimaryImage from './PrimaryImage.jsx';
 import sampleData from './sampleData';
 
-var Overview = (props) => {
+var Overview = ({ productId }) => {
 
   const [styles, getStyles] = useState(sampleData);
   const [foculProduct, getFoculProduct] = useState('randomurl.com');
@@ -28,9 +28,9 @@ var Overview = (props) => {
   };
 
   useEffect(() => {
-    fetchStyles();
+    fetchStyles(productId);
     // document.getElementsByClassName('product-data')[0].innerHTML = `the product is ${Styles.data}`;
-  }, []);
+  }, [productId]);
 
   return (
     <div className="container">
@@ -38,7 +38,7 @@ var Overview = (props) => {
         <div className="col-8 main_pic">
           {/* <button onClick={fetchStyles}>Fetch Styles</button>
           <p className="product-data">print Styles here: </p> */}
-          <PrimaryImage styles={styles} foculProduct={foculProduct}/>
+          <PrimaryImage styles={ styles } foculProduct={ foculProduct }/>
         </div>
         <div className="col-4 main_details">
           Product Details go here

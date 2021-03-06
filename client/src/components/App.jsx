@@ -36,7 +36,7 @@ const App = (props) => {
       <div className="row justify-content-center">
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
-      <Overview />
+      <Overview productId={ currentProductId }/>
       <RelatedProducts currentId={ currentProductId } handleClick={ setNewId } />
       <YourOutfit />
       <QuestionsList />
