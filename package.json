@@ -42,11 +42,7 @@
     "moment": "^2.29.1",
     "npm": "^7.6.0",
     "react": "^17.0.1",
-<<<<<<< HEAD
-    "react-bootstrap": "^1.5.0",
-=======
     "react-bootstrap": "^1.5.1",
->>>>>>> production
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-star-ratings": "^2.3.0",
