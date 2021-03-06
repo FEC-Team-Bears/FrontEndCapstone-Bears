@@ -53,14 +53,6 @@ const PrimaryImage = ({ foculProduct, styles }) => {
       <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive }/>
       <p className="downButton" onClick={ slideDown }>	&#8964;</p>
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false">
-        <ol className="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-          {photoArr.map((imgObj, index) => {
-            return (
-              <li key={ index } data-target="#carouselExampleIndicators" data-slide-to={index + 1}></li>
-            );
-          })}
-        </ol>
         <div className="carousel-inner">
           {photoArr.map((imgObj, index) => {
             return (<div className={index === 0 ? 'carousel-item active' : 'carousel-item'} key={ index }>
