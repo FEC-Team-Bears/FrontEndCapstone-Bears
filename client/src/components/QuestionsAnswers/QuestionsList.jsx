@@ -9,14 +9,17 @@ const QuestionsList = ({productId}) => {
   const [questions, setQuestions] = useState([]);
   const [page, setPage] = useState(1);
   const [remainingQ, setRemainingQ] = useState(true);
-  // const [form, setForm] = useState(false);
 
   useEffect(() => {
+    // for a variable productId, use the following:
+    // getAllQuestions(productId);
     getAllQuestions();
   }, []);
 
   useEffect(() => {
     if (count > questions.length) {
+      // for a variable productId, use the following:
+      // getAllQuestions(productId);
       getAllQuestions();
     }
   }, [count]);
@@ -25,8 +28,8 @@ const QuestionsList = ({productId}) => {
     axios
       // url for a variable productId
       // .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${productId}&page=${page}`)
-      // currently hardcoding a productId during development phase
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=21111&page=${page}`, {
+      // currently hardcoding a productId during development phase:
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=21113&page=${page}`, {
         headers: {
           'Authorization': API_KEY
         }
