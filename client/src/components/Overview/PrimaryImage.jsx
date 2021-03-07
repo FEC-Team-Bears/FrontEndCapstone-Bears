@@ -14,10 +14,15 @@ const PrimaryImage = ({ foculProduct, styles }) => {
   const [currentThumbs, setCurrentThumbs] = useState([0, 3]);
   const [activeThumb, setActiveThumb] = useState(0);
 
+  let newInd;
+
   useEffect(() => {
     setStylesPhotos(photoArr);
+    newInd = 0;
     setPicCount(photoArr.length);
-  }, [foculProduct, styles, photoArr]);
+    setActiveThumb(0);
+    setCurrentThumbs([0, 3]);
+  }, [foculProduct, styles]);
 
   const slideUp = () => {
     if (currentThumbs[0] > 0) {
@@ -32,13 +37,7 @@ const PrimaryImage = ({ foculProduct, styles }) => {
   };
 
   const makeActive = (e) => {
-    // send info back to parent so they can remove the active class from previously active thumb
-    // and then assign active to the newly active thumb
-    // Assign the thumbnail an active class which will x
-    // make the style somewhat different x
-    // setActiveThumb(index); x
-    let newInd = $(e.target).attr('data-index');
-
+    newInd = $(e.target).attr('data-index');
     $('.activeThumb').removeClass('activeThumb');
     $(e.target).addClass('activeThumb');
     setActiveThumb(newInd);
@@ -46,16 +45,29 @@ const PrimaryImage = ({ foculProduct, styles }) => {
     // remember this is an async func
   };
 
+  $('.carousel').on('slide.bs.carousel', (e) => {
+    newInd = (e.to);
+    $('img').find(`[data-index='${e.to - 0}']`).addClass('activeThumb');
+    setActiveThumb(newInd);
+    if (e.to > currentThumbs[1]) {
+      slideDown();
+    }
+    if (e.to < currentThumbs[0]) {
+      slideUp();
+    }
+    console.log('leak');
+  });
+
 
   return (
     <div id="mainImage">
       <p className="upButton" onClick={ slideUp }>&#8963;</p>
-      <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive }/>
+      <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
       <p className="downButton" onClick={ slideDown }>	&#8964;</p>
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false">
         <div className="carousel-inner">
           {photoArr.map((imgObj, index) => {
-            return (<div className={index === 0 ? 'carousel-item active' : 'carousel-item'} key={ index }>
+            return (<div className={index === 0 ? 'carousel-item active' : 'carousel-item'} data-main-ind={ index } key={ index }>
               <img src={imgObj.url} className="d-block w-100 main-car img-fluid" alt="..."></img>
             </div>);
           })}

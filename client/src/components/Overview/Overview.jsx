@@ -31,7 +31,7 @@ var Overview = ({ productId }) => {
   }, [productId]);
 
   return (
-    <div className="container">
+    <div className="container overview-container">
       <div className="row">
         <div className="col-8 main_pic">
           <PrimaryImage styles={ styles } foculProduct={ foculProduct }/>

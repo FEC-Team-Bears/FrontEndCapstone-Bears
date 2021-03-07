@@ -14,6 +14,10 @@
   background-color: cadetblue;
 }
 
+.overview-container {
+  margin-bottom: 150px;
+}
+
 /* MAIN CAROUSEL STYLING ==================================================== */
 
 #mainImage, .main-car, #carouselExampleIndicators {

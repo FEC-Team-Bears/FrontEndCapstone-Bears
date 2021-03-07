@@ -11,7 +11,7 @@ const ThumbnailList = ({stylesPhotos, currentThumbs = [0, 3], activeThumb, setAc
         styleThumb = stylePhoto.thumbnail_url;
         if (index >= currentThumbs[0] && index <= currentThumbs[1]) {
           return (
-            <Thumbnail styleThumb={ styleThumb } index={ index } key={ index } makeActive={ makeActive }/>
+            <Thumbnail styleThumb={ styleThumb } index={ index } key={ index } makeActive={ makeActive } activeThumb={ activeThumb }/>
           );
         }
       })}
