@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_KEY from '/config.js';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
-import API_KEY from '/config.js';
 
 const App = (props) => {
 
@@ -38,6 +38,10 @@ const App = (props) => {
       .then(product => getProductDetails(product.data))
       .catch(error => console.error(error));
   };
+  // Function needed for resetting
+  const setNewId = (e) => {
+    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
+  };
 
   const axiosGetProductImage = () => {
     axios
@@ -55,11 +59,6 @@ const App = (props) => {
     axiosGetProductId();
     axiosGetProductDetails();
   }, [productId]);
-
-  // Function needed for ressetting through related card
-  const setNewId = (e) => {
-    changeProductId(e.currentTarget.attributes[0].nodeValue);
-  };
 
   return (
     <div>
