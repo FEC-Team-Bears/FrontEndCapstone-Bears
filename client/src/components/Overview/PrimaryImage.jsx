@@ -130,7 +130,7 @@ const PrimaryImage = ({ product, style, setStyle }) => {
 
   return (
     <div id="main-image">
-      <button onClick={ nextStyle }>nextStyle</button>
+      {/* <button onClick={ nextStyle }>nextStyle</button> */}
       <p className="up-button thumbNav" onClick={ slideUp }>&#8963;</p>
       <p className="down-button thumbNav" onClick={ slideDown }>	&#8964;</p>
       <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
