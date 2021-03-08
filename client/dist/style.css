@@ -36,6 +36,9 @@
   left: 100px;
 }
 
+.hidden {
+  visibility: hidden;
+}
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
 
 #thumbnailList {
@@ -43,19 +46,18 @@
   z-index: 1;
   width: 120px;
   margin-left: 30px;
-  height: 600px;
+  height: 800px;
   overflow: hidden;
 }
 
 .thumbnail {
-  height: 150px;
+  height: 90px;
+  margin: 15px;
 }
 
 .style-thumb {
-  max-height: 90px;
+  max-height: 70px;
   object-fit: contain;
-  margin: 15px;
-
 }
 
 .activeThumb {

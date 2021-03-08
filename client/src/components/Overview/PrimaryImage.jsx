@@ -11,52 +11,95 @@ const PrimaryImage = ({ foculProduct, styles }) => {
 
   const [stylesPhotos, setStylesPhotos] = useState(photoArr);
   const [picCount, setPicCount] = useState(photoArr.length);
-  const [currentThumbs, setCurrentThumbs] = useState([0, 3]);
+  const [currentPic, setCurrentPic] = useState(0);
+  const [currentThumbs, setCurrentThumbs] = useState([0, 6]);
   const [activeThumb, setActiveThumb] = useState(0);
 
   let newInd;
 
   useEffect(() => {
     setStylesPhotos(photoArr);
-    newInd = 0;
     setPicCount(photoArr.length);
-    setActiveThumb(0);
-    setCurrentThumbs([0, 3]);
+    // setActiveThumb(0);
+    // setCurrentThumbs([0, 3]);
+    // setCurrentPic(0);
+    // $('.carousel').carousel(0);
+    $('.carousel-control-next').removeClass('hidden');
+    $('.carousel-control-prev').removeClass('hidden');
+    if (newInd === 0) {
+      $('.carousel-control-prev').addClass('hidden');
+    } else if (newInd === picCount - 1) {
+      $('.carousel-control-next').addClass('hidden');
+    }
   }, [foculProduct, styles]);
 
   const slideUp = () => {
     if (currentThumbs[0] > 0) {
-      setCurrentThumbs([currentThumbs[0] - 4, currentThumbs[1] - 4]);
+      setCurrentThumbs([currentThumbs[0] - 7, currentThumbs[1] - 7]);
     }
   };
 
   const slideDown = () => {
     if (currentThumbs[1] < picCount) {
-      setCurrentThumbs([currentThumbs[0] + 4, currentThumbs[1] + 4]);
+      setCurrentThumbs([currentThumbs[0] + 7, currentThumbs[1] + 7]);
     }
   };
 
   const makeActive = (e) => {
-    newInd = $(e.target).attr('data-index');
+    newInd = Number($(e.target).attr('data-index'));
     $('.activeThumb').removeClass('activeThumb');
     $(e.target).addClass('activeThumb');
     setActiveThumb(newInd);
-    $('.carousel').carousel(newInd - 0);
-    // remember this is an async func
+    setCurrentPic(newInd);
+    $('.carousel').carousel(newInd);
+    $('.carousel-control-next').removeClass('hidden');
+    $('.carousel-control-prev').removeClass('hidden');
+    if (newInd === 0) {
+      $('.carousel-control-prev').addClass('hidden');
+    } else if (newInd === picCount - 1) {
+      $('.carousel-control-next').addClass('hidden');
+    }
   };
 
-  $('.carousel').on('slide.bs.carousel', (e) => {
-    newInd = (e.to);
-    $('img').find(`[data-index='${e.to - 0}']`).addClass('activeThumb');
-    setActiveThumb(newInd);
-    if (e.to > currentThumbs[1]) {
-      slideDown();
+  const picUpdate = (button, totalPics, index) => {
+    if (button === 'next') {
+      if (index === totalPics - 1) {
+        $('.carousel-control-next').addClass('hidden');
+      }
+      $('.carousel-control-prev').removeClass('hidden');
+      if (index > currentThumbs[1]) {
+        slideDown();
+      }
     }
-    if (e.to < currentThumbs[0]) {
-      slideUp();
+    if (button === 'prev') {
+      if (index === 0) {
+        $('.carousel-control-prev').addClass('hidden');
+      }
+      $('.carousel-control-next').removeClass('hidden');
+      if (index < currentThumbs[0]) {
+        slideUp();
+      }
     }
-    console.log('leak');
-  });
+    setActiveThumb(index);
+    setCurrentPic(index);
+  };
+
+
+
+  const nextClick = () => {
+    $('.activeThumb').removeClass('activeThumb');
+    $('img').find(`[data-index='${currentPic + 1}']`).addClass('activeThumb');
+    picUpdate('next', picCount, Number(currentPic + 1));
+    console.log('currentpic is getting set to ', Number(currentPic + 1));
+  };
+
+  const prevClick = () => {
+    $('.activeThumb').removeClass('activeThumb');
+    $('img').find(`[data-index='${currentPic - 1}']`).addClass('activeThumb');
+    picUpdate('prev', picCount, Number(currentPic - 1));
+    console.log('currentpic is getting set to ', Number(currentPic - 1));
+  };
+
 
 
   return (
@@ -64,7 +107,7 @@ const PrimaryImage = ({ foculProduct, styles }) => {
       <p className="upButton" onClick={ slideUp }>&#8963;</p>
       <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
       <p className="downButton" onClick={ slideDown }>	&#8964;</p>
-      <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false">
+      <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false" data-interval="false">
         <div className="carousel-inner">
           {photoArr.map((imgObj, index) => {
             return (<div className={index === 0 ? 'carousel-item active' : 'carousel-item'} data-main-ind={ index } key={ index }>
@@ -72,11 +115,11 @@ const PrimaryImage = ({ foculProduct, styles }) => {
             </div>);
           })}
         </div>
-        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a className="carousel-control-prev hidden" href="#carouselExampleIndicators" role="button" data-slide="prev" onClick={ prevClick }>
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="sr-only">Previous</span>
         </a>
-        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" onClick={ nextClick }>
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="sr-only">Next</span>
         </a>
