@@ -50,7 +50,6 @@ const RatingsReviews = ({ productId, changeId }) => {
       {reviewMetaData ?
         <div>
           <ReviewList reviews={reviews} productId={productId} reviewChar={reviewMetaData.characteristics} />
-          <button onClick={() => { changeId(21114); }}>Hello</button>
         </div>
         : null
       }
