@@ -17,7 +17,6 @@ var Overview = ({ productId }) => {
       })
       .then((results) => {
         getProduct(results.data.results[style].photos);
-        getFoculProduct(results.data.results[0].photos[0].url);
       })
       .catch((err) => {
         console.error('there was an error in your axios call: ', err);
