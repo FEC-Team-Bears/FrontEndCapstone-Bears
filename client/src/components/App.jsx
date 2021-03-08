@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_KEY from '/config.js';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
-
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
-import API_KEY from '/config.js';
+import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 
 const App = (props) => {
-
   const [currentProductId, changeCurrentProductId] = useState(21111);
 
   const axiosGetProductId = (id) => {
@@ -19,20 +18,20 @@ const App = (props) => {
       .then(response => changeCurrentProductId(response.data.id))
       .catch((error) => console.error(error));
   };
+  // Function needed for resetting
+  const setNewId = (e) => {
+    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
+  };
 
   useEffect(() => {
     axiosGetProductId(currentProductId);
   }, []);
 
-  // Function needed for ressetting
-  const setNewId = (e) => {
-    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
-  };
-
   return (
     <div>
       <RelatedProducts currentId={ currentProductId } handleClick={ setNewId } />
       <YourOutfit />
+      <QuestionsList productId={ currentProductId }/>
       <RatingsReviews productId={ currentProductId } changeId={ changeCurrentProductId }/>
     </div>
   );
