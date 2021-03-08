@@ -3,6 +3,7 @@ import axios from 'axios';
 import API_KEY from '/config.js';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
+import Overview from './Overview/Overview.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 
@@ -29,6 +30,10 @@ const App = (props) => {
 
   return (
     <div>
+      <div className="row justify-content-center">
+        <div className="top_bar col-8">Top Bar Goes Here</div>
+      </div>
+      <Overview productId={ currentProductId }/>
       <RelatedProducts currentId={ currentProductId } handleClick={ setNewId } />
       <YourOutfit />
       <QuestionsList productId={ currentProductId }/>
