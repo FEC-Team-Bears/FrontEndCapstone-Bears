@@ -44,7 +44,7 @@ const StarRating = ({ review }) => {
         return (
           <div className="single-star-container" key={i}>
             <div className="single-star-fill" style={{ 'width': `${Number(item * 23)}px` }}>
-              <img className="single-star-outline" src="star.png"></img>
+              <img className="single-star-outline" src="assets/images/star.png"></img>
             </div>
           </div>
         );
