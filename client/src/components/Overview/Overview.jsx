@@ -32,10 +32,10 @@ var Overview = ({ productId }) => {
   return (
     <div className="container overview-container">
       <div className="row">
-        <div className="col-8 main_pic">
+        <div className="col-8 main-pic">
           <PrimaryImage product={ product } />
         </div>
-        <div className="col-4 main_details">
+        <div className="col-4 main-details">
           Product Details go here
         </div>
       </div>

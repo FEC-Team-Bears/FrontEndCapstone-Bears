@@ -1,9 +1,9 @@
-.main_pic {
+.main-pic {
   /* border: 1px solid black; */
   height: 700px;
 }
 
-.main_details {
+.main-details {
   border: 1px solid black;
 }
 
@@ -24,7 +24,7 @@
 
 /* MAIN CAROUSEL STYLING ==================================================== */
 
-#mainImage, .main-car, #carouselExampleIndicators {
+#main-image, .main-car, #carouselExampleIndicators {
   background-color: 	rgb(208,208,208);
   height: 100%;
 }
@@ -43,7 +43,7 @@
   left: 100px;
 }
 
-.main_pic {
+.main-pic {
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -ms-transition: all 1s ease-in-out;
@@ -56,7 +56,7 @@
 }
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
 
-#thumbnailList {
+#thumbnail-list {
   position: absolute;
   z-index: 1;
   width: 120px;
@@ -76,7 +76,7 @@
   object-fit: contain;
 }
 
-.activeThumb {
+.active-thumb {
   box-shadow: 0 10px 0 cyan;
 }
 
@@ -86,10 +86,10 @@
   left: 55px;
   z-index: 2;
 }
-.upButton {
+.up-button {
   top: 15px;
 }
-.downButton {
+.down-button {
   bottom: 15px;
 }
 

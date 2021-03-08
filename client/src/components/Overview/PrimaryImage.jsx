@@ -59,8 +59,8 @@ const PrimaryImage = ({ product }) => {
 
   const makeActive = (e) => {
     newInd = Number($(e.target).attr('data-index'));
-    $('.activeThumb').removeClass('activeThumb');
-    $(e.target).addClass('activeThumb');
+    $('.active-thumb').removeClass('active-thumb');
+    $(e.target).addClass('active-thumb');
     setActiveThumb(newInd);
     setCurrentPic(newInd);
     $('.carousel').carousel(newInd);
@@ -103,27 +103,28 @@ const PrimaryImage = ({ product }) => {
 
 
   const nextClick = () => {
-    $('.activeThumb').removeClass('activeThumb');
-    $('img').find(`[data-index='${currentPic + 1}']`).addClass('activeThumb');
+    $('.active-thumb').removeClass('active-thumb');
+    $('img').find(`[data-index='${currentPic + 1}']`).addClass('active-thumb');
     picUpdate('next', picCount, Number(currentPic + 1));
   };
 
   const prevClick = () => {
-    $('.activeThumb').removeClass('activeThumb');
-    $('img').find(`[data-index='${currentPic - 1}']`).addClass('activeThumb');
+    $('.active-thumb').removeClass('active-thumb');
+    $('img').find(`[data-index='${currentPic - 1}']`).addClass('active-thumb');
     picUpdate('prev', picCount, Number(currentPic - 1));
   };
 
   const imageExpand = () => {
+    console.log('in expand');
     if (imageExpanded) {
-      $('.main_pic').removeClass('col-12').addClass('col-8');
+      $('.main-pic').removeClass('col-12').addClass('col-8');
       setImageExpanded(false);
       setTimeout(() => {
-        $('.main_details').removeClass('hidden').addClass('col-4');
+        $('.main-details').removeClass('hidden').addClass('col-4');
       }, 1000);
     } else {
-      $('.main_pic').removeClass('col-8').addClass('col-12');
-      $('.main_details').removeClass('col-4').addClass('hidden');
+      $('.main-pic').removeClass('col-8').addClass('col-12');
+      $('.main-details').removeClass('col-4').addClass('hidden');
       setImageExpanded(true);
     }
   };
@@ -131,10 +132,10 @@ const PrimaryImage = ({ product }) => {
 
 
   return (
-    <div id="mainImage">
-      <button onClick={ nextStyle }>nextStyle</button>
-      <p className="upButton thumbNav" onClick={ slideUp }>&#8963;</p>
-      <p className="downButton thumbNav" onClick={ slideDown }>	&#8964;</p>
+    <div id="main-image">
+      {/* <button onClick={ nextStyle }>nextStyle</button> */}
+      <p className="up-button thumbNav" onClick={ slideUp }>&#8963;</p>
+      <p className="down-button thumbNav" onClick={ slideDown }>	&#8964;</p>
       <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false" data-interval="false">
         <div className="carousel-inner">
