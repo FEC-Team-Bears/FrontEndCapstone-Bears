@@ -30,7 +30,7 @@ const QuestionsList = ({ productId }) => {
         }
       })
       .catch(err => {
-        console.log('Error: Cannot retrieve questions from API');
+        console.error('Error: Cannot retrieve questions from API');
       });
   };
 
@@ -53,7 +53,7 @@ const QuestionsList = ({ productId }) => {
 
   return (
     <div>
-      {(questions.length !== 0) ? questions.slice(0, count).map(question => (
+      {questions.length ? questions.slice(0, count).map(question => (
         <Question key={question.question_id} question={question}/>
       )) : null}
       {(questions.length > 2 && remainingQ) ? <button onClick={showMoreQuestions}>More Answered Questions</button> : null}

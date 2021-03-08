@@ -27,7 +27,7 @@ const Question = ({ question }) => {
         setCount(count + 1);
       })
       .catch(err => {
-        console.log('Error: cannot mark question as helpful');
+        console.error('Error: cannot mark question as helpful');
       });
   };
 

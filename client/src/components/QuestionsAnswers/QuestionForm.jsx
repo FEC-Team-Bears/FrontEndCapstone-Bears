@@ -22,7 +22,7 @@ const QuestionForm = ({ productId, length, handleNewQuestion }) => {
         setProduct(response.data.name);
       })
       .catch(err => {
-        console.log('Error: cannot retrieve product information');
+        console.error('Error: cannot retrieve product information');
       });
   };
   const submitQuestion = () => {
@@ -52,7 +52,7 @@ const QuestionForm = ({ productId, length, handleNewQuestion }) => {
         handleNewQuestion(newQuestion);
       })
       .catch(err => {
-        console.log('Error: cannot add question');
+        console.error('Error: cannot add question');
       });
   };
 
