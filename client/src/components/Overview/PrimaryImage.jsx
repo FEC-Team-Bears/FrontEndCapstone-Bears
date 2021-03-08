@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import sampleData from './sampleData';
 import ThumbnailList from './ThumbnailList.jsx';
 
 
-const PrimaryImage = ({ product }) => {
+const PrimaryImage = ({ product, style, setStyle }) => {
 
 
-  // seperating the first image from the the rest of the images is necessary for carousel setup
-  const [style, setStyle] = useState(0);
-  let photoArr = product.results[style].photos;
+  let photoArr = product;
 
   const [stylesPhotos, setStylesPhotos] = useState(photoArr);
   const [picCount, setPicCount] = useState(photoArr.length);
@@ -133,16 +130,17 @@ const PrimaryImage = ({ product }) => {
 
   return (
     <div id="main-image">
-      {/* <button onClick={ nextStyle }>nextStyle</button> */}
+      <button onClick={ nextStyle }>nextStyle</button>
       <p className="up-button thumbNav" onClick={ slideUp }>&#8963;</p>
       <p className="down-button thumbNav" onClick={ slideDown }>	&#8964;</p>
       <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false" data-interval="false">
         <div className="carousel-inner">
           {photoArr.map((imgObj, index) => {
-            return (<div className={index === 0 ? 'carousel-item active' : 'carousel-item'} data-main-ind={ index } key={ index }>
-              <img src={imgObj.url} className="d-block w-100 main-car img-fluid" alt="..." onClick={ imageExpand }></img>
-            </div>);
+            return (
+              <div className={index === 0 ? 'carousel-item active' : 'carousel-item'} data-main-ind={ index } key={ index }>
+                <img src={imgObj.url} className="d-block w-100 main-car img-fluid" alt="..." onClick={ imageExpand }></img>
+              </div>);
           })}
         </div>
         <a className="carousel-control-prev hidden" href="#carouselExampleIndicators" role="button" data-slide="prev" onClick={ prevClick }>

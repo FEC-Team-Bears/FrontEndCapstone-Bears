@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '../../../../config.js';
 import PrimaryImage from './PrimaryImage.jsx';
-import sampleData from './sampleData';
 
 var Overview = ({ productId }) => {
 
-  const [product, getProduct] = useState(sampleData);
+  const [product, getProduct] = useState([]);
+  const [style, getStyle] = useState(0);
 
   let fetchProduct = (product = '21111') => {
     axios
@@ -16,13 +16,16 @@ var Overview = ({ productId }) => {
         }
       })
       .then((results) => {
-        getProduct(results.data);
+        getProduct(results.data.results[style].photos);
         getFoculProduct(results.data.results[0].photos[0].url);
-        console.log('Photo Url?', results.data.results[0].photos[0].url);
       })
       .catch((err) => {
-        console.log('there was an error in your axios call: ', err);
+        console.error('there was an error in your axios call: ', err);
       });
+  };
+
+  const setStyle = (style) => {
+    getStyle(style);
   };
 
   useEffect(() => {
@@ -33,7 +36,7 @@ var Overview = ({ productId }) => {
     <div className="container overview-container">
       <div className="row">
         <div className="col-8 main-pic">
-          <PrimaryImage product={ product } />
+          <PrimaryImage product={ product } style={ style } setStyle={ setStyle }/>
         </div>
         <div className="col-4 main-details">
           Product Details go here
