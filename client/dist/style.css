@@ -18,6 +18,10 @@
   margin-bottom: 150px;
 }
 
+.row {
+  background-color: skyblue;
+}
+
 /* MAIN CAROUSEL STYLING ==================================================== */
 
 #mainImage, .main-car, #carouselExampleIndicators {
@@ -30,10 +34,21 @@
   object-fit: contain;
   margin-left: 50px;
   padding: 10px;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 .carousel-control-prev {
   left: 100px;
+}
+
+.main_pic {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .hidden {
@@ -45,9 +60,10 @@
   position: absolute;
   z-index: 1;
   width: 120px;
-  margin-left: 30px;
+  margin-left: 10px;
   height: 800px;
   overflow: hidden;
+  top: 30px;
 }
 
 .thumbnail {
@@ -64,6 +80,18 @@
   box-shadow: 0 10px 0 cyan;
 }
 
+.thumbNav {
+  position: absolute;
+  font-size: large;
+  left: 55px;
+  z-index: 2;
+}
+.upButton {
+  top: 15px;
+}
+.downButton {
+  bottom: 15px;
+}
 
 /* Related Products cards  =====================================================*/
 .card-image-top {

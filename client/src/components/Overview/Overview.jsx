@@ -6,18 +6,17 @@ import sampleData from './sampleData';
 
 var Overview = ({ productId }) => {
 
-  const [styles, getStyles] = useState(sampleData);
-  const [foculProduct, getFoculProduct] = useState('randomurl.com');
+  const [product, getProduct] = useState(sampleData);
 
-  let fetchStyles = (style = '21111') => {
+  let fetchProduct = (product = '21111') => {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${style}/styles`, {
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${product}/styles`, {
         headers: {
           'Authorization': API_KEY
         }
       })
       .then((results) => {
-        getStyles(results.data);
+        getProduct(results.data);
         getFoculProduct(results.data.results[0].photos[0].url);
         console.log('Photo Url?', results.data.results[0].photos[0].url);
       })
@@ -27,14 +26,14 @@ var Overview = ({ productId }) => {
   };
 
   useEffect(() => {
-    fetchStyles(productId);
+    fetchProduct(productId);
   }, [productId]);
 
   return (
     <div className="container overview-container">
       <div className="row">
         <div className="col-8 main_pic">
-          <PrimaryImage styles={ styles } foculProduct={ foculProduct }/>
+          <PrimaryImage product={ product } />
         </div>
         <div className="col-4 main_details">
           Product Details go here

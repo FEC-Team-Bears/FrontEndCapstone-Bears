@@ -3,27 +3,29 @@ import sampleData from './sampleData';
 import ThumbnailList from './ThumbnailList.jsx';
 
 
-const PrimaryImage = ({ foculProduct, styles }) => {
+const PrimaryImage = ({ product }) => {
 
 
   // seperating the first image from the the rest of the images is necessary for carousel setup
-  let photoArr = styles.results[0].photos;
+  const [style, setStyle] = useState(0);
+  let photoArr = product.results[style].photos;
 
   const [stylesPhotos, setStylesPhotos] = useState(photoArr);
   const [picCount, setPicCount] = useState(photoArr.length);
   const [currentPic, setCurrentPic] = useState(0);
   const [currentThumbs, setCurrentThumbs] = useState([0, 6]);
   const [activeThumb, setActiveThumb] = useState(0);
+  const [imageExpanded, setImageExpanded] = useState(false);
 
   let newInd;
 
   useEffect(() => {
     setStylesPhotos(photoArr);
     setPicCount(photoArr.length);
-    // setActiveThumb(0);
-    // setCurrentThumbs([0, 3]);
-    // setCurrentPic(0);
-    // $('.carousel').carousel(0);
+    $('.carousel').carousel(0);
+    setActiveThumb(0);
+    setCurrentThumbs([0, 6]);
+    setCurrentPic(0);
     $('.carousel-control-next').removeClass('hidden');
     $('.carousel-control-prev').removeClass('hidden');
     if (newInd === 0) {
@@ -31,7 +33,17 @@ const PrimaryImage = ({ foculProduct, styles }) => {
     } else if (newInd === picCount - 1) {
       $('.carousel-control-next').addClass('hidden');
     }
-  }, [foculProduct, styles]);
+    // cleanup func maybe an issue with switching product ID
+    return () => {
+      setActiveThumb(0);
+      setCurrentThumbs([0, 6]);
+      setCurrentPic(0);
+    };
+  }, [product]);
+
+  useEffect(() => {
+    setStylesPhotos(photoArr);
+  }, [style]);
 
   const slideUp = () => {
     if (currentThumbs[0] > 0) {
@@ -84,34 +96,51 @@ const PrimaryImage = ({ foculProduct, styles }) => {
     setCurrentPic(index);
   };
 
+  const nextStyle = () => {
+    setStyle(style + 1);
+  };
+
 
 
   const nextClick = () => {
     $('.activeThumb').removeClass('activeThumb');
     $('img').find(`[data-index='${currentPic + 1}']`).addClass('activeThumb');
     picUpdate('next', picCount, Number(currentPic + 1));
-    console.log('currentpic is getting set to ', Number(currentPic + 1));
   };
 
   const prevClick = () => {
     $('.activeThumb').removeClass('activeThumb');
     $('img').find(`[data-index='${currentPic - 1}']`).addClass('activeThumb');
     picUpdate('prev', picCount, Number(currentPic - 1));
-    console.log('currentpic is getting set to ', Number(currentPic - 1));
+  };
+
+  const imageExpand = () => {
+    if (imageExpanded) {
+      $('.main_pic').removeClass('col-12').addClass('col-8');
+      setImageExpanded(false);
+      setTimeout(() => {
+        $('.main_details').removeClass('hidden').addClass('col-4');
+      }, 1000);
+    } else {
+      $('.main_pic').removeClass('col-8').addClass('col-12');
+      $('.main_details').removeClass('col-4').addClass('hidden');
+      setImageExpanded(true);
+    }
   };
 
 
 
   return (
     <div id="mainImage">
-      <p className="upButton" onClick={ slideUp }>&#8963;</p>
+      <button onClick={ nextStyle }>nextStyle</button>
+      <p className="upButton thumbNav" onClick={ slideUp }>&#8963;</p>
+      <p className="downButton thumbNav" onClick={ slideDown }>	&#8964;</p>
       <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
-      <p className="downButton" onClick={ slideDown }>	&#8964;</p>
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false" data-interval="false">
         <div className="carousel-inner">
           {photoArr.map((imgObj, index) => {
             return (<div className={index === 0 ? 'carousel-item active' : 'carousel-item'} data-main-ind={ index } key={ index }>
-              <img src={imgObj.url} className="d-block w-100 main-car img-fluid" alt="..."></img>
+              <img src={imgObj.url} className="d-block w-100 main-car img-fluid" alt="..." onClick={ imageExpand }></img>
             </div>);
           })}
         </div>
