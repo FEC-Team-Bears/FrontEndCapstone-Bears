@@ -10,6 +10,7 @@ import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 
 const App = (props) => {
   const [productId, changeProductId] = useState(21111);
+  const [reviews, getAllReviews] = useState([]);
   const [productImage, getProductImage] = useState();
   const [productDetails, getProductDetails] = useState({
     category: null,
@@ -69,7 +70,7 @@ const App = (props) => {
     axiosGetAllReviews();
   }, []);
 
-  };
+
 
   const axiosGetProductImage = () => {
     axios
