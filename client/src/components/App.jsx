@@ -1,24 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '/config.js';
+import Overview from './Overview/Overview.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
-import Overview from './Overview/Overview.jsx';
-import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
+import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
+
 
 const App = (props) => {
   const [productId, changeProductId] = useState(21111);
-  const [reviews, getAllReviews] = useState([]);
+  const [productImage, getProductImage] = useState();
+  const [productDetails, getProductDetails] = useState({
+    category: null,
+    name: null,
+    // eslint-disable-next-line camelcase
+    default_price: null,
+    features: [{}]
+  });
 
-  const axiosGetProductId = (id) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${id}`, {
+  useEffect(() => {
+    axiosGetProductId();
+    axiosGetProductDetails();
+  }, [productId]);
+
+  const axiosGetProductId = () => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
       headers: {
         'Authorization': API_KEY
       }
     })
-      .then(response => changeProductId(response.data.id))
-      .catch((error) => console.error(error));
+      .then(product => changeProductId(product.data.id))
+      .catch(error => console.error(error));
+  };
+
+  const axiosGetProductDetails = () => {
+    axios
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
+        headers: {
+          'Authorization': API_KEY
+        }
+      })
+      .then(product => getProductDetails(product.data))
+      .catch(error => console.error(error));
   };
   // Function needed for resetting
   const setNewId = (e) => {
@@ -45,18 +69,28 @@ const App = (props) => {
     axiosGetAllReviews();
   }, []);
 
+  };
+
+  const axiosGetProductImage = () => {
+    axios
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`, {
+        headers: {
+          'Authorization': API_KEY
+        }
+      })
+      .then(product => getProductImage(product.data.results[0].photos[0]))
+      .catch(error => console.error(error));
+  };
+
   return (
     <div>
       <div className="row justify-content-center">
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
       <Overview productId={ productId }/>
-
-      <RelatedProducts currentId={ productId } handleClick={ setNewId } />
+      <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
-
-      <QuestionsList productId={ productId }/>
-
+      <QuestionsList productId={ productId } />
       <RatingsReviews productId={ productId } changeId={ changeProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
     </div>
   );

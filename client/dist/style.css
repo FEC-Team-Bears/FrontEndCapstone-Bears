@@ -155,13 +155,13 @@
 
 .jcarousel-control-prev,
 .jcarousel-control-next {
-  position: absolute;
-  top: 50%;
+  position: absolute; /** needs to be fixed **/
+  top: 25%;
   margin-top: -15px;
   width: 30px;
   height: 30px;
   text-align: center;
-  color: grey;
+  color: black;
   text-decoration: none;
   font: 24px/27px Arial, sans-serif;
 }
