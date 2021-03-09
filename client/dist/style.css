@@ -31,14 +31,23 @@
   height: 100%;
 }
 
+.carousel-inner {
+  height: 100%;
+}
+
 .carousel-item img {
-  max-height: 700px;
+  height: 700px;
   object-fit: contain;
   margin-left: 50px;
   padding: 10px;
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
+}
+
+.carousel-item {
+  vertical-align: middle;
+  object-fit: contain;
 }
 
 .carousel-control-prev {
@@ -69,8 +78,8 @@
 }
 
 .thumbnail {
-  height: 90px;
-  margin: 15px;
+  height: 80px;
+  margin: 9px;
 }
 
 .style-thumb {
@@ -79,7 +88,7 @@
 }
 
 .active-thumb {
-  box-shadow: 0 10px 0 cyan;
+  box-shadow: 0 6px 0 cyan;
 }
 
 .thumbNav {

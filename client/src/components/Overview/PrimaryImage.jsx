@@ -94,7 +94,8 @@ const PrimaryImage = ({ product, style, setStyle }) => {
   };
 
   const nextStyle = () => {
-    setStyle(style + 1);
+    setStyle(Number(style + 1));
+    console.log('stylin', style);
   };
 
 
