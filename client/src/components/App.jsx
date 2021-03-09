@@ -9,7 +9,6 @@ import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 
 
 const App = (props) => {
-
   const [productId, changeProductId] = useState(21111);
   const [productImage, getProductImage] = useState();
   const [productDetails, getProductDetails] = useState({
@@ -50,6 +49,28 @@ const App = (props) => {
     changeProductId(e.currentTarget.attributes[0].nodeValue);
   };
 
+  const axiosGetAllReviews = () => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
+      headers: {
+        'Authorization': API_KEY
+      },
+      params: {
+        'product_id': `${productId}`
+      }
+    })
+      .then(reviews => {
+        getAllReviews(reviews.data.results);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    axiosGetProductId(productId);
+    axiosGetAllReviews();
+  }, []);
+
+  };
+
   const axiosGetProductImage = () => {
     axios
       .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`, {
@@ -70,7 +91,7 @@ const App = (props) => {
       <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
       <QuestionsList productId={ productId } />
-      <RatingsReviews productId={ productId } changeId={ changeProductId }/>
+      <RatingsReviews productId={ productId } changeId={ changeProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
     </div>
   );
 };

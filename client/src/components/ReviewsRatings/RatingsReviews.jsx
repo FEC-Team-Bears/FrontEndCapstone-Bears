@@ -2,25 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import ReviewList from './ReviewList.jsx';
+import RatingsList from './RatingsList.jsx';
 
-const RatingsReviews = ({ productId, changeId }) => {
-  const [reviews, getAllReviews] = useState([]);
+const RatingsReviews = ({ productId, changeId, reviews, changeReviews }) => {
   const [reviewMetaData, useReviewMetaData] = useState(null);
-
-  const axiosGetAllReviews = () => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews', {
-      headers: {
-        'Authorization': API_KEY
-      },
-      params: {
-        'product_id': `${productId}`
-      }
-    })
-      .then(reviews => {
-        getAllReviews(reviews.data.results);
-      })
-      .catch((error) => console.error(error));
-  };
 
   const axiosGetAllMetaData = () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta', {
@@ -37,18 +22,22 @@ const RatingsReviews = ({ productId, changeId }) => {
       .catch((error) => console.error(error));
   };
 
-
-
   useEffect(() => {
-    axiosGetAllReviews();
     axiosGetAllMetaData();
-
+    changeReviews();
   }, [productId]);
 
   return (
-    <div>
+    <div className="ratings-reviews-container">
+
+      {(reviews.length > 0 && reviewMetaData) ?
+        <div className="ratings-container">
+          <RatingsList reviews={reviews} reviewMetaData={reviewMetaData}/>
+        </div>
+        : null
+      }
       {reviewMetaData ?
-        <div>
+        <div className="reviews-container">
           <ReviewList reviews={reviews} productId={productId} reviewChar={reviewMetaData.characteristics} />
         </div>
         : null
