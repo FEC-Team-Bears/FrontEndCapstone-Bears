@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import $ from 'jquery';
 import axios from 'axios';
 
-const Your_outfit = (prop) => {
+const YourOutfit = (prop) => {
 
   return (
     <div></div>
-  )
-}
+  );
+};
 
-export default Your_outfit;
+export default YourOutfit;

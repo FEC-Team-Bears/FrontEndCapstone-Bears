@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Review from './review.jsx';
 import { Modal, Button, Form } from 'react-bootstrap';
@@ -6,7 +7,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import API_KEY from '/config.js';
 
-const NewReview = ({ productId, reviewChar }) => {
+const NewReview = ({ reviews, productId, reviewChar }) => {
   const [show, setShow] = useState(false);
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
@@ -16,9 +17,6 @@ const NewReview = ({ productId, reviewChar }) => {
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
   const [fileList, setFileList] = useState([]);
-  // console.log(reviewChar);
-  // console.log(name, email, reviewCharValues, starValue, recommend, reviewSummary, reviewBody, fileList);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -86,7 +84,6 @@ const NewReview = ({ productId, reviewChar }) => {
               onChange={(event, newValue) => {
                 setStarValue(newValue);
               }} />
-            <br />
             {reviewChar.Size ?
               <div>
                 <label>Size:</label>
@@ -171,7 +168,6 @@ const NewReview = ({ productId, reviewChar }) => {
               </div>
               : null}
             <br />
-            <br />
             <p>Do you recommend this product?</p>
             <input type="radio" name="helpfulness" value="true" onClick={() => { setRecommend(true); }}></input>Yes
             <input type="radio" name="helpfulness" value="false" onClick={() => { setRecommend(false); }}></input>No
@@ -210,8 +206,6 @@ const NewReview = ({ productId, reviewChar }) => {
 };
 
 export default NewReview;
-
-
 
 const previewFiles = () => {
   var preview = document.querySelector('#preview');

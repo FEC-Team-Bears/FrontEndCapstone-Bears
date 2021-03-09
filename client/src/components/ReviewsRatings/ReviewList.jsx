@@ -10,11 +10,10 @@ const ReviewList = ({ reviews, productId, reviewChar }) => {
       {reviews.map(review => {
         return <Review key={review.review_id} review={review} />;
       })}
-
-      <NewReview productId={productId} reviewChar={reviewChar}/>
-
+      <NewReview productId={productId} reviewChar={reviewChar} reviews={reviews}/>
     </div>
   );
 };
+
 
 export default ReviewList;

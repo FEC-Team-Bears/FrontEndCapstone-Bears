@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const StarRating = ({ review }) => {
-  const [reviewRating, setRating] = useState(review.rating);
+const StarRating = ({ review, reviews }) => {
+  let rating;
+  review ? rating = review.rating : null;
+
+  const findAverageRating = () => {
+    let sum = 0;
+    let length = reviews.length;
+    reviews.map(review => {
+      sum += review.rating;
+    });
+
+    let average = Math.round(10 * (sum / length)) / 10;
+    rating = average;
+  };
+
+  reviews ? findAverageRating() : null;
 
   let stars = [];
-  let rating = reviewRating;
   while (stars.length < 5) {
     if (rating >= 1) {
       stars.push(1);
@@ -43,8 +56,8 @@ const StarRating = ({ review }) => {
       {stars.map((item, i) => {
         return (
           <div className="single-star-container" key={i}>
-            <div className="single-star-fill" style={{ 'width': `${Number(item * 23)}px` }}>
-              <img className="single-star-outline" src="star.png"></img>
+            <div className="single-star-fill" style={{ 'width': `${Number(item * 16)}px` }}>
+              <img className="single-star-outline" src="../dist/assets/images/star.png"></img>
             </div>
           </div>
         );
@@ -52,6 +65,5 @@ const StarRating = ({ review }) => {
     </div>
   );
 };
-
 
 export default StarRating;
