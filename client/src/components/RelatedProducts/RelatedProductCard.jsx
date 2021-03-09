@@ -47,7 +47,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick }) => {
     <div onClick={ handleClick } data-id={ relatedProductId } >
       <div className="image-div">
         {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="detailComparisonTable" style={{ background: "none", color: "black", border: "none", position: "absolute" }}>&#9734;</button> */}
-        <img style={{ position: "relative" }} className="card-image-top" src={productImage.url} alt={productDetails.name} />
+        <img style={{ position: 'relative' }} className="card-image-top" src={productImage.url} alt={productDetails.name} />
       </div>
 
       <div className="card-body">
