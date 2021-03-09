@@ -5,7 +5,8 @@ import { ProgressBar } from 'react-bootstrap';
 const RatingsList = ({ reviews, reviewMetaData }) => {
   const [averageRating, setAverageRating] = useState(0);
   const [reviewRatings, setReviewRatings] = useState(0);
-  // console.log(reviewMetaData);
+  const [reviewChars, setReviewChars] = useState({});
+  console.log(reviewChars);
 
   const findAverageRating = () => {
     let sum = 0;
@@ -29,10 +30,10 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
   };
 
 
-
   useEffect(() => {
     findAverageRating();
     setReviewRatings(reviewMetaData.ratings);
+    setReviewChars(reviewMetaData.characteristics);
   });
 
   return (
