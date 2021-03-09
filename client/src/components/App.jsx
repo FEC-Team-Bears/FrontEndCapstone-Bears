@@ -8,7 +8,7 @@ import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 
 const App = (props) => {
-  const [currentProductId, changeCurrentProductId] = useState(21111);
+  const [productId, changeProductId] = useState(21111);
   const [reviews, getAllReviews] = useState([]);
 
   const axiosGetProductId = (id) => {
@@ -17,12 +17,12 @@ const App = (props) => {
         'Authorization': API_KEY
       }
     })
-      .then(response => changeCurrentProductId(response.data.id))
+      .then(response => changeProductId(response.data.id))
       .catch((error) => console.error(error));
   };
   // Function needed for resetting
   const setNewId = (e) => {
-    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
+    changeProductId(e.currentTarget.attributes[0].nodeValue);
   };
 
   const axiosGetAllReviews = () => {
@@ -31,7 +31,7 @@ const App = (props) => {
         'Authorization': API_KEY
       },
       params: {
-        'product_id': `${currentProductId}`
+        'product_id': `${productId}`
       }
     })
       .then(reviews => {
@@ -41,7 +41,7 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    axiosGetProductId(currentProductId);
+    axiosGetProductId(productId);
     axiosGetAllReviews();
   }, []);
 
@@ -50,14 +50,14 @@ const App = (props) => {
       <div className="row justify-content-center">
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
-      <Overview productId={ currentProductId }/>
-      
-      <RelatedProducts currentId={ currentProductId } handleClick={ setNewId } />
+      <Overview productId={ productId }/>
+
+      <RelatedProducts currentId={ productId } handleClick={ setNewId } />
       <YourOutfit />
 
-      <QuestionsList productId={ currentProductId }/>
+      <QuestionsList productId={ productId }/>
 
-      <RatingsReviews productId={ currentProductId } changeId={ changeCurrentProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
+      <RatingsReviews productId={ productId } changeId={ changeProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
     </div>
   );
 };

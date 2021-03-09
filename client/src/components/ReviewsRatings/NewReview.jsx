@@ -45,7 +45,7 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
         console.log(response);
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   };
 

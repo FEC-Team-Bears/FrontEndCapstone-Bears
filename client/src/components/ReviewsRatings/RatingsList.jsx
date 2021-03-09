@@ -6,7 +6,7 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
   const [averageRating, setAverageRating] = useState(0);
   const [reviewRatings, setReviewRatings] = useState(0);
   const [reviewChars, setReviewChars] = useState({});
-  console.log(reviewChars);
+  // console.log(reviewChars);
 
   const findAverageRating = () => {
     let sum = 0;
