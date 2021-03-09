@@ -20,6 +20,11 @@ const App = (props) => {
     features: [{}]
   });
 
+  useEffect(() => {
+    axiosGetProductId();
+    axiosGetProductDetails();
+  }, [productId]);
+
   const axiosGetProductId = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
       headers: {
@@ -55,12 +60,6 @@ const App = (props) => {
       .then(product => getProductImage(product.data.results[0].photos[0]))
       .catch(error => console.error(error));
   };
-
-
-  useEffect(() => {
-    axiosGetProductId();
-    axiosGetProductDetails();
-  }, [productId]);
 
   return (
     <div>

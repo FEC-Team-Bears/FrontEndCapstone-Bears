@@ -39,7 +39,7 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
         <ul>
           {relatedProducts.map(relatedProductId => {
             // eslint-disable-next-line eqeqeq
-            if (relatedProductId != productId && filter[relatedProductId] === undefined) {
+            if (Number(relatedProductId) !== productId && filter[relatedProductId] === undefined) {
               filter[relatedProductId] = 1;
               return <li key={ relatedProductId }><RelatedProductCard relatedProductId={ relatedProductId } handleClick={ handleClick } mainProductDetails={ mainProductDetails } /></li>;
             }
