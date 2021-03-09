@@ -1,4 +1,101 @@
-/* Related Products cards */
+/* Overview Styling================================ */
+
+.main-pic {
+  /* border: 1px solid black; */
+  height: 700px;
+}
+
+.main-details {
+  border: 1px solid black;
+}
+
+.top_bar {
+  height: 80px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  background-color: cadetblue;
+}
+
+.overview-container {
+  margin-bottom: 150px;
+}
+
+.row {
+  background-color: skyblue;
+}
+
+/* MAIN CAROUSEL STYLING ==================================================== */
+
+#main-image, .main-car, #carouselExampleIndicators {
+  background-color: 	rgb(208,208,208);
+  height: 100%;
+}
+
+.carousel-item img {
+  max-height: 700px;
+  object-fit: contain;
+  margin-left: 50px;
+  padding: 10px;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.carousel-control-prev {
+  left: 100px;
+}
+
+.main-pic {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.hidden {
+  visibility: hidden;
+}
+/* MAIN CAROUSEL THUMBNAILS ===================================================== */
+
+#thumbnail-list {
+  position: absolute;
+  z-index: 1;
+  width: 120px;
+  margin-left: 10px;
+  height: 800px;
+  overflow: hidden;
+  top: 30px;
+}
+
+.thumbnail {
+  height: 90px;
+  margin: 15px;
+}
+
+.style-thumb {
+  max-height: 70px;
+  object-fit: contain;
+}
+
+.active-thumb {
+  box-shadow: 0 10px 0 cyan;
+}
+
+.thumbNav {
+  position: absolute;
+  font-size: large;
+  left: 55px;
+  z-index: 2;
+}
+.up-button {
+  top: 15px;
+}
+.down-button {
+  bottom: 15px;
+}
+
+/* Related Products cards  =====================================================*/
 .card-image-top {
   height: 200px;
   width: 100%;
