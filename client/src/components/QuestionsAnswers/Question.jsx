@@ -8,7 +8,7 @@ const Question = ({ question }) => {
   const [helpful, setHelpful] = useState(true);
 
   const handleClick = () => {
-    (helpful) ? (increaseHelpfulness(question.question_id), setHelpful(false)) : null;
+    helpful ? (increaseHelpfulness(question.question_id), setHelpful(false)) : null;
   };
   const increaseHelpfulness = (questionId) => {
     axios
@@ -34,9 +34,9 @@ const Question = ({ question }) => {
   return (
     <div>
       <div>Q: {question.question_body}</div>
-      <a id='helpful' onClick={handleClick}>Helpful? <u>Yes</u>({count})</a>
+      <div onClick={handleClick}>Helpful? <a className='helpful'><u>Yes</u></a>({count})</div>
       <button>Add Answer</button>
-      <div>A: <AnswersList answers={question.answers}/></div>
+      <div>A: <AnswersList questionId={question.question_id}/></div>
     </div>
   );
 };

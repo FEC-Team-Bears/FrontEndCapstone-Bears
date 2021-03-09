@@ -22,9 +22,6 @@ const QuestionsList = ({ productId }) => {
           setRemainingQ(false);
         } else {
           const allQuestions = currentQuestions.concat(response.data.results);
-          allQuestions.sort((a, b) => {
-            (a.question_helpfulness > b.question_helpfulness) ? 1 : (a.question_helpfulness === b.question_helpfulness) ? ((a.question_id > b.question_id) ? 1 : -1 ) : -1;
-          });
           setQuestions(allQuestions);
           setPage(page + 1);
         }

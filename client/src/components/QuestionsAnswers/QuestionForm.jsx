@@ -94,7 +94,7 @@ const QuestionForm = ({ productId, length, handleNewQuestion }) => {
 
   return (
     <div>
-      {(!length) ? <Button onClick={handleShow}>Submit a New Question</Button> : <Button onClick={handleShow}>Add a Question + </Button>}
+      {!length ? <Button onClick={handleShow}>Submit a New Question</Button> : <Button onClick={handleShow}>Add a Question + </Button>}
       <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false} centered>
         <Modal.Header closeButton>
           <Modal.Title>
