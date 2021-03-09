@@ -40,7 +40,7 @@ const App = (props) => {
   };
   // Function needed for resetting
   const setNewId = (e) => {
-    changeCurrentProductId(e.currentTarget.attributes[0].nodeValue);
+    changeProductId(e.currentTarget.attributes[0].nodeValue);
   };
 
   const axiosGetProductImage = () => {
@@ -62,7 +62,7 @@ const App = (props) => {
 
   return (
     <div>
-      <RelatedProducts productId={ productId } handleClick={ setNewId } />
+      <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
       <QuestionsList productId={ productId } />
       <RatingsReviews productId={ productId } changeId={ changeProductId }/>

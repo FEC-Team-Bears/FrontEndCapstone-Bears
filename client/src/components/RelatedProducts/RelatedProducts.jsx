@@ -3,9 +3,14 @@ import axios from 'axios';
 import API_KEY from '../../../../config.js';
 import RelatedProductCard from './RelatedProductCard.jsx';
 
-const RelatedProducts = ({ productId, handleClick }) => {
+const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
 
   const [relatedProducts, getRelatedProducts] = useState([]);
+
+  useEffect(() => {
+    axiosGetRelatedProducts();
+  }, [productId]);
+
 
   const axiosGetRelatedProducts = () => {
     axios
@@ -26,10 +31,6 @@ const RelatedProducts = ({ productId, handleClick }) => {
     wrap: 'none'
   });
 
-  useEffect(() => {
-    axiosGetRelatedProducts();
-  }, [productId]);
-
   let filter = { productId: 0 };
 
   return (
@@ -40,7 +41,7 @@ const RelatedProducts = ({ productId, handleClick }) => {
             // eslint-disable-next-line eqeqeq
             if (relatedProductId != productId && filter[relatedProductId] === undefined) {
               filter[relatedProductId] = 1;
-              return <li key={ relatedProductId }><RelatedProductCard relatedProductId={ relatedProductId } handleClick={ handleClick } /></li>;
+              return <li key={ relatedProductId }><RelatedProductCard relatedProductId={ relatedProductId } handleClick={ handleClick } mainProductDetails={ mainProductDetails } /></li>;
             }
           })}
         </ul>

@@ -58,7 +58,7 @@
 
 .jcarousel-control-prev,
 .jcarousel-control-next {
-  position: absolute; /* consider changing to relative */
+  position: absolute; /** needs to be fixed **/
   top: 25%;
   margin-top: -15px;
   width: 30px;
