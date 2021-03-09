@@ -6,7 +6,7 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
   const [averageRating, setAverageRating] = useState(0);
   const [reviewRatings, setReviewRatings] = useState(0);
   const [reviewChars, setReviewChars] = useState({});
-  // console.log(reviewChars);
+
 
   const findAverageRating = () => {
     let sum = 0;
@@ -24,7 +24,7 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
     for (let key in reviewRatings) {
       total += Number(reviewRatings[key]);
     }
-    // console.log(reviewRatings[starRating]);
+   
 
     return (Number(reviewRatings[starRating]) / total) * 100;
   };
