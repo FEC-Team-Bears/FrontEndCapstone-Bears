@@ -67,8 +67,8 @@ const App = (props) => {
       <div className="row justify-content-center">
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
-      <Overview productId={ currentProductId }/>
-      <RelatedProducts currentId={ productId } handleClick={ setNewId } />
+      <Overview productId={ productId }/>
+      <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
       <QuestionsList productId={ productId } />
       <RatingsReviews productId={ productId } changeId={ changeProductId }/>

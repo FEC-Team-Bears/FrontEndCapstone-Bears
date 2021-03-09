@@ -37,7 +37,7 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
     <div className="wrapper">
       <div className="jcarousel">
         <ul>
-          {relatedProducts.map((relatedProductId) => {
+          {relatedProducts.map(relatedProductId => {
             // eslint-disable-next-line eqeqeq
             if (relatedProductId != productId && filter[relatedProductId] === undefined) {
               filter[relatedProductId] = 1;

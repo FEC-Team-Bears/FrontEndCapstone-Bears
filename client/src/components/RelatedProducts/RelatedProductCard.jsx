@@ -50,7 +50,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails 
   return (
     <div>
       <div className="image-div">
-        <Button variant="outline-dark" onClick={handleShow} style={{ background: "none", color: "black", border: "none", position: "absolute", zIndex: "1" }}>&#9734;</Button>
+        <Button variant="outline-dark" onClick={handleShow} style={{ background: 'none', color: 'black', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
         <Modal show={show} onHide={handleClose} centered>
           <Modal.Body>
             <Modal.Title><h6>Comparing</h6></Modal.Title>
@@ -65,7 +65,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails 
               <tbody>
                 {mainProductDetails.features.map(feature => {
                   comparisonTable[feature.feature] = 1;
-                  return(
+                  return (
                     <tr>
                       <td>{ feature.value }</td>
                       <td>{ feature.feature }</td>
@@ -92,7 +92,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails 
             </table>
           </Modal.Body>
         </Modal>
-        <img onClick={ handleClick } data-id={ relatedProductId } style={{ position: "relative" }} className="card-image-top" src={productImage.url} alt={productDetails.name} />
+        <img onClick={ handleClick } data-id={ relatedProductId } style={{ position: 'relative' }} className="card-image-top" src={productImage.url} alt={productDetails.name} />
       </div>
       <div onClick={ handleClick } data-id={ relatedProductId } className="card-body">
         <div className="card-category">{ productDetails.category }</div>
