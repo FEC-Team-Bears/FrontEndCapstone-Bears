@@ -10,8 +10,8 @@ import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 
 const App = (props) => {
   const [productId, changeProductId] = useState(21111);
-  const [reviews, getAllReviews] = useState([]);
   const [productImage, getProductImage] = useState();
+  const [reviews, getAllReviews] = useState([]);
   const [productDetails, getProductDetails] = useState({
     category: null,
     name: null,
@@ -40,9 +40,16 @@ const App = (props) => {
       .then(product => getProductDetails(product.data))
       .catch(error => console.error(error));
   };
-  // Function needed for resetting
-  const setNewId = (e) => {
-    changeProductId(e.currentTarget.attributes[0].nodeValue);
+
+  const axiosGetProductImage = () => {
+    axios
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`, {
+        headers: {
+          'Authorization': API_KEY
+        }
+      })
+      .then(product => getProductImage(product.data.results[0].photos[0]))
+      .catch(error => console.error(error));
   };
 
   const axiosGetAllReviews = () => {
@@ -64,19 +71,11 @@ const App = (props) => {
     axiosGetProductId();
     axiosGetProductDetails();
     axiosGetAllReviews();
-  }, []);
+  }, [productId]);
 
-
-
-  const axiosGetProductImage = () => {
-    axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/styles`, {
-        headers: {
-          'Authorization': API_KEY
-        }
-      })
-      .then(product => getProductImage(product.data.results[0].photos[0]))
-      .catch(error => console.error(error));
+  // Function needed for resetting
+  const setNewId = (e) => {
+    changeProductId(e.currentTarget.attributes[0].nodeValue);
   };
 
   return (
