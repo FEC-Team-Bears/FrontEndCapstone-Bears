@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '/config.js';
+import Overview from './Overview/Overview.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
+
 
 const App = (props) => {
 
@@ -62,7 +64,11 @@ const App = (props) => {
 
   return (
     <div>
-      <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
+      <div className="row justify-content-center">
+        <div className="top_bar col-8">Top Bar Goes Here</div>
+      </div>
+      <Overview productId={ currentProductId }/>
+      <RelatedProducts currentId={ productId } handleClick={ setNewId } />
       <YourOutfit />
       <QuestionsList productId={ productId } />
       <RatingsReviews productId={ productId } changeId={ changeProductId }/>
