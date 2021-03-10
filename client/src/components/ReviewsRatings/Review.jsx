@@ -7,10 +7,10 @@ import API_KEY from '/config.js';
 
 const Review = ({ review }) => {
 
-const [recommendCount, setRecommendCount] = useState(review.helpfulness);
+  const [recommendCount, setRecommendCount] = useState(review.helpfulness);
 
-const axiosUpdateRecommended = () => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${review.review_id}/helpful`, {helpfulness: 0}, {
+  const axiosUpdateRecommended = () => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${review.review_id}/helpful`, { helpfulness: 0 }, {
       headers: {
         'Authorization': API_KEY
       },

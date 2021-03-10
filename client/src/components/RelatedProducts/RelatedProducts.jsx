@@ -3,13 +3,18 @@ import axios from 'axios';
 import API_KEY from '../../../../config.js';
 import RelatedProductCard from './RelatedProductCard.jsx';
 
-const RelatedProducts = ({ currentId, handleClick }) => {
+const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
 
   const [relatedProducts, getRelatedProducts] = useState([]);
 
+  useEffect(() => {
+    axiosGetRelatedProducts();
+  }, [productId]);
+
+
   const axiosGetRelatedProducts = () => {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${currentId}/related`, {
+      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}/related`, {
         headers: {
           'Authorization': API_KEY
         }
@@ -26,20 +31,17 @@ const RelatedProducts = ({ currentId, handleClick }) => {
     wrap: 'none'
   });
 
-  useEffect(() => {
-    axiosGetRelatedProducts();
-  }, [currentId]);
-
-  let filter = { currentId: 0 };
+  let filter = { productId: 0 };
 
   return (
     <div className="wrapper">
       <div className="jcarousel">
         <ul>
-          {relatedProducts.map((productId, index) => {
-            if (productId != currentId && filter[productId] === undefined) {
-              filter[productId] = 1;
-              return <li key={ productId }><RelatedProductCard relatedProductId={ productId } handleClick={ handleClick } /></li>;
+          {relatedProducts.map(relatedProductId => {
+            // eslint-disable-next-line eqeqeq
+            if (Number(relatedProductId) !== productId && filter[relatedProductId] === undefined) {
+              filter[relatedProductId] = 1;
+              return <li key={ relatedProductId }><RelatedProductCard relatedProductId={ relatedProductId } handleClick={ handleClick } mainProductDetails={ mainProductDetails } /></li>;
             }
           })}
         </ul>
