@@ -45,7 +45,6 @@ const PrimaryImage = ({ product, style, setStyle }) => {
     setStylesPhotos(photoArr);
   }, [style]);
 
-  // more specific name
   const slideThumbsUp = () => {
     if (currentThumbs[0] > 0) {
       setCurrentThumbs([currentThumbs[0] - 7, currentThumbs[1] - 7]);
