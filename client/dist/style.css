@@ -27,23 +27,40 @@
 /* MAIN CAROUSEL STYLING ==================================================== */
 
 #main-image, .main-car, #carouselExampleIndicators {
-  background-color: 	rgb(208,208,208);
+  height: 100%;
+}
+
+.carousel-inner {
   height: 100%;
 }
 
 .carousel-item img {
-  max-height: 700px;
+  height: 700px;
   object-fit: contain;
   margin-left: 50px;
   padding: 10px;
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
+  transition: all 1s ease-in-out;
+}
+
+.minimize {
+  position: absolute;
+  right: 50px;
+  z-index: 2;
+}
+
+.carousel-item {
+  vertical-align: middle;
+  object-fit: contain;
+  background-repeat: no-repeat;
 }
 
 .carousel-control-prev {
   left: 100px;
 }
+
 
 .main-pic {
   -webkit-transition: all 1s ease-in-out;
@@ -56,6 +73,25 @@
 .hidden {
   visibility: hidden;
 }
+
+#carouselExampleIndicators li {
+  height: 30px;
+  border-radius: 50%;
+  margin: 10px;
+  border-width: 5px;
+  border-color: cyan;
+  border-style: solid;
+}
+
+#carouselExampleIndicators ol {
+  margin-right: 50px;
+}
+
+.carousel-item img:hover {
+
+}
+
+
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
 
 #thumbnail-list {
@@ -69,8 +105,8 @@
 }
 
 .thumbnail {
-  height: 90px;
-  margin: 15px;
+  height: 80px;
+  margin: 9px;
 }
 
 .style-thumb {
@@ -79,7 +115,7 @@
 }
 
 .active-thumb {
-  box-shadow: 0 10px 0 cyan;
+  box-shadow: 0 6px 0 cyan;
 }
 
 .thumbNav {
@@ -87,6 +123,7 @@
   font-size: large;
   left: 55px;
   z-index: 2;
+  text-align: center;
 }
 .up-button {
   top: 15px;
