@@ -63,11 +63,23 @@ const QuestionsList = ({ productId }) => {
 
   return (
     <div>
-      {questions.length ? questions.slice(0, count).map(question => (
-        <Question key={question.question_id} question={question}/>
-      )) : null}
-      {(questions.length > 2 && remainingQ) ? <button onClick={showMoreQuestions}>More Answered Questions</button> : null}
-      <QuestionForm productId={productId} length={questions.length} handleNewQuestion={handleNewQuestion}/>
+      { questions.length
+        ? questions.slice(0, count).map(question => (
+          <Question
+            key={ question.question_id }
+            question={ question }
+            productName={ product } />
+        ))
+        : null
+      }
+      { questions.length > 2 && remainingQ
+        ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
+        : null
+      }
+      <QuestionForm
+        productId={ productId }
+        length={ questions.length }
+        handleNewQuestion={ handleNewQuestion } />
     </div>
   );
 };

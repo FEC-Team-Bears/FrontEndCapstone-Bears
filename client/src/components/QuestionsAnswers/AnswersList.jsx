@@ -58,9 +58,14 @@ const AnswersList = ({ questionId, newAnswer }) => {
   return (
     <div>
       {allAnswers.slice(0, count).map(answer => (
-        <Answer key={answer.answer_id} answer={answer} />
+        <Answer key={ answer.answer_id } answer={ answer } />
       ))}
-      {!show && allAnswers.length > 2 ? <button onClick={showAnswers}>Load More Answers</button> : (show && allAnswers.length > 2 ? <button onClick={showAnswers}>Collapse Answers</button> : null)}
+      {!show && allAnswers.length > 2
+        ? <button onClick={ showAnswers }>Load More Answers</button>
+        : (show && allAnswers.length > 2
+          ? <button onClick={ showAnswers }>Collapse Answers</button>
+          : null)
+      }
     </div>
   );
 };

@@ -64,23 +64,38 @@ const Answer = ({ answer }) => {
 
   return (
     <div>
-      <div>{answer.body}</div>
-      {answer.answerer_name === 'Seller' ? <div>by <b>{answer.answerer_name}</b>, {moment(answer.date).format('MMMM D, YYYY')}</div> : <div>by {answer.answerer_name}, {moment(answer.date).format('MMMM D, YYYY')}</div>}
-      <div onClick={handleHelpful}>Helpful? <a className='helpful'><u>Yes</u></a>({count})</div>
+      <div>{ answer.body }</div>
+      { answer.answerer_name === 'Seller'
+        ? <div>by <b>{ answer.answerer_name }</b>, { moment(answer.date).format('MMMM D, YYYY') }</div>
+        : <div>by { answer.answerer_name }, { moment(answer.date).format('MMMM D, YYYY') }</div>
+      }
+      <div onClick={ handleHelpful }>Helpful? <a className='helpful'><u>Yes</u></a>({ count })</div>
       <div className='report' onClick={handleReport}><u>Report</u></div>
-      {answer.photos.length !== 0 ? answer.photos.map(photo => (
-        <div key={photo.id} className='answer-photos'>
-          <img onClick={handleShow} src={photo.url} width={58} height={80}></img>
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Body>
-              <img src={photo.url} width={465} height={700}></img>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>Close</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-      )) : null}
+      { answer.photos.length !== 0
+        ? answer.photos.map(photo => (
+          <div key={ photo.id } className='answer-photos'>
+            <img
+              onClick={ handleShow }
+              src={ photo.url }
+              width={58}
+              height={80}>
+            </img>
+            <Modal show={ show } onHide={ handleClose }>
+              <Modal.Body>
+                <img
+                  src={ photo.url }
+                  width={465}
+                  height={700}>
+                </img>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={ handleClose }>Close</Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+        ))
+        : null
+      }
     </div>
   );
 };

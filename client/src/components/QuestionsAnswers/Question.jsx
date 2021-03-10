@@ -32,10 +32,13 @@ const Question = ({ productId, question, productName }) => {
 
   return (
     <div>
-      <div>Q: {question.question_body}</div>
-      <div onClick={handleClick}>Helpful? <a className='helpful'><u>Yes</u></a>({count})</div>
-      <AnswerForm productId={productId} productName={productName} question={question.question_body}/>
-      <div>A: <AnswersList questionId={question.question_id}/></div>
+      <div>Q: { question.question_body }</div>
+      <div onClick={ handleClick }>Helpful? <a className='helpful'><u>Yes</u></a>({ count })</div>
+      <AnswerForm
+        productId={ productId }
+        productName={ productName }
+        question={ question.question_body } />
+      <div>A: <AnswersList questionId={ question.question_id }/></div>
     </div>
   );
 };

@@ -79,17 +79,25 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
 
   return (
     <div>
-      {!length ? <Button onClick={handleShow}>Submit a New Question</Button> : <Button onClick={handleShow}>Add a Question + </Button>}
-      <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false} centered>
+      {!length
+        ? <Button onClick={ handleShow }>Submit a New Question</Button>
+        : <Button onClick={ handleShow }>Add a Question + </Button>
+      }
+      <Modal
+        show={ show }
+        onHide={ handleClose }
+        backdrop='static'
+        keyboard={ false }
+        centered >
         <Modal.Header closeButton>
           <Modal.Title>
             Ask Your Question<br></br>
-            <small><em>About the {productName}</em></small>
+            <small><em>About the { productName }</em></small>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p><em>All fields marked with a * are mandatory.</em></p>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form noValidate validated={ validated } onSubmit={ handleSubmit }>
             <Form.Group controlId='question'>
               <Form.Label>What is your question?*</Form.Label>
               <InputGroup hasValidation>
@@ -98,7 +106,7 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
                   placeholder='Write your question here'
                   maxLength='1000'
                   rows={3}
-                  onChange={handleQuestionChange}
+                  onChange={ handleQuestionChange }
                   required />
                 <Form.Control.Feedback type='invalid'>Please enter a question.</Form.Control.Feedback>
               </InputGroup>
@@ -111,7 +119,7 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
                   type='text'
                   placeholder='Example: jackson11!'
                   maxLength='60'
-                  onChange={handleNicknameChange}
+                  onChange={ handleNicknameChange }
                   required />
                 <Form.Control.Feedback type='invalid'>Please enter a username.</Form.Control.Feedback>
               </InputGroup>
@@ -125,7 +133,7 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
                   type='email'
                   placeholder='Example: jack@email.com'
                   maxLength='60'
-                  onChange={handleEmailChange}
+                  onChange={ handleEmailChange }
                   required />
                 <Form.Control.Feedback type='invalid'>Please provide a valid email format.</Form.Control.Feedback>
               </InputGroup>

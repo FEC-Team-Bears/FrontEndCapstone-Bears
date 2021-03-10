@@ -93,25 +93,25 @@ const AnswerForm = ({ productId, productName, question }) => {
 
   return (
     <div>
-      <button onClick={handleShow}>Add Answer</button>
+      <button onClick={ handleShow }>Add Answer</button>
       <Modal
-        show={show}
-        onHide={handleClose}
+        show={ show }
+        onHide={ handleClose }
         backdrop='static'
-        keyboard={false}
+        keyboard={ false }
         centered >
         <Modal.Header closeButton>
           <Modal.Title>
             Submit Your Answer<br></br>
-            <small><em>{productName}: {question}</em></small>
+            <small><em>{ productName }: { question }</em></small>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p><em>All fields marked with a * are mandatory.</em></p>
           <Form
             noValidate
-            validated={validated}
-            onSubmit={handleSubmit} >
+            validated={ validated }
+            onSubmit={ handleSubmit } >
             <Form.Group controlId='question'>
               <Form.Label>What is your answer?*</Form.Label>
               <InputGroup hasValidation>
@@ -120,7 +120,7 @@ const AnswerForm = ({ productId, productName, question }) => {
                   placeholder='Write your answer here'
                   maxLength='1000'
                   rows={3}
-                  onChange={handleAnswerChange}
+                  onChange={ handleAnswerChange }
                   required />
                 <Form.Control.Feedback type='invalid'>Please enter an answer.</Form.Control.Feedback>
               </InputGroup>
@@ -133,7 +133,7 @@ const AnswerForm = ({ productId, productName, question }) => {
                   type='text'
                   placeholder='Example: jack543!'
                   maxLength='60'
-                  onChange={handleNicknameChange}
+                  onChange={ handleNicknameChange }
                   required />
                 <Form.Control.Feedback type='invalid'>Please enter a username.</Form.Control.Feedback>
               </InputGroup>
@@ -147,21 +147,24 @@ const AnswerForm = ({ productId, productName, question }) => {
                   type='email'
                   placeholder='Example: jack@email.com'
                   maxLength='60'
-                  onChange={handleEmailChange}
+                  onChange={ handleEmailChange }
                   required />
                 <Form.Control.Feedback type='invalid'>Please provide a valid email format.</Form.Control.Feedback>
               </InputGroup>
               <Form.Text>For authentication reasons, you will not be emailed.</Form.Text>
             </Form.Group>
             <Form.Label>Upload your photos <small>(max: 5)</small></Form.Label>
-            {photos.length < 5 ?
-              <Form.File id='custom-file'>
-                <Form.File.Input type="file" onChange={handlePhotosChange}/>
-                {/* change images to image */}
-                {photos.length === 4 ? <Form.Text>You can upload 1 more image.</Form.Text> : <Form.Text>You can upload {5 - photos.length} more images.</Form.Text> }
-              </Form.File> : <Form.Text>You have already uploaded the max number of images.</Form.Text>
+            { photos.length < 5
+              ? <Form.File id='custom-file'>
+                <Form.File.Input type="file" onChange={ handlePhotosChange } />
+                { photos.length === 4
+                  ? <Form.Text>You can upload 1 more image.</Form.Text>
+                  : <Form.Text>You can upload { 5 - photos.length } more images.</Form.Text>
+                }
+              </Form.File>
+              : <Form.Text>You have already uploaded the max number of images.</Form.Text>
             }
-            <div id="preview"/>
+            <div id="preview" />
             <br /><br />
             <Button variant='danger' onClick={handleClose}>Close</Button>{' '}
             <Button variant='primary' type='submit'>Submit</Button>
