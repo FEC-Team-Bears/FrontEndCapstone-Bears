@@ -33,7 +33,7 @@ const PrimaryImage = ({ product, style, setStyle }) => {
     } else if (newInd === picCount - 1) {
       $('.carousel-control-next').addClass('hidden');
     }
-    // cleanup func maybe an issue with switching product ID
+
     return () => {
       setActiveThumb(0);
       setCurrentThumbs([0, 6]);
@@ -45,13 +45,14 @@ const PrimaryImage = ({ product, style, setStyle }) => {
     setStylesPhotos(photoArr);
   }, [style]);
 
-  const slideUp = () => {
+  // more specific name
+  const slideThumbsUp = () => {
     if (currentThumbs[0] > 0) {
       setCurrentThumbs([currentThumbs[0] - 7, currentThumbs[1] - 7]);
     }
   };
 
-  const slideDown = () => {
+  const slideThumbsDown = () => {
     if (currentThumbs[1] < picCount) {
       setCurrentThumbs([currentThumbs[0] + 7, currentThumbs[1] + 7]);
     }
@@ -73,33 +74,6 @@ const PrimaryImage = ({ product, style, setStyle }) => {
     }
   };
 
-  const picUpdate = (button, totalPics, index) => {
-    if (button === 'next') {
-      if (index === totalPics - 1) {
-        $('.carousel-control-next').addClass('hidden');
-      }
-      $('.carousel-control-prev').removeClass('hidden');
-      if (index > currentThumbs[1]) {
-        slideDown();
-      }
-    }
-    if (button === 'prev') {
-      if (index === 0) {
-        $('.carousel-control-prev').addClass('hidden');
-      }
-      $('.carousel-control-next').removeClass('hidden');
-      if (index < currentThumbs[0]) {
-        slideUp();
-      }
-    }
-    setActiveThumb(index);
-    setCurrentPic(index);
-  };
-
-  const nextStyle = () => {
-    setStyle(Number(style + 1));
-    console.log('stylin', style);
-  };
 
   const selectThumbFromIndicator = (e) => {
     let slidToInd = Number(e.target.attributes[1].value);
@@ -115,7 +89,28 @@ const PrimaryImage = ({ product, style, setStyle }) => {
     }
   };
 
-
+  const picUpdate = (button, totalPics, index) => {
+    if (button === 'next') {
+      if (index === totalPics - 1) {
+        $('.carousel-control-next').addClass('hidden');
+      }
+      $('.carousel-control-prev').removeClass('hidden');
+      if (index > currentThumbs[1]) {
+        slideThumbsDown();
+      }
+    }
+    if (button === 'prev') {
+      if (index === 0) {
+        $('.carousel-control-prev').addClass('hidden');
+      }
+      $('.carousel-control-next').removeClass('hidden');
+      if (index < currentThumbs[0]) {
+        slideThumbsUp();
+      }
+    }
+    setActiveThumb(index);
+    setCurrentPic(index);
+  };
 
   const nextClick = () => {
     $('.active-thumb').removeClass('active-thumb');
@@ -158,11 +153,8 @@ const PrimaryImage = ({ product, style, setStyle }) => {
       setImageExpanded(true);
     } else {
       if (!imageZoomed) {
-        // console.log('y: ', e);
-        // switch clientY and clientX to something relative to parent like offset
         let scrollToY = ((((e.clientY - 50) / 700) * 1000) - 500) * -1;
         let scrollToX = ((((e.clientX - 700) / 1100) * 1200) - 600) * -1;
-        // console.log('scroll to x: ', scrollToX);
         setImageZoomed(true);
         $('.carousel-item img').css('cursor', 'zoom-out');
         $('.carousel-item img').css({transform: `translate(${scrollToX}px, ${scrollToY}px) scale(2.5)`});
@@ -170,8 +162,6 @@ const PrimaryImage = ({ product, style, setStyle }) => {
         $('.carousel-control-prev').addClass('hidden');
         $('.carousel-control-next').addClass('hidden');
       } else {
-        // console.log('x: ', e.clientX);
-        // console.log('y: ', e.clientY);
         setImageZoomed(false);
         if (currentPic !== 0) {
           $('.carousel-control-prev').removeClass('hidden');
@@ -201,37 +191,15 @@ const PrimaryImage = ({ product, style, setStyle }) => {
     }
   };
 
-
-  // const zoomIn = (e) => {
-  //   if (imageZoomed) {
-  //     var pre = document.getElementsByClassName('carousel-item active')[0];
-  //     // console.log('pre', $(pre)[0]);
-  //     if ($('.carousel-item .active:hover')) {
-  //       $(pre).css('background-image', `url(${e.target.src})`);
-  //       console.log('etrgt.src', $(e.target).offset());
-  //       // console.log('bgimg', $(pre).css('background-image'));
-  //       var posX = e.clientX;
-  //       var posY = e.offsetY;
-  //       $(pre).css({
-  //         'background-position': `${-posX * 2.5}px ${-posY * 5.5}px`,
-  //         'height': '1750px'});
-  //       // console.log('scrolling zoom');
-  //     }
-  //   }
-  // };
-  // const zoomOut = () => {
-  //   return;
-  // };
-
-
-  // onMouseMove={ zoomIn } onMouseOut={ zoomOut }
-
   return (
     <div id="main-image">
-      {/* <button onClick={ nextStyle }>nextStyle</button> */}
-      <p className="up-button thumbNav" onClick={ slideUp }>&#9650;</p>
-      <p className="down-button thumbNav" onClick={ slideDown }>&#9660;</p>
-      <ThumbnailList stylesPhotos={ stylesPhotos } currentThumbs={ currentThumbs } makeActive={ makeActive } activeThumb={ activeThumb }/>
+      <p className="up-button thumbNav" onClick={ slideThumbsUp }>&#9650;</p>
+      <p className="down-button thumbNav" onClick={ slideThumbsDown }>&#9660;</p>
+      <ThumbnailList
+        stylesPhotos={ stylesPhotos }
+        currentThumbs={ currentThumbs }
+        makeActive={ makeActive }
+        activeThumb={ activeThumb }/>
       {<span onClick={ imageShrink } className={imageExpanded ? 'minimize' : 'hidden minimize'}>[default view]</span>}
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false" data-interval="false">
         <ol className="carousel-indicators">
