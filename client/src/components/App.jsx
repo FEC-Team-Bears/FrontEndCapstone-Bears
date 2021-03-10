@@ -12,6 +12,7 @@ const App = (props) => {
   const [productId, changeProductId] = useState(21111);
   const [productImage, getProductImage] = useState();
   const [reviews, getAllReviews] = useState([]);
+  const [styles, getStyles] = useState([]);
   const [productDetails, getProductDetails] = useState({
     category: null,
     name: null,
@@ -37,7 +38,9 @@ const App = (props) => {
           'Authorization': API_KEY
         }
       })
-      .then(product => getProductDetails(product.data))
+      .then((product) => {
+        getProductDetails(product.data);
+      })
       .catch(error => console.error(error));
   };
 
@@ -48,7 +51,10 @@ const App = (props) => {
           'Authorization': API_KEY
         }
       })
-      .then(product => getProductImage(product.data.results[0].photos[0]))
+      .then((product) => {
+        getStyles(product.data.results);
+        getProductImage(product.data.results[0].photos[0]);
+      })
       .catch(error => console.error(error));
   };
 
@@ -71,6 +77,7 @@ const App = (props) => {
     axiosGetProductId();
     axiosGetProductDetails();
     axiosGetAllReviews();
+    axiosGetProductImage();
   }, [productId]);
 
   // Function needed for resetting
@@ -83,7 +90,12 @@ const App = (props) => {
       <div className="row justify-content-center">
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
-      <Overview productId={ productId }/>
+      <Overview
+        styles={ styles }
+        getStyles={ getStyles }
+        reviews={ reviews }
+        productId={ productId }
+        productDetails={ productDetails }/>
       <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
       <QuestionsList productId={ productId } />
