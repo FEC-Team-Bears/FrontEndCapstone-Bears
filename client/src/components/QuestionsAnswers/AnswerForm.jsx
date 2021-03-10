@@ -3,66 +3,60 @@ import axios from 'axios';
 import API_KEY from '/config.js';
 import { Modal, Button, Form, InputGroup } from 'react-bootstrap';
 
-const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => {
+const AnswerForm = ({ productId, productName, question }) => {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
-  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
 
-  const submitQuestion = () => {
+  const submitAnswer = () => {
     axios
-      .post('/qa/questions',
+      .post(`/qa/questions/${question.question_id}/answers`,
         {
-          'product_id': productId,
-          'body': question,
+          'body': answer,
           'name': nickname,
-          'email': email
+          'email': email,
+          'photos': photos
         })
-      .then(response => {
-        const newQuestion = [{
-          'question_id': null,
-          'question_body': question,
-          'question_date': null,
-          'asker_name': nickname,
-          'question_helpfulness': 0,
-          'reported': false,
-          'answers': {},
-        }];
-        handleNewQuestion(newQuestion);
-      })
       .catch(err => {
-        console.error('Error: cannot add question');
+        console.error('Error: cannot add answer');
       });
   };
-
   const clearInputFields = () => {
-    setQuestion('');
+    setAnswer('');
     setNickname('');
     setEmail('');
+    setPhotos([]);
   };
   const handleShow = () => {
     setShow(true);
   };
   const handleClose = () => {
-    if (question.concat(nickname, email) === '') {
+    if (answer.concat(nickname, email) === '' && !photos.length) {
       setShow(false);
     } else if (confirm('Are you sure you want to exit? Your changes will not be saved.')) {
       clearInputFields();
       setShow(false);
     }
   };
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
+
+  const handleAnswerChange = (e) => {
+    setAnswer(e.target.value);
   };
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+  const handlePhotosChange = (e) => {
+    setPhotos(currentPhotos => [...currentPhotos, URL.createObjectURL(e.target.files[0])]);
+    previewFiles();
   };
   const handleSubmit = (e) => {
     const form = e.currentTarget;
@@ -72,35 +66,63 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
     } else {
       e.preventDefault();
       setShow(false);
-      submitQuestion();
+      submitAnswer();
     }
     setValidated(true);
+  };
+  const previewFiles = () => {
+    var preview = document.querySelector('#preview');
+    var files = document.querySelector('input[type=file]').files;
+    const readAndPreview = (file) => {
+      if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+        var reader = new FileReader();
+        reader.addEventListener('load', function () {
+          var image = new Image();
+          image.height = 100;
+          image.title = file.name;
+          image.src = this.result;
+          preview.appendChild(image);
+        }, false);
+        reader.readAsDataURL(file);
+      }
+    };
+    if (files) {
+      [].forEach.call(files, readAndPreview);
+    }
   };
 
   return (
     <div>
-      {!length ? <Button onClick={handleShow}>Submit a New Question</Button> : <Button onClick={handleShow}>Add a Question + </Button>}
-      <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false} centered>
+      <button onClick={handleShow}>Add Answer</button>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop='static'
+        keyboard={false}
+        centered >
         <Modal.Header closeButton>
           <Modal.Title>
-            Ask Your Question<br></br>
-            <small><em>About the {productName}</em></small>
+            Submit Your Answer<br></br>
+            <small><em>{productName}: {question}</em></small>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p><em>All fields marked with a * are mandatory.</em></p>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form
+            noValidate
+            validated={validated}
+            onSubmit={handleSubmit} >
             <Form.Group controlId='question'>
-              <Form.Label>What is your question?*</Form.Label>
+              <Form.Label>What is your answer?*</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
                   as='textarea'
-                  placeholder='Write your question here'
+                  placeholder='Write your answer here'
                   maxLength='1000'
                   rows={3}
-                  onChange={handleQuestionChange}
+                  onChange={handleAnswerChange}
                   required />
-                <Form.Control.Feedback type='invalid'>Please enter a question.</Form.Control.Feedback>
+                <Form.Control.Feedback type='invalid'>Please enter an answer.</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
             <br />
@@ -109,7 +131,7 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
               <InputGroup hasValidation>
                 <Form.Control
                   type='text'
-                  placeholder='Example: jackson11!'
+                  placeholder='Example: jack543!'
                   maxLength='60'
                   onChange={handleNicknameChange}
                   required />
@@ -131,6 +153,16 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
               </InputGroup>
               <Form.Text>For authentication reasons, you will not be emailed.</Form.Text>
             </Form.Group>
+            <Form.Label>Upload your photos <small>(max: 5)</small></Form.Label>
+            {photos.length < 5 ?
+              <Form.File id='custom-file'>
+                <Form.File.Input type="file" onChange={handlePhotosChange}/>
+                {/* change images to image */}
+                {photos.length === 4 ? <Form.Text>You can upload 1 more image.</Form.Text> : <Form.Text>You can upload {5 - photos.length} more images.</Form.Text> }
+              </Form.File> : <Form.Text>You have already uploaded the max number of images.</Form.Text>
+            }
+            <div id="preview"/>
+            <br /><br />
             <Button variant='danger' onClick={handleClose}>Close</Button>{' '}
             <Button variant='primary' type='submit'>Submit</Button>
           </Form>
@@ -140,4 +172,4 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
   );
 };
 
-export default QuestionForm;
+export default AnswerForm;

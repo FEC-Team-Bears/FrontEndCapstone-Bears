@@ -3,10 +3,13 @@ import axios from 'axios';
 import Answer from './Answer.jsx';
 import API_KEY from '/config.js';
 
-const AnswersList = ({ questionId }) => {
+const AnswersList = ({ questionId, newAnswer }) => {
   const [count, setCount] = useState(2);
   const [show, setShow] = useState(false);
   const [allAnswers, setAllAnswers] = useState([]);
+
+  axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
+  axios.defaults.headers.common['Authorization'] = API_KEY;
 
   const showAnswers = () => {
     if (!show) {
@@ -20,22 +23,24 @@ const AnswersList = ({ questionId }) => {
 
   const getAnswers = () => {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${questionId}/answers`, {
-        headers: {
-          'Authorization': API_KEY
-        }
-      })
+      .get(`/qa/questions/${questionId}/answers?page=1&count=100`)
       .then(response => {
         const sortedAnswers = response.data.results.sort((a, b) => {
-          if (a.helpfulness > b.helpfulness) {
+          if (a.answerer_name === 'Seller' && b.answerer_name !== 'Seller') {
             return -1;
-          } else if (a.helpfulness < b.helpfulness) {
+          } else if (a.answerer_name !== 'Seller' && b.answerer_name === 'Seller') {
             return 1;
           } else {
-            if (a.answer_id > b.answer_id) {
+            if (a.helpfulness > b.helpfulness) {
               return -1;
-            } else {
+            } else if (a.helpfulness < b.helpfulness) {
               return 1;
+            } else {
+              if (a.answer_id > b.answer_id) {
+                return -1;
+              } else {
+                return 1;
+              }
             }
           }
         });
@@ -52,11 +57,9 @@ const AnswersList = ({ questionId }) => {
 
   return (
     <div>
-      {allAnswers.slice(0, count).map(answer => {
-        return (
-          <Answer key={answer.answer_id} answer={answer} />
-        );
-      })}
+      {allAnswers.slice(0, count).map(answer => (
+        <Answer key={answer.answer_id} answer={answer} />
+      ))}
       {!show && allAnswers.length > 2 ? <button onClick={showAnswers}>Load More Answers</button> : (show && allAnswers.length > 2 ? <button onClick={showAnswers}>Collapse Answers</button> : null)}
     </div>
   );

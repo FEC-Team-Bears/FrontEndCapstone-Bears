@@ -9,14 +9,14 @@ const QuestionsList = ({ productId }) => {
   const [questions, setQuestions] = useState([]);
   const [page, setPage] = useState(1);
   const [remainingQ, setRemainingQ] = useState(true);
+  const [product, setProduct] = useState('');
+
+  axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
+  axios.defaults.headers.common['Authorization'] = API_KEY;
 
   const getAllQuestions = (currentPage = page, currentQuestions = questions) => {
     axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions?product_id=${productId}&page=${currentPage}&count=97`, {
-        headers: {
-          'Authorization': API_KEY
-        }
-      })
+      .get(`/qa/questions?product_id=${productId}&page=${currentPage}&count=97`)
       .then(response => {
         if (response.data.results.length < count || response.data.results.length === 0) {
           setRemainingQ(false);
@@ -28,6 +28,16 @@ const QuestionsList = ({ productId }) => {
       })
       .catch(err => {
         console.error('Error: Cannot retrieve questions from API');
+      });
+  };
+  const getProductName = () => {
+    axios
+      .get(`/products/${productId}`)
+      .then(response => {
+        setProduct(response.data.name);
+      })
+      .catch(err => {
+        console.error('Error: cannot retrieve product information');
       });
   };
 
@@ -47,6 +57,9 @@ const QuestionsList = ({ productId }) => {
       getAllQuestions();
     }
   }, [count]);
+  useEffect(() => {
+    getProductName();
+  }, []);
 
   return (
     <div>
