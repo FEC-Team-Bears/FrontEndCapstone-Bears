@@ -27,7 +27,9 @@ const Question = ({ productId, question, productName }) => {
       });
   };
   const handleClick = () => {
-    helpful ? (increaseHelpfulness(question.question_id), setHelpful(false)) : null;
+    helpful
+      ? (increaseHelpfulness(question.question_id), setHelpful(false))
+      : alert('You have already marked this question as "helpful".');
   };
 
   return (
@@ -38,7 +40,7 @@ const Question = ({ productId, question, productName }) => {
         productId={ productId }
         productName={ productName }
         question={ question.question_body } />
-      <div>A: <AnswersList questionId={ question.question_id }/></div>
+      <div>A: <AnswersList questionId={ question.question_id } /></div>
     </div>
   );
 };

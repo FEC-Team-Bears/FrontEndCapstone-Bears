@@ -20,7 +20,9 @@ const Answer = ({ answer }) => {
     setShow(false);
   };
   const handleHelpful = () => {
-    helpful ? (increaseHelpfulness(answer.answer_id), setHelpful(false)) : null;
+    helpful
+      ? (increaseHelpfulness(answer.answer_id), setHelpful(false))
+      : alert('You have already marked this answer as "helpful".');
   };
   const handleReport = (e) => {
     if (!reported) {
