@@ -4,8 +4,10 @@ import API_KEY from '/config.js';
 import ReviewList from './ReviewList.jsx';
 import RatingsList from './RatingsList.jsx';
 
-const RatingsReviews = ({ productId, changeId, reviews, changeReviews }) => {
+const RatingsReviews = ({ productId, changeId, reviews, changeReviews, loadReviews }) => {
   const [reviewMetaData, useReviewMetaData] = useState(null);
+  const [newReview, setNewReview] = useState(0);
+  console.log(reviews);
 
   const axiosGetAllMetaData = () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta', {
@@ -24,21 +26,27 @@ const RatingsReviews = ({ productId, changeId, reviews, changeReviews }) => {
 
   useEffect(() => {
     axiosGetAllMetaData();
-    changeReviews();
-  }, [productId]);
+    loadReviews();
+  }, [productId, newReview]);
 
   return (
     <div className="ratings-reviews-container">
 
       {(reviews.length > 0 && reviewMetaData) ?
         <div className="ratings-container">
-          <RatingsList reviews={reviews} reviewMetaData={reviewMetaData}/>
+          <RatingsList reviews={reviews} reviewMetaData={reviewMetaData} />
         </div>
-        : null
+        : <div></div>
       }
-      {reviewMetaData ?
+      {(reviews.length > 0 && reviewMetaData) ?
         <div className="reviews-container">
-          <ReviewList reviews={reviews} productId={productId} reviewChar={reviewMetaData.characteristics} />
+          <ReviewList
+            reviews={reviews}
+            productId={productId}
+            reviewChar={reviewMetaData.characteristics}
+            newReview={newReview}
+            setNewReview={setNewReview}
+          />
         </div>
         : null
       }

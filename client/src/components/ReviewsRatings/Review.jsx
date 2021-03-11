@@ -22,8 +22,8 @@ const Review = ({ review }) => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="single-review-container">
+      <div className="review-date-container">
         <StarRating review={review} />
         {Moment(review.date).format('MMMM DD, YYYY')}
       </div>
@@ -32,8 +32,7 @@ const Review = ({ review }) => {
       {review.photos.map((photo, index) => {
         return <ReviewPhotos key={index} photo={photo} />;
       })}
-      <p>Helpful? <a onClick={() => axiosUpdateRecommended()} href="#">Yes</a> ({recommendCount})</p>
-      <hr />
+      <p>Helpful? <span onClick={() => axiosUpdateRecommended()}>Yes</span> ({recommendCount})</p>
     </div>
   );
 };

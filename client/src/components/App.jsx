@@ -30,6 +30,8 @@ const App = (props) => {
       .catch(error => console.error(error));
   };
 
+
+
   const axiosGetProductDetails = () => {
     axios
       .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
@@ -51,7 +53,8 @@ const App = (props) => {
         'Authorization': API_KEY
       },
       params: {
-        'product_id': `${productId}`
+        'product_id': `${productId}`,
+        'count': 100
       }
     })
       .then(reviews => {
@@ -87,8 +90,8 @@ const App = (props) => {
       <Overview productId={ productId }/>
       <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
-      <QuestionsList productId={ productId } />
-      <RatingsReviews productId={ productId } changeId={ changeProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
+      {/* <QuestionsList productId={ productId } /> */}
+      <RatingsReviews productId={ productId } getAllReviews={getAllReviews} reviews={reviews} loadReviews={axiosGetAllReviews}/>
     </div>
   );
 };

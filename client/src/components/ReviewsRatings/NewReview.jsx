@@ -7,7 +7,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import API_KEY from '/config.js';
 
-const NewReview = ({ reviews, productId, reviewChar }) => {
+const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview, setNewReview}) => {
   const [show, setShow] = useState(false);
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
   const handleShow = () => setShow(true);
 
   let results = {
-    'product_id': productId,
+    'product_id': Number(productId),
     'rating': starValue,
     'summary': reviewSummary,
     'body': reviewBody,
@@ -49,6 +49,10 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
       });
   };
 
+  const updateCount = () => {
+    setCount(count + 2);
+  };
+
   const setNewCharValues = (char, value) => {
     let charValue = reviewChar[char];
     let key = charValue.id;
@@ -61,7 +65,7 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
 
   return (
     <div>
-      <Button variant="outline-dark">More Reviews</Button>
+      <Button id="more-reviews-button" variant="outline-dark" onClick={updateCount}>More Reviews</Button>
       <Button variant="outline-dark" onClick={handleShow}>Add a Review +</Button>
 
       <Modal show={show} onHide={handleClose} centered>
@@ -194,10 +198,11 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
           </Button>
           <Button variant="primary" onClick={() => {
             axiosPostNewReview();
+            setNewReview(newReview + 1);
             handleClose();
           }}>
 
-            Save Changes
+            Write Review
           </Button>
         </Modal.Footer>
       </Modal>

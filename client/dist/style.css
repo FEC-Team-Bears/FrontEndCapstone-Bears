@@ -189,7 +189,7 @@
 
 .ratings-container {
   width: 300px;
-  margin-right: 75px;
+  margin-right: 50px;
 }
 
 .reviews-container {
@@ -219,6 +219,47 @@
   display: inline-block;
 }
 
+/* ------ individual review styling ------- */
+
+.single-review-container {
+  width: 630px;
+  border-bottom: 1px solid rgb(156, 156, 156);
+  margin-bottom: 35px;
+}
+
+.single-review-container span {
+  color: rgb(88, 88, 88);
+  text-decoration: underline;
+  padding-left: 10px;
+}
+
+.single-review-container h3, p{
+  padding-bottom: 10px;
+}
+
+.single-review-container h3 {
+  font-size: 24px;
+}
+
+.single-review-container p {
+  font-size: 16px;
+}
+
+.single-review-container span:hover {
+  cursor: pointer;
+}
+
+.review-counter {
+  margin-bottom: 30px;
+}
+
+.review-date-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 13px;
+  font-size: 13px;
+}
+
 .review-photos-container {
   display: inline-block;
   padding: 0 5px;
@@ -227,6 +268,8 @@
 .review-photos-container a:hover {
   cursor: pointer;
 }
+
+/* ----- ratings styling ----- */
 
 .average-ratings h1 {
   font-size: 65px;
@@ -251,3 +294,35 @@
   height: 9px;
 }
 
+.rating-characteristic {
+  margin-bottom: 2px;
+}
+
+.rating-grey-slider-container {
+  display: flex;
+}
+
+.rating-grey-slider {
+  width: 85px;
+  height: 8px;
+  background-color: rgb(228, 228, 228);
+}
+
+.rating-char-values {
+  position: relative;
+  bottom: 12px;
+  width: 265px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating-char-values p {
+  font-size: 13px;
+}
+
+.rating-triangle {
+  position: relative;
+  bottom: 21px;
+  font-size: 30px;
+}
