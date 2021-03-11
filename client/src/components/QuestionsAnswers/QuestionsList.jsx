@@ -5,7 +5,7 @@ import Question from './Question.jsx';
 import QuestionForm from './QuestionForm.jsx';
 
 const QuestionsList = ({ productId, searchValue }) => {
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(2);
   const [questions, setQuestions] = useState([]);
   const [page, setPage] = useState(1);
   const [remainingQ, setRemainingQ] = useState(true);
@@ -100,13 +100,20 @@ const QuestionsList = ({ productId, searchValue }) => {
             ))
             : null
       }
-      { questions.length > 2 && remainingQ
-        ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
-        : null
+      { isFiltered
+        ? filteredQ.length
+          ? count < filteredQ.length && filteredQ.length > 2
+            ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
+            : null
+          : null
+        : questions.length > 2 && remainingQ
+          ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
+          : null
       }
       <QuestionForm
         productId={ productId }
         length={ questions.length }
+        productName={ product }
         handleNewQuestion={ handleNewQuestion } />
     </div>
   );

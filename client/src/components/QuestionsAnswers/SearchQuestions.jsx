@@ -19,9 +19,7 @@ const SearchQuestions = ({ handleSearch }) => {
         type='text'
         placeholder='Have a question? Search for answers…'
         value={ searchValue }
-        onChange = { handleSearchInput }
-      >
-      </input>
+        onChange = { handleSearchInput } />
     </div>
   );
 };
