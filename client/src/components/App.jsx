@@ -88,7 +88,7 @@ const App = (props) => {
   return (
     <div>
       <div className="row justify-content-center">
-        <div className="top_bar col-8">Top Bar Goes Here</div>
+        <div className="top_bar col-8"></div>
       </div>
       <Overview
         styles={ styles }

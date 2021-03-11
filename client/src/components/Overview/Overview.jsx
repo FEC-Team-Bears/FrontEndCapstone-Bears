@@ -45,8 +45,9 @@ var Overview = ({ productId, productDetails, getStyles, styles, reviews }) => {
           <ProductDetails
             reviews={ reviews }
             productDetails={ productDetails }
+            style={ style }
             styles={ styles }
-            getStyles={ getStyles }/>
+            setStyle={ setStyle }/>
         </div>
       </div>
     </div>

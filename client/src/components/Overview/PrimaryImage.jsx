@@ -161,7 +161,7 @@ const PrimaryImage = ({ product, style }) => {
     } else {
       if (!imageZoomed) {
         let scrollToY = ((((e.clientY - 50) / 700) * 1000) - 500) * -1;
-        let scrollToX = ((((e.clientX - 700) / 1100) * 1200) - 600) * -1;
+        let scrollToX = ((((e.clientX - 400) / 1100) * 1400) - 600) * -1;
         setImageZoomed(true);
         $('.carousel-item img').css('cursor', 'zoom-out');
         $('.carousel-item img').css({transform: `translate(${scrollToX}px, ${scrollToY}px) scale(2.5)`});
