@@ -14,31 +14,20 @@ const App = (props) => {
   const [reviews, getAllReviews] = useState([]);
   const [styles, getStyles] = useState([]);
   const [productDetails, getProductDetails] = useState({
-    category: null,
-    name: null,
-    // eslint-disable-next-line camelcase
-    default_price: null,
-    features: [{}]
+    'category': null,
+    'name': null,
+    'default_price': null,
+    'features': [{}]
   });
 
-  const axiosGetProductId = () => {
+  const axiosGetProductInformation = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
       headers: {
         'Authorization': API_KEY
       }
     })
-      .then(product => changeProductId(product.data.id))
-      .catch(error => console.error(error));
-  };
-
-  const axiosGetProductDetails = () => {
-    axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
-        headers: {
-          'Authorization': API_KEY
-        }
-      })
-      .then((product) => {
+      .then(product => {
+        changeProductId(product.data.id);
         getProductDetails(product.data);
       })
       .catch(error => console.error(error));
@@ -74,8 +63,8 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    axiosGetProductId();
-    axiosGetProductDetails();
+    axiosGetProductInformation();
+    // axiosGetProductDetails();
     axiosGetAllReviews();
     axiosGetProductImage();
   }, [productId]);
@@ -96,10 +85,23 @@ const App = (props) => {
         reviews={ reviews }
         productId={ productId }
         productDetails={ productDetails }/>
-      <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
-      <YourOutfit />
-      <QuestionsList productId={ productId } />
-      <RatingsReviews productId={ productId } changeId={ changeProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
+      <RelatedProducts
+        productId={ productId }
+        handleClick={ setNewId }
+        mainProductDetails={ productDetails }
+        reviews={ reviews } />
+      <YourOutfit
+        productId={ productId }
+        reviews={ reviews } />
+      <QuestionsList
+        productId={ productId }
+        productImage={ productImage }
+        productDetails={ productDetails } />
+      <RatingsReviews
+        productId={ productId }
+        changeId={ changeProductId }
+        reviews={reviews}
+        changeReviews={axiosGetAllReviews} />
     </div>
   );
 };
