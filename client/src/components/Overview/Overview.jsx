@@ -29,7 +29,7 @@ var Overview = ({ productId }) => {
 
   useEffect(() => {
     fetchProduct(productId);
-  }, [productId]);
+  }, [productId, style]);
 
   return (
     <div className="container overview-container">
