@@ -7,6 +7,7 @@ import YourOutfit from './YourOutfit/YourOutfit.jsx';
 import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 
+import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 
 const App = (props) => {
   const [productId, changeProductId] = useState(21111);
@@ -86,7 +87,8 @@ const App = (props) => {
       <Overview productId={ productId }/>
       <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
-      <QuestionsList productId={ productId } />
+      {/* <QuestionsList productId={ productId } /> */}
+      <QuestionsAnswers productId={ productId } />
       <RatingsReviews productId={ productId } changeId={ changeProductId } reviews={reviews} changeReviews={axiosGetAllReviews}/>
     </div>
   );

@@ -4,12 +4,14 @@ import API_KEY from '/config.js';
 import Question from './Question.jsx';
 import QuestionForm from './QuestionForm.jsx';
 
-const QuestionsList = ({ productId }) => {
+const QuestionsList = ({ productId, searchValue }) => {
   const [count, setCount] = useState(4);
   const [questions, setQuestions] = useState([]);
   const [page, setPage] = useState(1);
   const [remainingQ, setRemainingQ] = useState(true);
   const [product, setProduct] = useState('');
+  const [filteredQ, setFilteredQ] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
 
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
@@ -60,17 +62,43 @@ const QuestionsList = ({ productId }) => {
   useEffect(() => {
     getProductName();
   }, []);
+  useEffect(() => {
+    if (searchValue.length) {
+      if (searchValue.length > 2) {
+        const allQuestions = questions.filter(question => (
+          question.question_body.includes(searchValue)
+        ));
+        setFilteredQ(allQuestions);
+        setIsFiltered(true);
+      } else {
+        setFilteredQ([]);
+        setIsFiltered(false);
+      }
+    } else {
+      setFilteredQ([]);
+      setIsFiltered(false);
+    }
+  }, [searchValue]);
 
   return (
     <div>
-      { questions.length
-        ? questions.slice(0, count).map(question => (
+      { isFiltered && filteredQ.length
+        ? filteredQ.slice(0, count).map(question => (
           <Question
             key={ question.question_id }
             question={ question }
             productName={ product } />
         ))
-        : null
+        : isFiltered && !filteredQ.length
+          ? <div>No questions with that search criteria can be found.</div>
+          : questions.length && !filteredQ.length && !isFiltered
+            ? questions.slice(0, count).map(question => (
+              <Question
+                key={ question.question_id }
+                question={ question }
+                productName={ product } />
+            ))
+            : null
       }
       { questions.length > 2 && remainingQ
         ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
