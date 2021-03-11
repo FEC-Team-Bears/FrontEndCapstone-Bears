@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LazyLoad from 'react-lazy-load';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import Overview from './Overview/Overview.jsx';
@@ -75,23 +76,31 @@ const App = (props) => {
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
       <Overview productId={ productId }/>
-      <RelatedProducts
-        productId={ productId }
-        handleClick={ setNewId }
-        mainProductDetails={ productDetails }
-        reviews={ reviews } />
-      <YourOutfit
-        productId={ productId }
-        reviews={ reviews } />
-      <QuestionsList
-        productId={ productId }
-        productImage={ productImage }
-        productDetails={ productDetails } />
-      <RatingsReviews
-        productId={ productId }
-        changeId={ changeProductId }
-        reviews={reviews}
-        changeReviews={axiosGetAllReviews} />
+      <LazyLoad>
+        <RelatedProducts
+          productId={ productId }
+          handleClick={ setNewId }
+          mainProductDetails={ productDetails }
+          reviews={ reviews } />
+      </LazyLoad>
+      <LazyLoad>
+        <YourOutfit
+          productId={ productId }
+          reviews={ reviews } />
+      </LazyLoad>
+      <LazyLoad>
+        <QuestionsList
+          productId={ productId }
+          productImage={ productImage }
+          productDetails={ productDetails } />
+      </LazyLoad>
+      <LazyLoad>
+        <RatingsReviews
+          productId={ productId }
+          changeId={ changeProductId }
+          reviews={reviews}
+          changeReviews={axiosGetAllReviews} />
+      </LazyLoad>
     </div>
   );
 };

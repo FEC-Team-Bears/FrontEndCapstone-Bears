@@ -25,7 +25,7 @@ const YourOutfit = ({ productId, reviews }) => {
     <div className="wrapper">
       <div className="jcarousel">
         <ul>
-          <li className='outfit-card' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><Button className="addToYourOutfit" onClick={ updateYourOutfit } style={{ background: 'none', border: 'none', color: 'black'}} >+</Button></li>
+          <li onClick={ updateYourOutfit } className='outfit-card' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><Button className="addToYourOutfit" style={{ background: 'none', border: 'none', color: 'black'}} >+</Button></li>
           {localStorage.getItem('yourOutfit') ? Object.keys(JSON.parse(localStorage.getItem('yourOutfit'))).map(yourOutfitId =>
             <li key={ yourOutfitId } className='outfit-card' >
               <RelatedProductCard relatedProductId={ yourOutfitId } reviews={ reviews } />
