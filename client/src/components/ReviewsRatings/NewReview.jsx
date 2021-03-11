@@ -90,8 +90,8 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
               }} />
             {reviewChar.Size ?
               <div>
-                <label>Size:</label>
-                <select name="Size" placeholder="select one" onChange={(e) => { setNewCharValues('Size', e.target.value); }}>
+                <label className="review-char-label">Size:</label>
+                <select className="review-char-select" name="Size" placeholder="select one" onChange={(e) => { setNewCharValues('Size', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">A size too small</option>
                   <option value="2">½ a size too small</option>
@@ -104,8 +104,8 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
             <br />
             {reviewChar.Width ?
               <div>
-                <label>Width:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Width', e.target.value); }}>
+                <label className="review-char-label">Width:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Width', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Too narrow</option>
                   <option value="2">Slightly narrow</option>
@@ -118,8 +118,8 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
             <br />
             {reviewChar.Comfort ?
               <div>
-                <label>Comfort:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Comfort', e.target.value); }}>
+                <label className="review-char-label">Comfort:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Comfort', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Uncomfortable</option>
                   <option value="2">Slightly uncomfortable</option>
@@ -132,8 +132,8 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
             <br />
             {reviewChar.Quality ?
               <div>
-                <label>Quality:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Quality', e.target.value); }}>
+                <label className="review-char-label">Quality:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Quality', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Poor</option>
                   <option value="2">Below average</option>
@@ -146,8 +146,8 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
             <br />
             {reviewChar.Length ?
               <div>
-                <label>Length:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Length', e.target.value); }}>
+                <label className="review-char-label">Length:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Length', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Runs Short</option>
                   <option value="2">Runs slightly short</option>
@@ -160,8 +160,8 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
             <br />
             {reviewChar.Fit ?
               <div>
-                <label>Fit:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Fit', e.target.value); }}>
+                <label className="review-char-label">Fit:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Fit', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Runs tight</option>
                   <option value="2">Runs slightly tight</option>

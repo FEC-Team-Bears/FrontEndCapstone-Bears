@@ -87,9 +87,9 @@
   margin-right: 50px;
 }
 
-.carousel-item img:hover {
+/* .carousel-item img:hover {
 
-}
+} */
 
 
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
@@ -282,12 +282,27 @@
   font-size: 16px;
 }
 
+.review-response {
+  background-color: rgba(233, 233, 233, 0.801);
+  padding: 15px 10px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.review-response h5 {
+  font-size: 16px;
+}
+
+.review-response p {
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}
+
 .single-review-container span:hover {
   cursor: pointer;
 }
 
 .review-counter {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .review-date-container {
@@ -304,6 +319,11 @@
 
 .review-photos-container a:hover {
   cursor: pointer;
+}
+
+.review-char-select {
+  margin-left: 15px;
+  width: 140px;
 }
 
 /* ----- ratings styling ----- */
@@ -342,7 +362,7 @@
 .rating-grey-slider {
   width: 85px;
   height: 8px;
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(236, 236, 236);
 }
 
 .rating-char-values {

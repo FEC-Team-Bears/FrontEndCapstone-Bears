@@ -29,6 +29,12 @@ const Review = ({ review }) => {
       </div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>
+      {(review.response !== null && review.response.length > 0) ?
+        <div className="review-response">
+          <h5>Response:</h5>
+          <p>{review.response}</p>
+        </div>
+        : null}
       {review.photos.map((photo, index) => {
         return <ReviewPhotos key={index} photo={photo} />;
       })}

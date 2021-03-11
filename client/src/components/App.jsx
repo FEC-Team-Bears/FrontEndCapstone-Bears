@@ -89,7 +89,7 @@ const App = (props) => {
       <Overview productId={ productId }/>
       <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
       <YourOutfit />
-      {/* <QuestionsList productId={ productId } /> */}
+      <QuestionsList productId={ productId } />
       <RatingsReviews productId={ productId } getAllReviews={getAllReviews} reviews={reviews} loadReviews={axiosGetAllReviews}/>
     </div>
   );
