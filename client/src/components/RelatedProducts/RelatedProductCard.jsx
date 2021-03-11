@@ -60,13 +60,16 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
       .catch(error => console.error(error));
   };
 
-  const removeFromYourOutfit = () => {
+  const removeFromYourOutfit = (e) => {
     let oldOutfit = {};
     if (JSON.parse(localStorage.getItem('yourOutfit'))) {
       oldOutfit = JSON.parse(localStorage.getItem('yourOutfit'));
       delete oldOutfit[relatedProductId];
     }
     localStorage.setItem('yourOutfit', JSON.stringify(oldOutfit));
+    $(e.target.parentNode.parentNode.parentNode).css('border', 'none');
+    $(e.target.parentNode.parentNode.parentNode).css('position', 'fixed');
+    $(e.target.parentNode.parentNode).remove();
   };
 
   const comparisonTable = {};
