@@ -2,25 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import AnswersList from './AnswersList.jsx';
+import AnswerForm from './AnswerForm.jsx';
 
-const Question = ({ question }) => {
+const Question = ({ productId, question, productName }) => {
   const [count, setCount] = useState(question.question_helpfulness);
   const [helpful, setHelpful] = useState(true);
 
-  const handleClick = () => {
-    (helpful) ? (increaseHelpfulness(question.question_id), setHelpful(false)) : null;
-  };
+  axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
+  axios.defaults.headers.common['Authorization'] = API_KEY;
+
   const increaseHelpfulness = (questionId) => {
     axios
-      .put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/qa/questions/${questionId}/helpful`,
+      .put(`qa/questions/${questionId}/helpful`,
         {
           data: {
             'question_id': questionId
-          }
-        },
-        {
-          headers: {
-            'Authorization': API_KEY
           }
         })
       .then(response => {
@@ -30,13 +26,21 @@ const Question = ({ question }) => {
         console.error('Error: cannot mark question as helpful');
       });
   };
+  const handleClick = () => {
+    helpful
+      ? (increaseHelpfulness(question.question_id), setHelpful(false))
+      : alert('You have already marked this question as "helpful".');
+  };
 
   return (
     <div>
-      <div>Q: {question.question_body}</div>
-      <a id='helpful' onClick={handleClick}>Helpful? <u>Yes</u>({count})</a>
-      <button>Add Answer</button>
-      <div>A: <AnswersList answers={question.answers}/></div>
+      <div>Q: { question.question_body }</div>
+      <div onClick={ handleClick }>Helpful? <a className='helpful'><u>Yes</u></a>({ count })</div>
+      <AnswerForm
+        productId={ productId }
+        productName={ productName }
+        question={ question.question_body } />
+      <div>A: <AnswersList questionId={ question.question_id } /></div>
     </div>
   );
 };
