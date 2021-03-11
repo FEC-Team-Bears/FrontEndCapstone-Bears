@@ -87,9 +87,9 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
               <table className="relatedProductsTable" >
                 <thead>
                   <tr>
-                    <th scope="col">{mainProductDetails.name}</th>
+                    <th scope="col" style={{ textAlign: 'center', }}>{mainProductDetails.name}</th>
                     <th scope="col"> </th>
-                    <th scope="col">{productDetails.name}</th>
+                    <th scope="col" style={{ align: 'right', }}>{productDetails.name}</th>
                   </tr>
                 </thead>
                 <tbody>
