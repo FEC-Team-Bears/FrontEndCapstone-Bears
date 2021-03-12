@@ -25,7 +25,7 @@ const Review = ({ review }) => {
     <div className="single-review-container">
       <div className="review-date-container">
         <StarRating review={review} />
-        {Moment(review.date).format('MMMM DD, YYYY')}
+        <p>{Moment(review.date).format('MMMM DD, YYYY')}</p>
       </div>
       <h3>{review.summary}</h3>
       <p>{review.body}</p>

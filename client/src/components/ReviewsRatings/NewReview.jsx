@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Review from './review.jsx';
 import { Modal, Button, Form } from 'react-bootstrap';
@@ -7,8 +6,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import API_KEY from '/config.js';
 
-const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview, setNewReview}) => {
-  const [show, setShow] = useState(false);
+const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, show, setShow, loadReviews }) => {
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -42,15 +40,12 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
         },
       })
       .then(response => {
-        console.log(response);
+        loadReviews();
+        setNewReview(newReview + 1);
       })
       .catch(error => {
         console.error(error);
       });
-  };
-
-  const updateCount = () => {
-    setCount(count + 2);
   };
 
   const setNewCharValues = (char, value) => {
@@ -63,11 +58,10 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
     setReviewCharValues(obj);
   };
 
+
+
   return (
     <div>
-      <Button id="more-reviews-button" variant="outline-dark" onClick={updateCount}>More Reviews</Button>
-      <Button variant="outline-dark" onClick={handleShow}>Add a Review +</Button>
-
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header>
           <Modal.Title>Write Your Review</Modal.Title>
@@ -184,6 +178,7 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
             <Form.Label>Review:</Form.Label>
             <Form.Control as="textarea" maxLength="1000" minLength="50" rows={3} placeholder="Why did you like the product or not?"
               onChange={(e) => { setReviewBody(e.target.value); }} />
+            <br />
             <label>Upload Pictures:</label>
             <input id="browse" type="file" onChange={() => {
               setFileList(oldArray => [...oldArray, URL.createObjectURL(event.target.files[0])]);
@@ -198,7 +193,6 @@ const NewReview = ({ reviews, productId, reviewChar, setCount, count, newReview,
           </Button>
           <Button variant="primary" onClick={() => {
             axiosPostNewReview();
-            setNewReview(newReview + 1);
             handleClose();
           }}>
 

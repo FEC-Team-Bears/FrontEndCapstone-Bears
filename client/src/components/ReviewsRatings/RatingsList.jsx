@@ -50,13 +50,13 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
 
   return (
 
-    <div>
+    <div className="ratings-container">
       <h5>Ratings &amp; Reviews</h5>
       <div className="average-ratings">
         <h1>{averageRating}</h1>
         <StarRating reviews={reviews} />
       </div>
-      <p>{recommendPercent}% of reviews recommend this product</p>
+      <p className="recommend-percent">{recommendPercent}% of reviews recommend this product</p>
       <div className="rating-sliders">
         <p>5 Stars</p>
         <ProgressBar variant="success" now={collectAllReviews('5')} />

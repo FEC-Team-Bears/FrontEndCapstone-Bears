@@ -219,29 +219,55 @@
 
 /* Raings and Reviews components */
 .ratings-reviews-container {
-  margin-top: 100px;
+  margin: 150px 0 100px;
   display: flex;
   justify-content: center;
 }
 
 .ratings-container {
   width: 300px;
-  margin-right: 50px;
+  margin-right: 20px;
+  position: relative;
+  bottom: 50px;
+}
+
+.ratings-container h5 {
+  margin-bottom: 30px;
 }
 
 .reviews-container {
-  width: 600px;
+  width: 700px;
+  height: 650px;
+  overflow-y: scroll;
+  padding: 15px;
+  border-bottom: .01px dotted rgb(212, 212, 212);
+  margin-bottom: 40px;
 }
 
 .average-ratings {
   display: flex;
+}
 
+#more-reviews-button {
+  padding: 15px;
+  margin-right: 15px;
+}
+
+#less-reviews-button {
+  padding: 15px;
+  margin-right: 15px;
+  display: none;
+}
+
+#add-reviews-button {
+  padding: 15px;
 }
 
 .single-star-outline {
   height: 19px;
   width: 16px;
-  position: absolute;
+  position: relative;
+  bottom: 4px;
 }
 
 .single-star-fill {
@@ -302,13 +328,17 @@
 }
 
 .review-counter {
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 
 .review-date-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 13px;
+  position: relative;
+  top: 7px;
+}
+
+.review-date-container p {
   font-size: 13px;
 }
 
@@ -322,8 +352,16 @@
 }
 
 .review-char-select {
-  margin-left: 15px;
+  margin-left: 10px;
   width: 140px;
+}
+
+.review-sort-dropdown {
+  border: none;
+  outline: 0px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 0.03em;
 }
 
 /* ----- ratings styling ----- */
@@ -331,6 +369,11 @@
 .average-ratings h1 {
   font-size: 65px;
   margin-right: 15px;
+}
+
+.recommend-percent {
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .rating-sliders {
@@ -383,3 +426,4 @@
   bottom: 21px;
   font-size: 30px;
 }
+

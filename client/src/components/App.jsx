@@ -61,7 +61,8 @@ const App = (props) => {
       },
       params: {
         'product_id': `${productId}`,
-        'count': 100
+        'count': 100,
+        'sort': 'helpful'
       }
     })
       .then(reviews => {
