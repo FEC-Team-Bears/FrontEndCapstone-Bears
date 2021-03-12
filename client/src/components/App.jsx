@@ -76,18 +76,14 @@ const App = (props) => {
         <div className="top_bar col-8">Top Bar Goes Here</div>
       </div>
       <Overview productId={ productId }/>
-      <LazyLoad>
-        <RelatedProducts
-          productId={ productId }
-          handleClick={ setNewId }
-          mainProductDetails={ productDetails }
-          reviews={ reviews } />
-      </LazyLoad>
-      <LazyLoad>
-        <YourOutfit
-          productId={ productId }
-          reviews={ reviews } />
-      </LazyLoad>
+      <RelatedProducts
+        productId={ productId }
+        handleClick={ setNewId }
+        mainProductDetails={ productDetails }
+        reviews={ reviews } />
+      <YourOutfit
+        productId={ productId }
+        reviews={ reviews } />
       <LazyLoad>
         <QuestionsList
           productId={ productId }
