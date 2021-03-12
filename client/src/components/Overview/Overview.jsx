@@ -28,6 +28,8 @@ var Overview = ({ productId, productDetails, getStyles, styles, reviews }) => {
     getStyle(style);
   };
 
+  console.log(productDetails);
+
   useEffect(() => {
     fetchProduct(productId);
   }, [productId, style]);
@@ -48,6 +50,19 @@ var Overview = ({ productId, productDetails, getStyles, styles, reviews }) => {
             style={ style }
             styles={ styles }
             setStyle={ setStyle }/>
+        </div>
+      </div>
+      <hr></hr>
+      <div className="row">
+        <div className="col-8">
+          <h3>{ productDetails.slogan }</h3>
+          { productDetails.description }
+        </div>
+        <div className="col-4 feature-div">
+          {productDetails.features ? productDetails.features.map((feature, index) => {
+            console.log(feature);
+            return (<div className="feature-span">&#10004; {feature.feature}: {feature.value}</div>);
+          }) : ''}
         </div>
       </div>
     </div>

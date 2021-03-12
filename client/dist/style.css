@@ -110,10 +110,6 @@
   margin-right: 50px;
 }
 
-.carousel-item img:hover {
-
-}
-
 
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
 
@@ -133,7 +129,8 @@
 }
 
 .style-thumb {
-  max-height: 70px;
+  width: 45px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -144,7 +141,7 @@
 .thumbNav {
   position: absolute;
   font-size: large;
-  left: 55px;
+  left: 50px;
   z-index: 2;
   text-align: center;
 }
@@ -158,15 +155,15 @@
 /* Product Info Styles  =====================================================*/
 .styles-thumb {
   height: auto;
-  width: 65px;
+  width: 55px;
   overflow: hidden;
   margin: 0 auto;
 }
 
 .style-title {
   font-size: larger;
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .style-title, .product-info-align {
@@ -178,8 +175,8 @@
 }
 
 .img-cont {
-  height: 65px;
-  width: 65px;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
   overflow: hidden;
   background-color: black;
@@ -198,6 +195,79 @@
 .new-price {
   color: black;
   text-decoration: none;
+}
+
+.badge {
+  position: absolute;
+  z-index: 5;
+}
+
+.read-all-reviews {
+  font-size: small;
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
+.read-all-reviews:hover {
+  color: red;
+}
+
+.product-buttons {
+  display: inline-block;
+  margin: 10px;
+}
+
+.add-to-cart {
+  width: 63%;
+}
+
+.button-text {
+  margin-right: 90px;
+}
+
+.size-but {
+  min-width: 35%;
+}
+
+.feature-div {
+  /* border: none; */
+  border-width: 1px;
+  border-style: solid;
+  border-right: rgba(128, 128, 128, 0.419);
+  border-top: rgba(128, 128, 128, 0.419);
+  border-bottom: rgba(128, 128, 128, 0.419);
+}
+
+.feature-span {
+  line-height: 30px;
+}
+
+/* Font Awesome Styles  =====================================================*/
+
+.fa {
+  padding: 15px;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa-facebook {
+  color: #3B5998;
+}
+
+.fa-twitter {
+  color: #55ACEE;
+}
+
+.fa-pinterest {
+  color: #cb2027;
+}
+
+.fa-instagram {
+  color: #125688;
 }
 
 /* Related Products cards  =====================================================*/
