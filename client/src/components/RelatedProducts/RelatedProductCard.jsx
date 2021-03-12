@@ -67,9 +67,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
       delete oldOutfit[relatedProductId];
     }
     localStorage.setItem('yourOutfit', JSON.stringify(oldOutfit));
-    $(e.target.parentNode.parentNode.parentNode).css('border', 'none');
-    $(e.target.parentNode.parentNode.parentNode).css('position', 'fixed');
-    $(e.target.parentNode.parentNode).remove();
+    $(e.target.parentNode.parentNode.parentNode).hide();
   };
 
   const comparisonTable = {};
@@ -126,7 +124,8 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
         }
         <img
           onClick={ related ? handleClick : null }
-          data-id={ relatedProductId } style={{ position: 'relative' }}
+          data-id={ relatedProductId }
+          style={{ position: 'relative' }}
           className="card-image-top"
           src={productImage.url ? productImage.url : 'https://i.kym-cdn.com/photos/images/facebook/001/415/781/1ca.jpg'}
           alt={productDetails.name} />
