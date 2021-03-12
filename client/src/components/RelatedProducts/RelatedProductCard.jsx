@@ -76,10 +76,10 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
     <div>
       <div className="image-div">
         {related ?
-          <Button variant="outline-dark" onClick={handleShow} style={{ background: 'none', color: '#FCCD04', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
+          <Button variant="outline-dark" onClick={ handleShow } style={{ background: 'none', color: '#FCCD04', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
           : <Button onClick={ removeFromYourOutfit } style={{ background: 'none', color: '#17E9E0', border: 'none', position: 'absolute', zIndex: '1' }}>X</Button>}
         {related ?
-          <Modal show={show} onHide={handleClose} centered>
+          <Modal show={ show } onHide={ handleClose } centered>
             <Modal.Body>
               <Modal.Title><h6>Comparing</h6></Modal.Title>
               <table className="relatedProductsTable" style={{ tableLayout: 'fixed', width: '100%' }} >
@@ -99,7 +99,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
                         <td style={{ textAlign: 'center' }} >{ feature.feature }</td>
                         { productDetails.features.map(relatedProduct => {
                           if (relatedProduct.feature === feature.feature) {
-                            return <td style={{ textAlign: 'right' }}>{relatedProduct.value}</td>;
+                            return <td style={{ textAlign: 'right' }}>{ relatedProduct.value }</td>;
                           }
                         })}
                       </tr>
@@ -110,8 +110,8 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
                       return (
                         <tr>
                           <td></td>
-                          <td style={{ textAlign: 'center' }} >{feature.feature}</td>
-                          <td style={{ textAlign: 'right' }} >{feature.value}</td>
+                          <td style={{ textAlign: 'center' }} >{ feature.feature }</td>
+                          <td style={{ textAlign: 'right' }} >{ feature.value }</td>
                         </tr>
                       );
                     }

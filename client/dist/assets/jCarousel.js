@@ -1153,6 +1153,7 @@
                 carousel = this.carousel(),
                 active;
 
+
             if (parsed.relative) {
                 active = carousel
                     .jcarousel(parsed.target > 0 ? 'hasNext' : 'hasPrev');
