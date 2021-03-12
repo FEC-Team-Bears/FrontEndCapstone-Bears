@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import RelatedProductCard from '../RelatedProducts/RelatedProductCard.jsx';
 
@@ -21,11 +20,12 @@ const YourOutfit = ({ productId, reviews }) => {
     $('.jcarousel').jcarousel();
   });
 
+
   return (
     <div className="wrapper">
       <div className="jcarousel">
         <ul>
-          <li className='outfit-card'><Button className="addToYourOutfit" onClick={ updateYourOutfit } >+</Button></li>
+          <li onClick={ updateYourOutfit } className='outfit-card' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><Button className="addToYourOutfit" style={{ background: 'none', border: 'none', color: '#A64AC9'}} >+</Button></li>
           {localStorage.getItem('yourOutfit') ? Object.keys(JSON.parse(localStorage.getItem('yourOutfit'))).map(yourOutfitId =>
             <li key={ yourOutfitId } className='outfit-card' >
               <RelatedProductCard relatedProductId={ yourOutfitId } reviews={ reviews } />
