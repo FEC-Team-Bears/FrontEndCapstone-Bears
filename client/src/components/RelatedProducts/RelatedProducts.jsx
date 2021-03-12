@@ -52,8 +52,8 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails, reviews }
           })}
         </ul>
       </div>
-      <a href="#" className="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
-      <a href="#" className="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
+      <a href="#" className="jcarousel-control-prev disabled" data-jcarouselcontrol="true">‹</a>
+      <a href="#" className="jcarousel-control-next disabled" data-jcarouselcontrol="true">›</a>
     </div>
   );
 };
