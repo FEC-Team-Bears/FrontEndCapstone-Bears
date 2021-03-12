@@ -63,6 +63,7 @@ const AddToCart = ({ styles, style }) => {
         <Dropdown.Item
           value={ i + 1 }
           onClick={ quantityHandler }
+          key={ i + 1 }
           data-ind={ i + 1 }>{i + 1}
         </Dropdown.Item>
       );
@@ -84,7 +85,7 @@ const AddToCart = ({ styles, style }) => {
     <div className="main-cart">
       <DropdownButton id="dropdown-basic-button" className="product-buttons size-but" title={ size }>
         {skus ? sizes.map((option, index) => {
-          return (<Dropdown.Item onClick={ sizeHandler } style={{width: '100%' }} value={ option[0] } data-ind={ index } >{ option[0] }</Dropdown.Item>);
+          return (<Dropdown.Item onClick={ sizeHandler } key={ index } style={{width: '100%' }} value={ option[0] } data-ind={ index } >{ option[0] }</Dropdown.Item>);
         }) : ''}
       </DropdownButton>
       <DropdownButton
