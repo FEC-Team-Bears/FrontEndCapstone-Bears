@@ -52,9 +52,8 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails, reviews }
           })}
         </ul>
       </div>
-      {isElementInViewport}
       <a href="#" className="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
-      <a href="#" className="jcarousel-control-next" data-jcarouselcontrol="true">{console.log('Active: ', $('.inactive'))}›</a>
+      <a href="#" className="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
     </div>
   );
 };
