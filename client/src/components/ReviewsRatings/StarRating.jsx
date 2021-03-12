@@ -56,7 +56,7 @@ const StarRating = ({ review, reviews }) => {
       {stars.map((item, i) => {
         return (
           <div className="single-star-container" key={i}>
-            <div className="single-star-fill" style={{ 'width': `${Number(item * 16.5)}px` }}>
+            <div className="single-star-fill" style={{ 'width': `${Number(item * 17)}px` }}>
               <img className="single-star-outline" src="../dist/assets/images/star.png"></img>
             </div>
           </div>
