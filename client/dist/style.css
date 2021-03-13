@@ -427,3 +427,18 @@
   font-size: 30px;
 }
 
+/* ----- Rating & Reviews Coloring ----- */
+.review-button {
+  background: #17e9df;
+  border: 1px solid #17E9E0;
+
+}
+
+.review-button:hover {
+  background-color: #17E9E0;
+}
+
+.review-button:focus {
+  background-color: #17E9E0;
+
+}

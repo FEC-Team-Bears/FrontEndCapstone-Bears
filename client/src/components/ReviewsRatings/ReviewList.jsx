@@ -66,6 +66,11 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
     setSortObject(obj);
   };
 
+  $('.review-button').on('mousedown', function() {
+    $('.review-button').css('backgroundColor', '#17E9E0');
+    $('.review-button').css('box-shadow', '#17E9E0');
+  });
+
 
   useEffect(() => {
     sortByDate();
@@ -101,9 +106,9 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
           setShow={setShow}
           loadReviews={loadReviews}/>
       </div>
-      <Button id="more-reviews-button" variant="outline-dark" onClick={updateCount}>More Reviews</Button>
-      <Button id="less-reviews-button" variant="outline-dark" onClick={revertCount}>Less Reviews ^</Button>
-      <Button id="add-reviews-button" variant="outline-dark" onClick={handleShow}>Add a Review +</Button>
+      <Button id="more-reviews-button" className="review-button" variant="info" onClick={updateCount}>More Reviews</Button>
+      <Button id="less-reviews-button" className="review-button" variant="info" onClick={revertCount}>Less Reviews ^</Button>
+      <Button id="add-reviews-button" className="review-button" variant="info" onClick={handleShow}>Add a Review +</Button>
     </div>
   );
 };
