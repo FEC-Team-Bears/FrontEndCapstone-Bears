@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Button } from 'react-bootstrap';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import Question from './Question.jsx';
@@ -12,6 +13,7 @@ const QuestionsList = ({ productId, searchValue }) => {
   const [product, setProduct] = useState('');
   const [filteredQ, setFilteredQ] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
+  const [show, setShow] = useState(false);
 
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
@@ -50,6 +52,8 @@ const QuestionsList = ({ productId, searchValue }) => {
     const allQuestions = newQuestion.concat(questions);
     setQuestions(allQuestions);
   };
+  const handleShow = () => { setShow(true); };
+  const handleClose = () => { setShow(false); };
 
   useEffect(() => {
     getAllQuestions(1, []);
@@ -81,7 +85,7 @@ const QuestionsList = ({ productId, searchValue }) => {
   }, [searchValue]);
 
   return (
-    <div>
+    <Container className='questions-list-container'>
       { isFiltered && filteredQ.length
         ? filteredQ.slice(0, count).map(question => (
           <Question
@@ -103,19 +107,25 @@ const QuestionsList = ({ productId, searchValue }) => {
       { isFiltered
         ? filteredQ.length
           ? count < filteredQ.length && filteredQ.length > 2
-            ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
+            ? <Button variant='secondary' onClick={ showMoreQuestions }>More Answered Questions</Button>
             : null
           : null
         : questions.length > 2 && remainingQ
-          ? <button onClick={ showMoreQuestions }>More Answered Questions</button>
+          ? <Button variant='secondary' onClick={ showMoreQuestions }>More Answered Questions</Button>
           : null
+      }
+      {' '}
+      {!questions.length
+        ? <Button onClick={ handleShow }>Submit a New Question</Button>
+        : <Button onClick={ handleShow }>Add a Question + </Button>
       }
       <QuestionForm
         productId={ productId }
-        length={ questions.length }
+        show={ show }
         productName={ product }
-        handleNewQuestion={ handleNewQuestion } />
-    </div>
+        handleNewQuestion={ handleNewQuestion }
+        handleClose={ handleClose } />
+    </Container>
   );
 };
 

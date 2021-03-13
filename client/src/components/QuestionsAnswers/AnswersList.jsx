@@ -56,14 +56,17 @@ const AnswersList = ({ questionId, newAnswer }) => {
   }, []);
 
   return (
-    <div>
-      {allAnswers.slice(0, count).map(answer => (
-        <Answer key={ answer.answer_id } answer={ answer } />
-      ))}
+    <div className='answers-list-container'>
+      {allAnswers.length
+        ? allAnswers.slice(0, count).map(answer => (
+          <Answer key={ answer.answer_id } answer={ answer } />
+        ))
+        : <div className='no-answers'><em>No answers have been submitted for this question.</em></div>
+      }
       {!show && allAnswers.length > 2
-        ? <button onClick={ showAnswers }>Load More Answers</button>
+        ? <a className='toggle-show-answers' onClick={ showAnswers }>Load More Answers</a>
         : (show && allAnswers.length > 2
-          ? <button onClick={ showAnswers }>Collapse Answers</button>
+          ? <a className='toggle-show-answers' onClick={ showAnswers }>Collapse Answers</a>
           : null)
       }
     </div>

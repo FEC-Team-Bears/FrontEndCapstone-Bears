@@ -12,7 +12,8 @@ const QuestionsAnswers = ({ productId }) => {
   };
 
   return (
-    <div>
+    <div className='questions-answers-container'>
+      <h3 id='title'>Questions &amp; Answers</h3>
       <SearchQuestions handleSearch={ handleSearch } />
       <QuestionsList productId={ productId } searchValue={ searchValue }/>
     </div>

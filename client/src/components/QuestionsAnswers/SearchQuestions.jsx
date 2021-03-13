@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const SearchQuestions = ({ handleSearch }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -11,16 +12,15 @@ const SearchQuestions = ({ handleSearch }) => {
     handleSearch(searchValue);
   }, [searchValue]);
 
-
   return (
-    <div>
-      <label htmlFor='search'></label>
+    <Container className='search-questions-container'>
       <input
+        className='questions-search-bar'
         type='text'
-        placeholder='Have a question? Search for answers…'
+        placeholder='  Have a question? Search for answers…'
         value={ searchValue }
-        onChange = { handleSearchInput } />
-    </div>
+        onChange = { handleSearchInput } /><button className='search-icon'><i className="fa fa-search"></i></button>
+    </Container>
   );
 };
 
