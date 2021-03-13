@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import axios from 'axios';
-import Answer from './Answer.jsx';
 import API_KEY from '/config.js';
+import Answer from './Answer.jsx';
 
-const AnswersList = ({ questionId, newAnswer }) => {
-  const [count, setCount] = useState(2);
-  const [show, setShow] = useState(false);
+const AnswersList = ({ questionId, newAnswer, count }) => {
   const [allAnswers, setAllAnswers] = useState([]);
 
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
-
-  const showAnswers = () => {
-    if (!show) {
-      setCount(allAnswers.length);
-      setShow(true);
-    } else {
-      setCount(2);
-      setShow(false);
-    }
-  };
 
   const getAnswers = () => {
     axios
@@ -56,17 +45,14 @@ const AnswersList = ({ questionId, newAnswer }) => {
   }, []);
 
   return (
-    <div>
-      {allAnswers.slice(0, count).map(answer => (
-        <Answer key={ answer.answer_id } answer={ answer } />
-      ))}
-      {!show && allAnswers.length > 2
-        ? <button onClick={ showAnswers }>Load More Answers</button>
-        : (show && allAnswers.length > 2
-          ? <button onClick={ showAnswers }>Collapse Answers</button>
-          : null)
+    <Container className='answers-container'>
+      { allAnswers.length
+        ? allAnswers.slice(0, count).map(answer => (
+          <Answer key={ answer.answer_id } answer={ answer } />
+        ))
+        : <div className='no-answers body-color'><em>No answers have been submitted for this question.</em></div>
       }
-    </div>
+    </Container>
   );
 };
 

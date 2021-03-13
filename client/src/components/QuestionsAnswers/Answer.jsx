@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
 import API_KEY from '/config.js';
+
+import AnswerPhotos from './AnswerPhotos.jsx';
 
 const Answer = ({ answer }) => {
   const [count, setCount] = useState(answer.helpfulness);
@@ -13,12 +15,6 @@ const Answer = ({ answer }) => {
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
 
-  const handleShow = () => {
-    setShow(true);
-  };
-  const handleClose = () => {
-    setShow(false);
-  };
   const handleHelpful = () => {
     helpful
       ? (increaseHelpfulness(answer.answer_id), setHelpful(false))
@@ -65,40 +61,25 @@ const Answer = ({ answer }) => {
   };
 
   return (
-    <div>
-      <div>{ answer.body }</div>
-      { answer.answerer_name === 'Seller'
-        ? <div>by <b>{ answer.answerer_name }</b>, { moment(answer.date).format('MMMM D, YYYY') }</div>
-        : <div>by { answer.answerer_name }, { moment(answer.date).format('MMMM D, YYYY') }</div>
-      }
-      <div onClick={ handleHelpful }>Helpful? <a className='helpful'><u>Yes</u></a>({ count })</div>
-      <div className='report' onClick={handleReport}><u>Report</u></div>
+    <Container className='answer-container'>
+      <Row className='answer-body body-color'>
+        <Col><h5>{ answer.body }</h5></Col>
+      </Row>
+      <Row className='answer-details'>
+        { answer.answerer_name === 'Seller'
+          ? <Col md="auto" className='answer-username'>by <b>{ answer.answerer_name }</b>, { moment(answer.date).format('MMMM D, YYYY') }</Col>
+          : <Col md="auto" className='answer-username'>by { answer.answerer_name }, { moment(answer.date).format('MMMM D, YYYY') }</Col>
+        }
+        <Col md="auto" className='answer-helpful clickable-color'>Helpful? <a className='helpful-text' onClick={ handleHelpful }><u>Yes</u> </a>({ count })</Col>
+        <Col md="auto" className='answer-report clickable-color'><a onClick={ handleReport }><u>Report</u></a></Col>
+      </Row>
       { answer.photos.length !== 0
         ? answer.photos.map(photo => (
-          <div key={ photo.id } className='answer-photos'>
-            <img
-              onClick={ handleShow }
-              src={ photo.url }
-              width={58}
-              height={80}>
-            </img>
-            <Modal show={ show } onHide={ handleClose }>
-              <Modal.Body>
-                <img
-                  src={ photo.url }
-                  width={465}
-                  height={700}>
-                </img>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={ handleClose }>Close</Button>
-              </Modal.Footer>
-            </Modal>
-          </div>
+          <AnswerPhotos key={ photo.id } photo={ photo } />
         ))
         : null
       }
-    </div>
+    </Container>
   );
 };
 
