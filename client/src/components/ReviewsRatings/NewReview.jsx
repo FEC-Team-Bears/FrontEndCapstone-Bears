@@ -64,10 +64,10 @@ const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, sh
     <div>
       <Modal show={ show } onHide={ handleClose } centered>
         <Modal.Header>
-          <Modal.Title>Write Your Review</Modal.Title>
+          <Modal.Title className="header-color">Write Your Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form className="body-color">
             <Form.Label>What is your nickname? </Form.Label>
             <Form.Control value={ name } type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value); }} />
             <br />
@@ -188,10 +188,10 @@ const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, sh
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" className="review-button-yellow" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => {
+          <Button variant="primary" className="review-button-teal" onClick={() => {
             axiosPostNewReview();
             handleClose();
           }}>
