@@ -23,6 +23,7 @@ const YourOutfit = ({ productId, reviews }) => {
 
   return (
     <div className="wrapper">
+      <h3 className='john-header header-color'>Your Outfit</h3>
       <div className="jcarousel">
         <ul>
           <li onClick={ updateYourOutfit } className='outfit-card' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} ><Button className="addToYourOutfit" style={{ background: 'none', border: 'none', color: '#A64AC9'}} >+</Button></li>
