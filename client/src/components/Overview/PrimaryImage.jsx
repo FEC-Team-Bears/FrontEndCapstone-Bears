@@ -206,7 +206,7 @@ const PrimaryImage = ({ product, style }) => {
         currentThumbs={ currentThumbs }
         makeActive={ makeActive }
         activeThumb={ activeThumb }/>
-      <span onClick={ imageShrink } className={imageExpanded ? 'minimize header-color' : 'hidden minimize header-color'}>[default view]</span>
+      <span onClick={ imageShrink } className={imageExpanded ? 'minimize' : 'hidden minimize'}>[default view]</span>
       <div id="carouselExampleIndicators" className="carousel slide" data-wrap="false" data-ride="false" data-interval="false">
         <ol className="carousel-indicators">
           {photoArr.map((photo, index) => {
