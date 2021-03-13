@@ -131,7 +131,7 @@ const QuestionForm = ({ productId, show, productName, handleNewQuestion, handleC
               </InputGroup>
               <Form.Text>For authentication reasons, you will not be emailed.</Form.Text>
             </Form.Group>
-            <Button variant='danger' onClick={ handleFormClose }>Close</Button>{' '}
+            <Button variant='warning' className='review-button-yellow' onClick={ handleFormClose }>Close</Button>{' '}
             <Button variant='primary' type='submit'>Submit</Button>
           </Form>
         </Modal.Body>
