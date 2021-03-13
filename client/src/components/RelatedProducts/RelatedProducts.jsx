@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import API_KEY from '../../../../config.js';
+import API_KEY from '/config.js';
 import RelatedProductCard from './RelatedProductCard.jsx';
 
-const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
+const RelatedProducts = ({ productId, handleClick, mainProductDetails, reviews }) => {
 
   const [relatedProducts, getRelatedProducts] = useState([]);
 
@@ -19,8 +19,8 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
           'Authorization': API_KEY
         }
       })
-      .then((products) => getRelatedProducts(products.data))
-      .catch((error) => console.error(error));
+      .then(products => getRelatedProducts(products.data))
+      .catch(error => console.error(error));
   };
 
   const relatedCarousel = $(function() {
@@ -38,10 +38,16 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails }) => {
       <div className="jcarousel">
         <ul>
           {relatedProducts.map(relatedProductId => {
-            // eslint-disable-next-line eqeqeq
             if (Number(relatedProductId) !== productId && filter[relatedProductId] === undefined) {
               filter[relatedProductId] = 1;
-              return <li key={ relatedProductId }><RelatedProductCard relatedProductId={ relatedProductId } handleClick={ handleClick } mainProductDetails={ mainProductDetails } /></li>;
+              return <li key={ relatedProductId }>
+                <RelatedProductCard
+                  relatedProductId={ relatedProductId }
+                  handleClick={ handleClick }
+                  mainProductDetails={ mainProductDetails }
+                  reviews={ reviews }
+                  related={ true } />
+              </li>;
             }
           })}
         </ul>

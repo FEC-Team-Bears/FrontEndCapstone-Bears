@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LazyLoad from 'react-lazy-load';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import Overview from './Overview/Overview.jsx';
@@ -12,34 +13,24 @@ const App = (props) => {
   const [productId, changeProductId] = useState(21111);
   const [productImage, getProductImage] = useState();
   const [reviews, getAllReviews] = useState([]);
+  const [styles, getStyles] = useState([]);
   const [productDetails, getProductDetails] = useState({
-    category: null,
-    name: null,
-    // eslint-disable-next-line camelcase
-    default_price: null,
-    features: [{}]
+    'category': null,
+    'name': null,
+    'default_price': null,
+    'features': [{}]
   });
 
-  const axiosGetProductId = () => {
+  const axiosGetProductInformation = () => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
       headers: {
         'Authorization': API_KEY
       }
     })
-      .then(product => changeProductId(product.data.id))
-      .catch(error => console.error(error));
-  };
-
-
-
-  const axiosGetProductDetails = () => {
-    axios
-      .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productId}`, {
-        headers: {
-          'Authorization': API_KEY
-        }
+      .then(product => {
+        changeProductId(product.data.id);
+        getProductDetails(product.data);
       })
-      .then(product => getProductDetails(product.data))
       .catch(error => console.error(error));
   };
 
@@ -50,7 +41,10 @@ const App = (props) => {
           'Authorization': API_KEY
         }
       })
-      .then(product => getProductImage(product.data.results[0].photos[0]))
+      .then((product) => {
+        getStyles(product.data.results);
+        getProductImage(product.data.results[0].photos[0]);
+      })
       .catch(error => console.error(error));
   };
 
@@ -72,9 +66,10 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    axiosGetProductId();
-    axiosGetProductDetails();
+    axiosGetProductInformation();
+    // axiosGetProductDetails();
     axiosGetAllReviews();
+    axiosGetProductImage();
   }, [productId]);
 
   // Function needed for resetting
@@ -85,13 +80,35 @@ const App = (props) => {
   return (
     <div>
       <div className="row justify-content-center">
-        <div className="top_bar col-8">Top Bar Goes Here</div>
+        <div className="top_bar col-8"></div>
       </div>
-      <Overview productId={ productId }/>
-      <RelatedProducts productId={ productId } handleClick={ setNewId } mainProductDetails={ productDetails } />
-      <YourOutfit />
-      <QuestionsList productId={ productId } />
-      <RatingsReviews productId={ productId } getAllReviews={getAllReviews} reviews={reviews} loadReviews={axiosGetAllReviews}/>
+      <Overview
+        styles={ styles }
+        getStyles={ getStyles }
+        reviews={ reviews }
+        productId={ productId }
+        productDetails={ productDetails }/>
+      <RelatedProducts
+        productId={ productId }
+        handleClick={ setNewId }
+        mainProductDetails={ productDetails }
+        reviews={ reviews } />
+      <YourOutfit
+        productId={ productId }
+        reviews={ reviews } />
+      <LazyLoad>
+        <QuestionsList
+          productId={ productId }
+          productImage={ productImage }
+          productDetails={ productDetails } />
+      </LazyLoad>
+      <LazyLoad>
+        <RatingsReviews
+          productId={ productId }
+          changeId={ changeProductId }
+          reviews={reviews}
+          changeReviews={axiosGetAllReviews} />
+      </LazyLoad>
     </div>
   );
 };
