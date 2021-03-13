@@ -22,7 +22,7 @@ const StyleSelector = ({ styles, setStyle }) => {
 
   return (
     <div>
-      <h3 className="style-title body-color">
+      <h3 className="style-title">
       Style &#8250; {styles[styleThumb] ? styles[styleThumb].name : 'none'}
       </h3>
       <table>

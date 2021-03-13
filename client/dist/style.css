@@ -1,5 +1,6 @@
 @font-face { font-family: poppy; src: url('./assets/PoppyAoe-KqA.ttf'); }
 
+
 /* Overview Styling================================ */
 
 .main-pic {
@@ -104,7 +105,7 @@
   border-radius: 50%;
   margin: 10px;
   border-width: 5px;
-  border-color: #17E9E0;
+  border-color: cyan;
   border-style: solid;
 }
 
@@ -136,7 +137,7 @@
 }
 
 .active-thumb {
-  box-shadow: 0 6px 0 #17E9E0;
+  box-shadow: 0 6px 0 cyan;
 }
 
 .thumbNav {
@@ -231,6 +232,7 @@
 }
 
 .feature-div {
+  /* border: none; */
   border-width: 1px;
   border-style: solid;
   border-right: rgba(128, 128, 128, 0.419);
@@ -240,37 +242,19 @@
 
 .feature-span {
   line-height: 30px;
-  color: #443695;
-}
-
-.item-title {
-  font-size: 50px;
-}
-
-/* Reformatting React-Bootstrap Buttons =====================================================*/
-
-.btn-primary {
-  color: #443695;
-  background-color: #2E4C80;
-  background-color: #17E9E0;
-  border-color: #2E4C80;
-  border-color: #17E9E0;
-}
-
-.btn-primary:hover {
-  color: #443695;
-  background-color: #2E4C80;
-  background-color: #FCCD04;
-  border-color: #2E4C80;
-  border-color: #FCCD04;
-}
-
-.btn-primary[disabled] {
-  color: #bbaec0;
-  background-color: #A64AC9;
 }
 
 /* Font Awesome Styles  =====================================================*/
+
+/* .fa {
+  padding: 15px;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+} */
 
 .fa-pd {
   padding: 15px;
@@ -470,7 +454,7 @@
 
 .single-review-container {
   width: 630px;
-  border-bottom: 1px solid #A64AC9;
+  border-bottom: 1px solid #443695;
   margin-bottom: 35px;
 }
 
@@ -479,12 +463,13 @@
 
 }
 
-.single-review-container h3, p{
+.single-review-container h4, p{
   padding-bottom: 10px;
 }
 
-.single-review-container h3 {
+.single-review-container h4 {
   font-size: 24px;
+  font-weight: 700;
 }
 
 .single-review-container p {
@@ -513,6 +498,7 @@
 .review-counter {
   position: relative;
   left: 20px;
+  margin-bottom: 20px;
 }
 
 .review-date-container {
@@ -555,6 +541,11 @@
   margin-right: 15px;
 }
 
+.rating-star-review {
+  position: relative;
+  top: 100px;
+}
+
 .recommend-percent {
   margin-top: 10px;
   font-size: 14px;
@@ -578,11 +569,13 @@
   height: 9px;
 }
 
-/* Document Styling  =====================================================*/
-
-
 .rating-characteristic {
   margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.rating-char-container {
+  margin-bottom: 5px;
 }
 
 .rating-grey-slider-container {
@@ -609,6 +602,7 @@
 }
 
 .rating-triangle {
+  color: #443695;
   position: relative;
   bottom: 21px;
   font-size: 30px;
@@ -618,10 +612,15 @@
   margin-left: 20px;
 }
 
+
 /* ----- Rating & Reviews Coloring ----- */
 .progress-bar {
   background-color: #FCCD04;
   color: white;
+}
+
+.rating-star-color {
+  color: #443695;
 }
 
 .review-button-yellow {
@@ -637,6 +636,7 @@
 }
 
 .review-button-yellow:hover {
+  color: white;
   background-color: #fcce04;
   border: 1px solid #FCCD04;
 }
@@ -794,13 +794,19 @@
 
 /* ------- Default Coloring Scheme -------- */
 
-.header-color {
-  color: #A64AC9;
-}
 
-h3.header-color{
+
+
+
+
+h3.header-color {
   color: #A64AC9;
   font-family: poppy;
+}
+
+
+.header-color {
+  color: #A64AC9;
 }
 
 
@@ -819,7 +825,6 @@ color: #443695;
 .clickable-color:hover {
   color: #FCCD04;
 }
-
 
 
 
