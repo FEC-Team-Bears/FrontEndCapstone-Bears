@@ -247,6 +247,10 @@
   content: '★';
 }
 
+.john-header {
+  margin-left: 45px;
+}
+
 
 /* Raings and Reviews components  =====================================================*/
 .ratings-reviews-container {

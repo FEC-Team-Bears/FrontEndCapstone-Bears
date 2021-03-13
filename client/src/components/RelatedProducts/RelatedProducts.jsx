@@ -35,7 +35,7 @@ const RelatedProducts = ({ productId, handleClick, mainProductDetails, reviews }
 
   return (
     <div className="wrapper">
-      <h3>Related Products</h3>
+      <h3 className='john-header'>Related Products</h3>
       <div className="jcarousel">
         <ul>
           {relatedProducts.map(relatedProductId => {
