@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Modal, Button, Form, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
 import API_KEY from '/config.js';
-import { Modal, Button, Form, InputGroup } from 'react-bootstrap';
 
 const QuestionForm = ({ productId, show, productName, handleNewQuestion, handleClose }) => {
-  // const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [question, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
@@ -68,7 +67,7 @@ const QuestionForm = ({ productId, show, productName, handleNewQuestion, handleC
       e.stopPropagation();
     } else {
       e.preventDefault();
-      setShow(false);
+      handleClose();
       submitQuestion();
     }
     setValidated(true);

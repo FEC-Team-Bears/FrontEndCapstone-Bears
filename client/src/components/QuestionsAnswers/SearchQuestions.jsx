@@ -17,9 +17,10 @@ const SearchQuestions = ({ handleSearch }) => {
       <input
         className='questions-search-bar'
         type='text'
-        placeholder='  Have a question? Search for answers…'
+        placeholder=' Have a question? Search for answers…'
         value={ searchValue }
-        onChange = { handleSearchInput } /><button className='search-icon'><i className="fa fa-search"></i></button>
+        onChange = { handleSearchInput } />
+      <button className='search-icon'><i className="fa fa-search"></i></button>
     </Container>
   );
 };

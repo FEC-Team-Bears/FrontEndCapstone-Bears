@@ -14,6 +14,7 @@ const QuestionsList = ({ productId, searchValue }) => {
   const [filteredQ, setFilteredQ] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
   const [show, setShow] = useState(false);
+  const [showLess, setShowLess] = useState(false);
 
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
@@ -47,6 +48,12 @@ const QuestionsList = ({ productId, searchValue }) => {
 
   const showMoreQuestions = () => {
     setCount(count + 2);
+    setShowLess(true);
+  };
+  const showLessQuestions = () => {
+    setCount(2);
+    setShowLess(false);
+    setRemainingQ(true);
   };
   const handleNewQuestion = (newQuestion) => {
     const allQuestions = newQuestion.concat(questions);
@@ -86,38 +93,47 @@ const QuestionsList = ({ productId, searchValue }) => {
 
   return (
     <Container className='questions-list-container'>
-      { isFiltered && filteredQ.length
-        ? filteredQ.slice(0, count).map(question => (
-          <Question
-            key={ question.question_id }
-            question={ question }
-            productName={ product } />
-        ))
-        : isFiltered && !filteredQ.length
-          ? <div>No questions with that search criteria can be found.</div>
-          : questions.length && !filteredQ.length && !isFiltered
-            ? questions.slice(0, count).map(question => (
-              <Question
-                key={ question.question_id }
-                question={ question }
-                productName={ product } />
-            ))
-            : null
-      }
+      <Container className='questions-container'>
+        { isFiltered && filteredQ.length
+          ? filteredQ.slice(0, count).map(question => (
+            <Question
+              key={ question.question_id }
+              question={ question }
+              productName={ product }
+              answers={ question.answers } />
+          ))
+          : isFiltered && !filteredQ.length
+            ? <div>No questions with that search criteria can be found.</div>
+            : questions.length && !filteredQ.length && !isFiltered
+              ? questions.slice(0, count).map(question => (
+                <Question
+                  key={ question.question_id }
+                  question={ question }
+                  productName={ product }
+                  answers={ question.answers } />
+              ))
+              : null
+        }
+      </Container>
       { isFiltered
         ? filteredQ.length
           ? count < filteredQ.length && filteredQ.length > 2
-            ? <Button variant='secondary' onClick={ showMoreQuestions }>More Answered Questions</Button>
+            ? <Button className='toggle-show-questions' onClick={ showMoreQuestions }>More Answered Questions</Button>
             : null
           : null
         : questions.length > 2 && remainingQ
-          ? <Button variant='secondary' onClick={ showMoreQuestions }>More Answered Questions</Button>
+          ? <Button className='toggle-show-questions' onClick={ showMoreQuestions }>More Answered Questions</Button>
           : null
       }
       {' '}
-      {!questions.length
-        ? <Button onClick={ handleShow }>Submit a New Question</Button>
-        : <Button onClick={ handleShow }>Add a Question + </Button>
+      { showLess
+        ? <Button className='toggle-show-questions' onClick={ showLessQuestions }>Less Answered Questions</Button>
+        : null
+      }
+      {' '}
+      { !questions.length
+        ? <Button className='add-question' onClick={ handleShow }>Submit a New Question</Button>
+        : <Button className='add-question' onClick={ handleShow }>Add a Question + </Button>
       }
       <QuestionForm
         productId={ productId }

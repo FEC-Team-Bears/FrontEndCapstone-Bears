@@ -15,12 +15,6 @@ const Answer = ({ answer }) => {
   axios.defaults.baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hratx';
   axios.defaults.headers.common['Authorization'] = API_KEY;
 
-  // const handleShow = () => {
-  //   setShow(true);
-  // };
-  // const handleClose = () => {
-  //   setShow(false);
-  // };
   const handleHelpful = () => {
     helpful
       ? (increaseHelpfulness(answer.answer_id), setHelpful(false))
@@ -68,7 +62,7 @@ const Answer = ({ answer }) => {
 
   return (
     <Container className='answer-container'>
-      <Row className='answer-body'>
+      <Row className='answer-body body-color'>
         <Col>{ answer.body }</Col>
       </Row>
       <Row className='answer-details'>
@@ -76,8 +70,8 @@ const Answer = ({ answer }) => {
           ? <Col md="auto" className='answer-username'>by <b>{ answer.answerer_name }</b>, { moment(answer.date).format('MMMM D, YYYY') }</Col>
           : <Col md="auto" className='answer-username'>by { answer.answerer_name }, { moment(answer.date).format('MMMM D, YYYY') }</Col>
         }
-        <Col md="auto" className='answer-helpful'>Helpful? <a className='helpful-text' onClick={ handleHelpful }><u>Yes</u> </a>({ count })</Col>
-        <Col md="auto" className='answer-report'><a onClick={ handleReport }><u>Report</u></a></Col>
+        <Col md="auto" className='answer-helpful clickable-color'>Helpful? <a className='helpful-text' onClick={ handleHelpful }><u>Yes</u> </a>({ count })</Col>
+        <Col md="auto" className='answer-report clickable-color'><a onClick={ handleReport }><u>Report</u></a></Col>
       </Row>
       { answer.photos.length !== 0
         ? answer.photos.map(photo => (
