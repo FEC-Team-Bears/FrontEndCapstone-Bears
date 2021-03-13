@@ -6,8 +6,8 @@ import axios from 'axios';
 import API_KEY from '/config.js';
 
 const Review = ({ review }) => {
-
   const [recommendCount, setRecommendCount] = useState(review.helpfulness);
+  const [userThoughtHelpful, setUserThoughtHelpful] = useState(false);
 
   const axiosUpdateRecommended = () => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${review.review_id}/helpful`, { helpfulness: 0 }, {
@@ -16,7 +16,7 @@ const Review = ({ review }) => {
       },
     })
       .then(reviews => {
-        setRecommendCount(recommendCount + 1);
+        !userThoughtHelpful ? setRecommendCount(recommendCount + 1) : null;
       })
       .catch((error) => console.error(error));
   };
@@ -38,7 +38,11 @@ const Review = ({ review }) => {
       {review.photos.map((photo, index) => {
         return <ReviewPhotos key={index} photo={photo} />;
       })}
-      <p>Helpful? <span onClick={() => axiosUpdateRecommended()}>Yes</span> ({recommendCount})</p>
+      <p>Helpful? <span onClick={() => {
+        setUserThoughtHelpful(true);
+        axiosUpdateRecommended();
+      }
+      }>Yes</span> ({recommendCount})</p>
     </div>
   );
 };

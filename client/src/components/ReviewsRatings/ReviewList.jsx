@@ -9,7 +9,6 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
   const [reviewsByDate, setReviewsByDate] = useState([]);
   const [sortObject, setSortObject] = useState({1: reviews});
   const [sortCount, setSortCount] = useState(1);
-  console.log(reviews);
   const handleShow = () => setShow(true);
 
   const hideMoreReviewsButton = () => {
@@ -89,8 +88,8 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
             return <Review key={review.review_id} review={review} />;
           })
           : null}
-        {
-          (count >= reviews.length) ? hideMoreReviewsButton() : null}
+
+        {(count >= reviews.length) ? hideMoreReviewsButton() : null}
 
         <NewReview
           productId={productId}
