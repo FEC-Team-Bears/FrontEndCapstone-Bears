@@ -58,7 +58,7 @@ const Question = ({ productId, question, productName, answers }) => {
           <h3>{ question.question_body }</h3>
         </Col>
         <Col md="auto" className='question-helpful clickable-color'>Helpful?
-          <a className='helpful-text' onClick={ handleClick }><u>Yes</u> </a>({ count })
+          <a className='helpful-text' onClick={ handleClick }><u> Yes</u> </a>({ count })
         </Col>
         <Col md="auto" className='add-answer clickable-color' onClick={ handleShow }><u>Add Answer</u></Col>
       </Row>
