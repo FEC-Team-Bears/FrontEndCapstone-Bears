@@ -8,11 +8,3 @@ node_modules
 client/dist/bundle.js
 
 ## API Keys ##
-<<<<<<< HEAD
-config.js
-=======
-config.js
-
-## Diagrams ##
-QAmodule.drawio
->>>>>>> production
