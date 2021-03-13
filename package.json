@@ -51,8 +51,8 @@
     "react-bootstrap": "^1.5.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
-    "react-star-ratings": "^2.3.0",
     "react-lazy-load": "^3.1.13",
+    "react-star-ratings": "^2.3.0",
     "underscore": "^1.12.0"
   }
 }

@@ -54,7 +54,9 @@ const App = (props) => {
         'Authorization': API_KEY
       },
       params: {
-        'product_id': `${productId}`
+        'product_id': `${productId}`,
+        'count': 100,
+        'sort': 'helpful'
       }
     })
       .then(reviews => {
