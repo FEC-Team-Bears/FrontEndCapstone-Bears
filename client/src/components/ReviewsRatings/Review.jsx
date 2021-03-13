@@ -6,8 +6,8 @@ import axios from 'axios';
 import API_KEY from '/config.js';
 
 const Review = ({ review }) => {
-
   const [recommendCount, setRecommendCount] = useState(review.helpfulness);
+  const [userThoughtHelpful, setUserThoughtHelpful] = useState(false);
 
   const axiosUpdateRecommended = () => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/${review.review_id}/helpful`, { helpfulness: 0 }, {
@@ -16,24 +16,33 @@ const Review = ({ review }) => {
       },
     })
       .then(reviews => {
-        setRecommendCount(recommendCount + 1);
+        !userThoughtHelpful ? setRecommendCount(recommendCount + 1) : null;
       })
       .catch((error) => console.error(error));
   };
 
   return (
-    <div>
-      <div>
+    <div className="single-review-container">
+      <div className="review-date-container">
         <StarRating review={review} />
-        {Moment(review.date).format('MMMM DD, YYYY')}
+        <p>{Moment(review.date).format('MMMM DD, YYYY')}</p>
       </div>
-      <h3>{review.summary}</h3>
+      <h3 className="header-color">{review.summary}</h3>
       <p>{review.body}</p>
+      {(review.response !== null && review.response.length > 0) ?
+        <div className="review-response">
+          <h5>Response:</h5>
+          <p>{review.response}</p>
+        </div>
+        : null}
       {review.photos.map((photo, index) => {
         return <ReviewPhotos key={index} photo={photo} />;
       })}
-      <p>Helpful? <a onClick={() => axiosUpdateRecommended()} href="#">Yes</a> ({recommendCount})</p>
-      <hr />
+      <p>Helpful? <span className="clickable-color" onClick={() => {
+        setUserThoughtHelpful(true);
+        axiosUpdateRecommended();
+      }
+      }><span>Yes</span></span> ({recommendCount})</p>
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Review from './review.jsx';
 import { Modal, Button, Form } from 'react-bootstrap';
@@ -7,8 +6,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import API_KEY from '/config.js';
 
-const NewReview = ({ reviews, productId, reviewChar }) => {
-  const [show, setShow] = useState(false);
+const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, show, setShow, loadReviews }) => {
   const [starValue, setStarValue] = useState(0);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -21,7 +19,7 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
   const handleShow = () => setShow(true);
 
   let results = {
-    'product_id': productId,
+    'product_id': Number(productId),
     'rating': starValue,
     'summary': reviewSummary,
     'body': reviewBody,
@@ -42,7 +40,8 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
         },
       })
       .then(response => {
-        console.log(response);
+        loadReviews();
+        setNewReview(newReview + 1);
       })
       .catch(error => {
         console.error(error);
@@ -59,35 +58,34 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
     setReviewCharValues(obj);
   };
 
+
+
   return (
     <div>
-      <Button variant="outline-dark">More Reviews</Button>
-      <Button variant="outline-dark" onClick={handleShow}>Add a Review +</Button>
-
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={ show } onHide={ handleClose } centered>
         <Modal.Header>
           <Modal.Title>Write Your Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Label>What is your nickname? </Form.Label>
-            <Form.Control value={name} type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value); }} />
+            <Form.Control value={ name } type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value); }} />
             <br />
             <Form.Label>What is your Email? </Form.Label>
-            <Form.Control value={email} type="email" placeholder="name@example.com" onChange={(e) => { setEmail(e.target.value); }} />
+            <Form.Control value={ email } type="email" placeholder="name@example.com" onChange={(e) => { setEmail(e.target.value); }} />
             <br />
             <p>Rate this product.</p>
             <Rating
               name="hover-feedback"
-              value={starValue}
+              value={ starValue }
               precision={1}
               onChange={(event, newValue) => {
                 setStarValue(newValue);
               }} />
             {reviewChar.Size ?
               <div>
-                <label>Size:</label>
-                <select name="Size" placeholder="select one" onChange={(e) => { setNewCharValues('Size', e.target.value); }}>
+                <label className="review-char-label">Size:</label>
+                <select className="review-char-select" name="Size" placeholder="select one" onChange={(e) => { setNewCharValues('Size', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">A size too small</option>
                   <option value="2">½ a size too small</option>
@@ -100,8 +98,8 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             <br />
             {reviewChar.Width ?
               <div>
-                <label>Width:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Width', e.target.value); }}>
+                <label className="review-char-label">Width:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Width', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Too narrow</option>
                   <option value="2">Slightly narrow</option>
@@ -114,8 +112,8 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             <br />
             {reviewChar.Comfort ?
               <div>
-                <label>Comfort:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Comfort', e.target.value); }}>
+                <label className="review-char-label">Comfort:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Comfort', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Uncomfortable</option>
                   <option value="2">Slightly uncomfortable</option>
@@ -128,8 +126,8 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             <br />
             {reviewChar.Quality ?
               <div>
-                <label>Quality:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Quality', e.target.value); }}>
+                <label className="review-char-label">Quality:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Quality', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Poor</option>
                   <option value="2">Below average</option>
@@ -142,8 +140,8 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             <br />
             {reviewChar.Length ?
               <div>
-                <label>Length:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Length', e.target.value); }}>
+                <label className="review-char-label">Length:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Length', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Runs Short</option>
                   <option value="2">Runs slightly short</option>
@@ -156,8 +154,8 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             <br />
             {reviewChar.Fit ?
               <div>
-                <label>Fit:</label>
-                <select placeholder="select one" onChange={(e) => { setNewCharValues('Fit', e.target.value); }}>
+                <label className="review-char-label">Fit:</label>
+                <select className="review-char-select" placeholder="select one" onChange={(e) => { setNewCharValues('Fit', e.target.value); }}>
                   <option value="">Select Option</option>
                   <option value="1">Runs tight</option>
                   <option value="2">Runs slightly tight</option>
@@ -180,6 +178,7 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             <Form.Label>Review:</Form.Label>
             <Form.Control as="textarea" maxLength="1000" minLength="50" rows={3} placeholder="Why did you like the product or not?"
               onChange={(e) => { setReviewBody(e.target.value); }} />
+            <br />
             <label>Upload Pictures:</label>
             <input id="browse" type="file" onChange={() => {
               setFileList(oldArray => [...oldArray, URL.createObjectURL(event.target.files[0])]);
@@ -197,7 +196,7 @@ const NewReview = ({ reviews, productId, reviewChar }) => {
             handleClose();
           }}>
 
-            Save Changes
+            Post Review
           </Button>
         </Modal.Footer>
       </Modal>

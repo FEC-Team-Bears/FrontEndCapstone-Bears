@@ -51,7 +51,7 @@ const AddToCart = ({ styles, style }) => {
       if (skus[k].quantity === 0) {
         tuple.push('Out of Stock');
       } else {
-        tuple.push(skus[k].size)
+        tuple.push(skus[k].size);
       }
       tuple.push(skus[k].quantity, k);
       sizes.push(tuple);
