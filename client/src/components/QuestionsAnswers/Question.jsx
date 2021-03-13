@@ -51,9 +51,15 @@ const Question = ({ productId, question, productName, answers }) => {
   return (
     <Container className='question-container'>
       <Row className='question-details'>
-        <Col md="auto" className='question-text body-color'><h3>Q:</h3></Col>
-        <Col className='question-body body-color'><h3>{ question.question_body }</h3></Col>
-        <Col md="auto" className='question-helpful clickable-color'>Helpful? <a className='helpful-text' onClick={ handleClick }><u>Yes</u> </a>({ count })</Col>
+        <Col md="auto" className='question-text body-color'>
+          <h3>Q:</h3>
+        </Col>
+        <Col className='question-body body-color'>
+          <h3>{ question.question_body }</h3>
+        </Col>
+        <Col md="auto" className='question-helpful clickable-color'>Helpful?
+          <a className='helpful-text' onClick={ handleClick }><u>Yes</u> </a>({ count })
+        </Col>
         <Col md="auto" className='add-answer clickable-color' onClick={ handleShow }><u>Add Answer</u></Col>
       </Row>
       { show

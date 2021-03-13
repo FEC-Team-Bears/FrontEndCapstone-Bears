@@ -649,7 +649,14 @@
 /* Questions and Answers components ================================ */
 
 /* QA Container styles */
-.questions-answers-container, .search-questions-container, .questions-list-container, .question-container, .question-form-container, .answer-form-container, .answers-list-container, .answer-container {
+.questions-answers-container,
+.search-questions-container,
+.questions-list-container,
+.question-container,
+.question-form-container,
+.answer-form-container,
+.answers-list-container,
+.answer-container {
   padding: 10px;
 }
 .answers-list-container, .answers-container, .answer-details {
@@ -689,10 +696,18 @@
 }
 
 /* QA Text styles */
-.question-helpful, .add-answer, .answer-username, .answer-helpful, .answer-report, .no-answers {
+.question-helpful,
+.add-answer,
+.answer-username,
+.answer-helpful,
+.answer-report,
+.no-answers {
   font-size: 90%;
 }
-.question-text, .question-body, .answer-text, .answer-body {
+.question-text,
+.question-body,
+.answer-text,
+.answer-body {
   font-weight: bold;
 }
 
@@ -756,7 +771,13 @@
 }
 
 /* QA Hover styles */
-.helpful-text:hover, .answer-report:hover, .add-answer:hover,.toggle-show-answers:hover, .answer-photos:hover, .toggle-show-questions:hover, .add-question:hover {
+.helpful-text:hover,
+.answer-report:hover,
+.add-answer:hover,
+.toggle-show-answers:hover,
+.answer-photos:hover,
+.toggle-show-questions:hover,
+.add-question:hover {
   cursor: pointer;
 }
 .toggle-show-answers:hover {

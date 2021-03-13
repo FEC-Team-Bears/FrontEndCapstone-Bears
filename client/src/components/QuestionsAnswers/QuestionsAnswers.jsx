@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import API_KEY from '/config.js';
+import React, { useState } from 'react';
 import QuestionsList from './QuestionsList.jsx';
 import SearchQuestions from './SearchQuestions.jsx';
 
