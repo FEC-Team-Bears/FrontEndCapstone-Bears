@@ -51,23 +51,23 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
   return (
 
     <div className="ratings-container">
-      <h5>Ratings &amp; Reviews</h5>
+      <h3 className="header-color">Ratings &amp; Reviews</h3>
       <div className="average-ratings">
         <h1>{averageRating}</h1>
         <StarRating reviews={reviews} />
       </div>
       <p className="recommend-percent">{recommendPercent}% of reviews recommend this product</p>
       <div className="rating-sliders">
-        <p>5 Stars</p>
-        <ProgressBar variant="success" now={collectAllReviews('5')} />
-        <p>4 Stars</p>
-        <ProgressBar variant="success" now={collectAllReviews('4')} />
-        <p>3 Stars</p>
-        <ProgressBar variant="success" now={collectAllReviews('3')} />
-        <p>2 Stars</p>
-        <ProgressBar variant="success" now={collectAllReviews('2')} />
-        <p>1 Stars</p>
-        <ProgressBar variant="success" now={collectAllReviews('1')} />
+        <p className="clickable-color">5 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('5')} />
+        <p className="clickable-color">4 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('4')} />
+        <p className="clickable-color">3 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('3')} />
+        <p className="clickable-color">2 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('2')} />
+        <p className="clickable-color">1 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('1')} />
       </div>
       {reviewCharsKeys.map((char, index) => {
         return (

@@ -62,22 +62,22 @@ const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, sh
 
   return (
     <div>
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={ show } onHide={ handleClose } centered>
         <Modal.Header>
           <Modal.Title>Write Your Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Label>What is your nickname? </Form.Label>
-            <Form.Control value={name} type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value); }} />
+            <Form.Control value={ name } type="text" placeholder="Example: jackson11!" onChange={(e) => { setName(e.target.value); }} />
             <br />
             <Form.Label>What is your Email? </Form.Label>
-            <Form.Control value={email} type="email" placeholder="name@example.com" onChange={(e) => { setEmail(e.target.value); }} />
+            <Form.Control value={ email } type="email" placeholder="name@example.com" onChange={(e) => { setEmail(e.target.value); }} />
             <br />
             <p>Rate this product.</p>
             <Rating
               name="hover-feedback"
-              value={starValue}
+              value={ starValue }
               precision={1}
               onChange={(event, newValue) => {
                 setStarValue(newValue);

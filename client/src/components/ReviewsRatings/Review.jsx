@@ -27,7 +27,7 @@ const Review = ({ review }) => {
         <StarRating review={review} />
         <p>{Moment(review.date).format('MMMM DD, YYYY')}</p>
       </div>
-      <h3>{review.summary}</h3>
+      <h3 className="header-color">{review.summary}</h3>
       <p>{review.body}</p>
       {(review.response !== null && review.response.length > 0) ?
         <div className="review-response">
@@ -38,11 +38,11 @@ const Review = ({ review }) => {
       {review.photos.map((photo, index) => {
         return <ReviewPhotos key={index} photo={photo} />;
       })}
-      <p>Helpful? <span onClick={() => {
+      <p>Helpful? <span className="clickable-color" onClick={() => {
         setUserThoughtHelpful(true);
         axiosUpdateRecommended();
       }
-      }>Yes</span> ({recommendCount})</p>
+      }><span>Yes</span></span> ({recommendCount})</p>
     </div>
   );
 };

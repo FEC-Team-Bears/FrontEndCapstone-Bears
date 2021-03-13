@@ -30,25 +30,25 @@ const RatingsReviews = ({ productId, changeId, reviews, changeReviews, loadRevie
   }, [productId, newReview]);
 
   return (
-    <div className="ratings-reviews-container">
+    <div className="ratings-reviews-container body-color">
 
       {(reviews.length > 0 && reviewMetaData) ?
         <div>
-          <RatingsList reviews={reviews} reviewMetaData={reviewMetaData}/>
+          <RatingsList reviews={ reviews } reviewMetaData={ reviewMetaData }/>
         </div>
         : <div></div>
       }
       {(reviews.length > 0 && reviewMetaData) ?
         <div>
           <ReviewList
-            reviews={reviews}
-            productId={productId}
-            reviewChar={reviewMetaData.characteristics}
-            newReview={newReview}
-            setNewReview={setNewReview}
-            count={count}
-            setCount={setCount}
-            loadReviews={loadReviews}
+            reviews={ reviews }
+            productId={ productId }
+            reviewChar={ reviewMetaData.characteristics }
+            newReview={ newReview }
+            setNewReview={ setNewReview }
+            count={ count }
+            setCount={ setCount }
+            loadReviews={ loadReviews }
           />
         </div>
         : null

@@ -7,7 +7,7 @@ import $ from 'jquery';
 const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData, newReview, setNewReview, count, setCount }) => {
   const [show, setShow] = useState(false);
   const [reviewsByDate, setReviewsByDate] = useState([]);
-  const [sortObject, setSortObject] = useState({1: reviews});
+  const [sortObject, setSortObject] = useState({ 1: reviews });
   const [sortCount, setSortCount] = useState(1);
   const handleShow = () => setShow(true);
 
@@ -27,6 +27,10 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
     $('#more-reviews-button').show();
     $('#less-reviews-button').hide();
   };
+
+  $('.review-button-yellow').on('click', () => {
+    $('.review-button-yellow').css('backgroundColor', '#fcce04');
+  });
 
   const sortByDate = () => {
     let obj = sortObject;
@@ -66,11 +70,6 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
     setSortObject(obj);
   };
 
-  $('.review-button').on('mousedown', function() {
-    $('.review-button').css('backgroundColor', '#17E9E0');
-    $('.review-button').css('box-shadow', '#17E9E0');
-  });
-
 
   useEffect(() => {
     sortByDate();
@@ -81,7 +80,7 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
   return (
     <div>
       <h5 className='review-counter'>{reviews.length} reviews, sorted by&nbsp;
-        <select className="review-sort-dropdown" onChange={(e) => setSortCount(e.target.value)}>
+        <select className="review-sort-dropdown header-color" onChange={(e) => setSortCount(e.target.value)}>
           <option value="1">helpful</option>
           <option value="2">newest</option>
           <option value="3">relevance</option>
@@ -104,11 +103,13 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
           setNewReview={setNewReview}
           show={show}
           setShow={setShow}
-          loadReviews={loadReviews}/>
+          loadReviews={loadReviews} />
       </div>
-      <Button id="more-reviews-button" className="review-button" variant="info" onClick={updateCount}>More Reviews</Button>
-      <Button id="less-reviews-button" className="review-button" variant="info" onClick={revertCount}>Less Reviews ^</Button>
-      <Button id="add-reviews-button" className="review-button" variant="info" onClick={handleShow}>Add a Review +</Button>
+      <div className="review-buttons-container">
+        <Button id="more-reviews-button" className="review-button-yellow" variant="warning" onClick={updateCount}>More Reviews</Button>
+        <Button id="less-reviews-button" className="review-button-yellow" variant="warning" onClick={revertCount}>Less Reviews ^</Button>
+        <Button id="add-reviews-button" className="review-button-teal" variant="info" onClick={handleShow}>Add a Review +</Button>
+      </div>
     </div>
   );
 };
