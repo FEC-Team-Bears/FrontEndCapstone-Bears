@@ -196,7 +196,7 @@ const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, sh
             handleClose();
           }}>
 
-            Write Review
+            Post Review
           </Button>
         </Modal.Footer>
       </Modal>
