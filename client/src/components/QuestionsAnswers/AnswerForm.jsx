@@ -3,8 +3,7 @@ import axios from 'axios';
 import API_KEY from '/config.js';
 import { Modal, Button, Form, InputGroup } from 'react-bootstrap';
 
-const AnswerForm = ({ productId, productName, question }) => {
-  const [show, setShow] = useState(false);
+const AnswerForm = ({ show, productId, productName, question, handleClose }) => {
   const [validated, setValidated] = useState(false);
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
@@ -33,15 +32,15 @@ const AnswerForm = ({ productId, productName, question }) => {
     setEmail('');
     setPhotos([]);
   };
-  const handleShow = () => {
-    setShow(true);
-  };
-  const handleClose = () => {
+  const handleFormClose = () => {
     if (answer.concat(nickname, email) === '' && !photos.length) {
-      setShow(false);
-    } else if (confirm('Are you sure you want to exit? Your changes will not be saved.')) {
       clearInputFields();
-      setShow(false);
+      handleClose();
+    } else {
+      if (confirm('Are you sure you want to exit? Your changes will not be saved.')) {
+        clearInputFields();
+        handleClose();
+      }
     }
   };
 
@@ -65,7 +64,7 @@ const AnswerForm = ({ productId, productName, question }) => {
       e.stopPropagation();
     } else {
       e.preventDefault();
-      setShow(false);
+      handleClose();
       submitAnswer();
     }
     setValidated(true);
@@ -92,18 +91,17 @@ const AnswerForm = ({ productId, productName, question }) => {
   };
 
   return (
-    <div>
-      <button onClick={ handleShow }>Add Answer</button>
+    <div className='answer-form-container'>
       <Modal
         show={ show }
-        onHide={ handleClose }
+        onHide={ handleFormClose }
         backdrop='static'
         keyboard={ false }
         centered >
         <Modal.Header closeButton>
           <Modal.Title>
             Submit Your Answer<br></br>
-            <small><em>{ productName }: { question }</em></small>
+            <small><em>{ productName }: { question.question_body }</em></small>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -166,7 +164,7 @@ const AnswerForm = ({ productId, productName, question }) => {
             }
             <div id="preview" />
             <br /><br />
-            <Button variant='danger' onClick={handleClose}>Close</Button>{' '}
+            <Button variant='danger' onClick={ handleFormClose }>Close</Button>{' '}
             <Button variant='primary' type='submit'>Submit</Button>
           </Form>
         </Modal.Body>
