@@ -13,11 +13,15 @@ const config = {
         test: /.(js|jsx)$/,
         use: 'babel-loader',
         exclude: /node_modules/
-      },
-      
+      }
     ]
   },
-
+  resolve: {
+    extensions: [
+      '.js',
+      '.jsx'
+    ]
+  }
 };
 
 module.exports = config;
