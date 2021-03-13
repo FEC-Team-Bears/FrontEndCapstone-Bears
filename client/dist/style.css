@@ -1,3 +1,5 @@
+@font-face { font-family: poppy; src: url('./assets/PoppyAoe-KqA.ttf'); }
+
 /* Overview Styling================================ */
 
 .main-pic {
@@ -102,7 +104,7 @@
   border-radius: 50%;
   margin: 10px;
   border-width: 5px;
-  border-color: cyan;
+  border-color: #17E9E0;
   border-style: solid;
 }
 
@@ -135,7 +137,7 @@
 }
 
 .active-thumb {
-  box-shadow: 0 6px 0 cyan;
+  box-shadow: 0 6px 0 #17E9E0;
 }
 
 .thumbNav {
@@ -230,7 +232,6 @@
 }
 
 .feature-div {
-  /* border: none; */
   border-width: 1px;
   border-style: solid;
   border-right: rgba(128, 128, 128, 0.419);
@@ -240,19 +241,37 @@
 
 .feature-span {
   line-height: 30px;
+  color: #443695;
+}
+
+.item-title {
+  font-size: 50px;
+}
+
+/* Reformatting React-Bootstrap Buttons =====================================================*/
+
+.btn-primary {
+  color: #443695;
+  background-color: #2E4C80;
+  background-color: #17E9E0;
+  border-color: #2E4C80;
+  border-color: #17E9E0;
+}
+
+.btn-primary:hover {
+  color: #443695;
+  background-color: #2E4C80;
+  background-color: #FCCD04;
+  border-color: #2E4C80;
+  border-color: #FCCD04;
+}
+
+.btn-primary[disabled] {
+  color: #bbaec0;
+  background-color: #A64AC9;
 }
 
 /* Font Awesome Styles  =====================================================*/
-
-/* .fa {
-  padding: 15px;
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-} */
 
 .fa-pd {
   padding: 15px;
@@ -450,4 +469,31 @@
 .progress {
   width: 70%;
   height: 9px;
+}
+
+/* Document Styling  =====================================================*/
+
+h3.header-color{
+  color: #A64AC9;
+  font-family: poppy;
+}
+
+.header-color{
+  color: #A64AC9;
+}
+
+.body-color {
+  color: #443695;
+}
+
+.border-color {
+  color: #A64AC9;
+}
+
+.clickable-color {
+  color: #17E9E0;
+}
+
+.clickable-color:hover {
+  color: #FCCD04;
 }

@@ -1,7 +1,9 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { mount, shallow, render } from 'enzyme';
-configure({ adapter: new Adapter() });
+configure({
+  adapter: new Adapter(),
+  disableLifecycleMethods: true });
 
 import Overview from './components/Overview/Overview.jsx';
 describe('MyComponent', () => {
