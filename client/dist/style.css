@@ -454,7 +454,7 @@
 
 .single-review-container {
   width: 630px;
-  border-bottom: 1px solid #A64AC9;
+  border-bottom: 1px solid #443695;
   margin-bottom: 35px;
 }
 
@@ -463,12 +463,13 @@
 
 }
 
-.single-review-container h3, p{
+.single-review-container h4, p{
   padding-bottom: 10px;
 }
 
-.single-review-container h3 {
+.single-review-container h4 {
   font-size: 24px;
+  font-weight: 700;
 }
 
 .single-review-container p {
@@ -497,6 +498,7 @@
 .review-counter {
   position: relative;
   left: 20px;
+  margin-bottom: 20px;
 }
 
 .review-date-container {
@@ -539,6 +541,11 @@
   margin-right: 15px;
 }
 
+.rating-star-review {
+  position: relative;
+  top: 100px;
+}
+
 .recommend-percent {
   margin-top: 10px;
   font-size: 14px;
@@ -564,6 +571,11 @@
 
 .rating-characteristic {
   margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.rating-char-container {
+  margin-bottom: 5px;
 }
 
 .rating-grey-slider-container {
@@ -590,6 +602,7 @@
 }
 
 .rating-triangle {
+  color: #443695;
   position: relative;
   bottom: 21px;
   font-size: 30px;
@@ -599,10 +612,15 @@
   margin-left: 20px;
 }
 
+
 /* ----- Rating & Reviews Coloring ----- */
 .progress-bar {
   background-color: #FCCD04;
   color: white;
+}
+
+.rating-star-color {
+  color: #443695;
 }
 
 .review-button-yellow {
@@ -618,6 +636,7 @@
 }
 
 .review-button-yellow:hover {
+  color: white;
   background-color: #fcce04;
   border: 1px solid #FCCD04;
 }
@@ -629,10 +648,21 @@
 
 /* ------- Default Coloring Scheme -------- */
 
-.header-color {
+
+
+
+
+
+h3.header-color {
   color: #A64AC9;
   font-family: poppy;
 }
+
+
+.header-color {
+  color: #A64AC9;
+}
+
 
 .body-color {
 color: #443695;
