@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Thumbnail from './Thumbnail.jsx';
 
-const ThumbnailList = ({stylesPhotos, currentThumbs = [0, 3], activeThumb, setActiveThumb, makeActive}) => {
+const ThumbnailList = ({stylesPhotos, currentThumbs, activeThumb, setActiveThumb, makeActive}) => {
 
   let styleThumb;
 
