@@ -1,9 +1,5 @@
 @font-face { font-family: poppy; src: url('./assets/PoppyAoe-KqA.ttf'); }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> production
 /* Overview Styling================================ */
 
 .main-pic {
@@ -582,21 +578,9 @@
   height: 9px;
 }
 
-<<<<<<< HEAD
 /* Document Styling  =====================================================*/
 
-h3.header-color{
-  color: #A64AC9;
-  font-family: poppy;
-}
 
-.header-color{
-  color: #A64AC9;
-}
-
-.body-color {
-  color: #443695;
-=======
 .rating-characteristic {
   margin-bottom: 2px;
 }
@@ -666,12 +650,16 @@ h3.header-color{
 
 .header-color {
   color: #A64AC9;
+}
+
+h3.header-color{
+  color: #A64AC9;
   font-family: poppy;
 }
 
+
 .body-color {
 color: #443695;
->>>>>>> production
 }
 
 .border-color {
@@ -684,11 +672,8 @@ color: #443695;
 
 .clickable-color:hover {
   color: #FCCD04;
-<<<<<<< HEAD
-}
-=======
 }
 
 
 
->>>>>>> production
+
