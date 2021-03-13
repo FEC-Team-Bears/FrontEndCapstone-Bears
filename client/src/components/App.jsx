@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LazyLoad from 'react-lazy-load';
 import axios from 'axios';
 import API_KEY from '/config.js';
 import Overview from './Overview/Overview.jsx';
@@ -82,13 +83,17 @@ const App = (props) => {
       <YourOutfit
         productId={ productId }
         reviews={ reviews } />
-      <QuestionsAnswers
-        productId={ productId } />
-      <RatingsReviews
-        productId={ productId }
-        changeId={ changeProductId }
-        reviews={reviews}
-        changeReviews={axiosGetAllReviews} />
+      <LazyLoad>
+        <QuestionsAnswers
+          productId={ productId } />
+      </LazyLoad>
+      <LazyLoad>
+        <RatingsReviews
+          productId={ productId }
+          changeId={ changeProductId }
+          reviews={reviews}
+          changeReviews={axiosGetAllReviews} />
+      </LazyLoad>
     </div>
   );
 };

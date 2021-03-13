@@ -67,9 +67,7 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
       delete oldOutfit[relatedProductId];
     }
     localStorage.setItem('yourOutfit', JSON.stringify(oldOutfit));
-    $(e.target.parentNode.parentNode.parentNode).css('border', 'none');
-    $(e.target.parentNode.parentNode.parentNode).css('position', 'fixed');
-    $(e.target.parentNode.parentNode).remove();
+    $(e.target.parentNode.parentNode.parentNode).hide();
   };
 
   const comparisonTable = {};
@@ -78,18 +76,18 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
     <div>
       <div className="image-div">
         {related ?
-          <Button variant="outline-dark" onClick={handleShow} style={{ background: 'none', color: 'black', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
-          : <Button onClick={ removeFromYourOutfit } style={{ background: 'none', color: 'black', border: 'none', position: 'absolute', zIndex: '1' }}>X</Button>}
+          <Button variant="outline-dark" onClick={ handleShow } style={{ background: 'none', color: '#FCCD04', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
+          : <Button onClick={ removeFromYourOutfit } style={{ background: 'none', color: '#17E9E0', border: 'none', position: 'absolute', zIndex: '1' }}>X</Button>}
         {related ?
-          <Modal show={show} onHide={handleClose} centered>
+          <Modal show={ show } onHide={ handleClose } centered>
             <Modal.Body>
               <Modal.Title><h6>Comparing</h6></Modal.Title>
-              <table className="relatedProductsTable" >
+              <table className="relatedProductsTable" style={{ tableLayout: 'fixed', width: '100%' }} >
                 <thead>
                   <tr>
-                    <th scope="col">{mainProductDetails.name}</th>
-                    <th scope="col"> </th>
-                    <th scope="col">{productDetails.name}</th>
+                    <th scope="col" style={{ textAlign: 'left', width: '33%' }}>{mainProductDetails.name}</th>
+                    <th scope="col" style={{ width: '33%' }}> </th>
+                    <th scope="col" style={{ textAlign: 'right', width: '33%' }}>{productDetails.name}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -98,10 +96,10 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
                     return (
                       <tr>
                         <td>{ feature.value }</td>
-                        <td>{ feature.feature }</td>
+                        <td style={{ textAlign: 'center' }} >{ feature.feature }</td>
                         { productDetails.features.map(relatedProduct => {
                           if (relatedProduct.feature === feature.feature) {
-                            return <td>{relatedProduct.value}</td>;
+                            return <td style={{ textAlign: 'right' }}>{ relatedProduct.value }</td>;
                           }
                         })}
                       </tr>
@@ -112,8 +110,8 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
                       return (
                         <tr>
                           <td></td>
-                          <td>{feature.feature}</td>
-                          <td>{feature.value}</td>
+                          <td style={{ textAlign: 'center' }} >{ feature.feature }</td>
+                          <td style={{ textAlign: 'right' }} >{ feature.value }</td>
                         </tr>
                       );
                     }
@@ -126,7 +124,8 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
         }
         <img
           onClick={ related ? handleClick : null }
-          data-id={ relatedProductId } style={{ position: 'relative' }}
+          data-id={ relatedProductId }
+          style={{ position: 'relative' }}
           className="card-image-top"
           src={productImage.url ? productImage.url : 'https://i.kym-cdn.com/photos/images/facebook/001/415/781/1ca.jpg'}
           alt={productDetails.name} />
