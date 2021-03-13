@@ -53,7 +53,7 @@ var Overview = ({ productId, productDetails, getStyles, styles, reviews }) => {
       <hr></hr>
       <div className="row">
         <div className="col-8 body-color">
-          <h3 className="header-color">{ productDetails.slogan }</h3>
+          <h3 className="header-color fakeClass">{ productDetails.slogan }</h3>
           { productDetails.description }
         </div>
         <div className="col-4 feature-div">
