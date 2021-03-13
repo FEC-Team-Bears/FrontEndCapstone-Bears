@@ -23,7 +23,7 @@ var Overview = ({ productId, productDetails, getStyles, styles, reviews }) => {
         console.error('there was an error in your axios call: ', err);
       });
   };
-
+  // some comment
   const setStyle = (style) => {
     getStyle(style);
   };
