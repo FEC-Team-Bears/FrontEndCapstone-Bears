@@ -20,12 +20,12 @@ const ProductDetails = ({ productDetails, styles, setStyle, reviews, style }) =>
       <div className="product-info-align"><h1>{ productDetails.name }</h1></div>
       {!styles[style] ? ''
         : !styles[style].sale_price ? <div className="product-info-align"> {styles[style].original_price} USD</div>
-          : <div className="product-info-align"><span className="red">{styles[style].original_price} USD </span> <span className="new-price"> {styles[style].sale_price} USD </span></div>
+          : <div className="product-info-align"><span className="sale-price">{styles[style].original_price} USD </span> <span className="new-price"> {styles[style].sale_price} USD </span></div>
       }
-      <a href="https://www.facebook.com/" className="fa fa-facebook"></a>
-      <a href="https://twitter.com/" className="fa fa-twitter"></a>
-      <a href="https://www.pinterest.com/" className="fa fa-pinterest"></a>
-      <a href="https://www.instagram.com/turbotwolegs/?hl=en" className="fa fa-instagram"></a>
+      <a href="https://www.facebook.com/" className="fa fa-pd fa-facebook"></a>
+      <a href="https://twitter.com/" className="fa fa-pd fa-twitter"></a>
+      <a href="https://www.pinterest.com/" className="fa fa-pd fa-pinterest"></a>
+      <a href="https://www.instagram.com/turbotwolegs/?hl=en" className="fa fa-pd fa-instagram"></a>
       <StyleSelector
         styles={ styles }
         setStyle={ setStyle } />

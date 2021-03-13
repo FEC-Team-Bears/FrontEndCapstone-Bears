@@ -187,7 +187,7 @@
   box-shadow: 5px 5px 5px cyan;
 }
 
-.red {
+.sale-price {
   color: red;
   text-decoration: line-through;
 }
@@ -197,7 +197,7 @@
   text-decoration: none;
 }
 
-.badge {
+.style-tnail {
   position: absolute;
   z-index: 5;
 }
@@ -244,7 +244,17 @@
 
 /* Font Awesome Styles  =====================================================*/
 
-.fa {
+/* .fa {
+  padding: 15px;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+} */
+
+.fa-pd {
   padding: 15px;
   font-size: 20px;
   width: 50px;

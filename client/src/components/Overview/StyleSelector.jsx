@@ -29,17 +29,49 @@ const StyleSelector = ({ styles, setStyle }) => {
         <tbody>
           <tr>
             {styles.slice(0, 4).map((style, index) => {
-              return (<td key={index}><div className="img-cont"><span className={index === styleThumb ? 'badge bg-success' : 'badge bg-success hidden'}>&#10003;</span><img onClick={ handleStyleClick } className="styles-thumb" data-style-num={index} src={style.photos[0].thumbnail_url}></img></div></td>);
+              return (
+                <td key={index}>
+                  <div className="img-cont">
+                    <span className={index === styleThumb ? 'badge style-tnail bg-success' : 'badge style-tnail bg-success hidden'}>&#10003;</span>
+                    <img
+                      onClick={ handleStyleClick }
+                      className="styles-thumb"
+                      data-style-num={index}
+                      src={style.photos[0].thumbnail_url}></img>
+                  </div>
+                </td>);
             })}
           </tr>
           <tr>
             {styles.slice(4, 8).map((style, index) => {
-              return (<td key={index}><div className="img-cont"><span className={index + 4 === styleThumb ? 'badge bg-success' : 'badge bg-success hidden'}>&#10003;</span><img onClick={ handleStyleClick } className="styles-thumb" data-style-num={index + 4} src={style.photos[0].thumbnail_url}></img></div></td>);
+              return (
+                <td key={index}>
+                  <div className="img-cont">
+                    <span className={index + 4 === styleThumb ? 'badge style-tnail bg-success' : 'badge style-tnail bg-success hidden'}>&#10003;</span>
+                    <img
+                      onClick={ handleStyleClick }
+                      className="styles-thumb"
+                      data-style-num={index + 4}
+                      src={style.photos[0].thumbnail_url}>
+                    </img>
+                  </div>
+                </td>);
             })}
           </tr>
           <tr>
             {styles.slice(8, 12).map((style, index) => {
-              return (<td key={index}><div className="img-cont"><span className={index + 8 === styleThumb ? 'badge bg-success' : 'badge bg-success hidden'}>&#10003;</span><img onClick={ handleStyleClick } className="styles-thumb" data-style-num={index + 8} src={style.photos[0].thumbnail_url}></img></div></td>);
+              return (
+                <td key={index}>
+                  <div className="img-cont">
+                    <span className={index + 8 === styleThumb ? 'badge style-tnail bg-success' : 'badge style-tnail bg-success hidden'}>&#10003;</span>
+                    <img
+                      onClick={ handleStyleClick }
+                      className="styles-thumb"
+                      data-style-num={index + 8}
+                      src={style.photos[0].thumbnail_url}>
+                    </img>
+                  </div>
+                </td>);
             })}
           </tr>
         </tbody>

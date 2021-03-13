@@ -85,7 +85,14 @@ const AddToCart = ({ styles, style }) => {
     <div className="main-cart">
       <DropdownButton id="dropdown-basic-button" className="product-buttons size-but" title={ size }>
         {skus ? sizes.map((option, index) => {
-          return (<Dropdown.Item onClick={ sizeHandler } key={ index } style={{width: '100%' }} value={ option[0] } data-ind={ index } >{ option[0] }</Dropdown.Item>);
+          return (
+            <Dropdown.Item
+              onClick={ sizeHandler }
+              key={ index }
+              style={{width: '100%' }}
+              value={ option[0] }
+              data-ind={ index } >{ option[0] }
+            </Dropdown.Item>);
         }) : ''}
       </DropdownButton>
       <DropdownButton
@@ -100,7 +107,10 @@ const AddToCart = ({ styles, style }) => {
         disabled={ addToCartDisabled }
         onClick={ addToLocalCart }
         className="product-buttons add-to-cart"><span className="button-text">Add To Cart</span>+</Button>{' '}
-      <Button variant="primary" className="product-buttons"> &#9734; </Button>{' '}
+      <Button
+        variant="primary"
+        className="product-buttons"> &#9734;
+      </Button>{' '}
     </div>
   );
 };
