@@ -435,7 +435,7 @@
 
 .single-star-fill {
   display: inline-block;
-  height: 19px;
+  height: 15px;
   background-color: #333333;
 }
 
@@ -605,4 +605,6 @@
   background-color: #17E9E0;
 
 }
+
+
 
