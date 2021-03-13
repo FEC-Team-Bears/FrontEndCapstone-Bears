@@ -76,8 +76,8 @@ const RelatedProductCard = ({ relatedProductId, handleClick, mainProductDetails,
     <div>
       <div className="image-div">
         {related ?
-          <Button variant="outline-dark" onClick={ handleShow } style={{ background: 'none', color: '#F5E6CC', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
-          : <Button onClick={ removeFromYourOutfit } style={{ background: 'none', color: '#F5E6CC', border: 'none', position: 'absolute', zIndex: '1' }}>X</Button>}
+          <Button variant="outline-dark" className='john-star' onClick={ handleShow } style={{ background: 'none', color: '#F5E6CC', border: 'none', position: 'absolute', zIndex: '1' }}>&#9734;</Button>
+          : <Button className='john-x' onClick={ removeFromYourOutfit } style={{ background: 'none', color: '#F5E6CC', border: 'none', position: 'absolute', zIndex: '1' }}>X</Button>}
         {related ?
           <Modal show={ show } onHide={ handleClose } centered>
             <Modal.Body>
