@@ -45,15 +45,14 @@ const Question = ({ productId, question, productName, answers }) => {
       setShowMoreAnswers(false);
     }
   };
-
   const handleShow = () => { setShow(true); };
   const handleClose = () => { setShow(false); };
 
   return (
     <Container className='question-container'>
       <Row className='question-details'>
-        <Col md="auto" className='question-text body-color'>Q: </Col>
-        <Col className='question-body body-color'>{ question.question_body }</Col>
+        <Col md="auto" className='question-text body-color'><h3>Q:</h3></Col>
+        <Col className='question-body body-color'><h3>{ question.question_body }</h3></Col>
         <Col md="auto" className='question-helpful clickable-color'>Helpful? <a className='helpful-text' onClick={ handleClick }><u>Yes</u> </a>({ count })</Col>
         <Col md="auto" className='add-answer clickable-color' onClick={ handleShow }><u>Add Answer</u></Col>
       </Row>
@@ -62,12 +61,12 @@ const Question = ({ productId, question, productName, answers }) => {
           show={ show }
           productId={ productId }
           productName={ productName }
-          question={ question.question_body }
+          question={ question }
           handleClose={ handleClose } />
         : null
       }
       <Row>
-        <Col md="auto" className='answer-text body-color'>A:</Col>
+        <Col md="auto" className='answer-text body-color'><h3>A:</h3></Col>
         <Col>
           <AnswersList questionId={ question.question_id } count= { answersCount } />
         </Col>

@@ -63,7 +63,7 @@ const Answer = ({ answer }) => {
   return (
     <Container className='answer-container'>
       <Row className='answer-body body-color'>
-        <Col>{ answer.body }</Col>
+        <Col><h5>{ answer.body }</h5></Col>
       </Row>
       <Row className='answer-details'>
         { answer.answerer_name === 'Seller'

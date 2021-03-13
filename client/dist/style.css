@@ -690,13 +690,17 @@
 
 /* QA Text styles */
 .question-helpful, .add-answer, .answer-username, .answer-helpful, .answer-report, .no-answers {
-  font-size: 85%;
+  font-size: 90%;
 }
 .question-text, .question-body, .answer-text, .answer-body {
   font-weight: bold;
 }
 
 /* QA Box Model styles */
+.question-helpful, .add-answer {
+  height: 20px;
+  line-height: 20px;
+}
 .add-answer, .answer-report, .answer-helpful {
   border-left: 1px solid #443695;
 }
@@ -727,8 +731,8 @@
 .answer-username {
   color: #A64AC9;
 }
-.qa-heading {
-  text-align: center;
+.question-body {
+  padding-left: 7px;
 }
 
 /* QA Button styles */

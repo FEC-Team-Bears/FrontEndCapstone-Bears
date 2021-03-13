@@ -45,16 +45,14 @@ const AnswersList = ({ questionId, newAnswer, count }) => {
   }, []);
 
   return (
-    <div className='answers-list-container'>
-      <Container className='answers-container'>
-        { allAnswers.length
-          ? allAnswers.slice(0, count).map(answer => (
-            <Answer key={ answer.answer_id } answer={ answer } />
-          ))
-          : <div className='no-answers body-color'><em>No answers have been submitted for this question.</em></div>
-        }
-      </Container>
-    </div>
+    <Container className='answers-container'>
+      { allAnswers.length
+        ? allAnswers.slice(0, count).map(answer => (
+          <Answer key={ answer.answer_id } answer={ answer } />
+        ))
+        : <div className='no-answers body-color'><em>No answers have been submitted for this question.</em></div>
+      }
+    </Container>
   );
 };
 

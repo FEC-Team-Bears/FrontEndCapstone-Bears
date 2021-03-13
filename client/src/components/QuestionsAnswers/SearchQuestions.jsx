@@ -14,6 +14,7 @@ const SearchQuestions = ({ handleSearch }) => {
 
   return (
     <Container className='search-questions-container'>
+      <h3 className='qa-heading header-color'>Questions &amp; Answers</h3>
       <input
         className='questions-search-bar'
         type='text'

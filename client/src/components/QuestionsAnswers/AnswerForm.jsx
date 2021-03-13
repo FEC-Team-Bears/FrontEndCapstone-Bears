@@ -64,7 +64,7 @@ const AnswerForm = ({ show, productId, productName, question, handleClose }) => 
       e.stopPropagation();
     } else {
       e.preventDefault();
-      setShow(false);
+      handleClose();
       submitAnswer();
     }
     setValidated(true);
@@ -101,7 +101,7 @@ const AnswerForm = ({ show, productId, productName, question, handleClose }) => 
         <Modal.Header closeButton>
           <Modal.Title>
             Submit Your Answer<br></br>
-            <small><em>{ productName }: { question }</em></small>
+            <small><em>{ productName }: { question.question_body }</em></small>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
