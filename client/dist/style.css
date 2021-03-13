@@ -7,24 +7,24 @@
   height: 700px;
 }
 
-.main-details {
+/* .main-details {
   border: 1px solid black;
-}
+} */
 
 .top_bar {
   height: 80px;
   border: 1px solid black;
   margin-bottom: 20px;
-  background-color: cadetblue;
+  background-color: black;
+  background-image: url('./assets/images/ezgif.com-gif-maker.gif');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .overview-container {
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
-/* .row {
-  background-color: skyblue;
-} */
 
 /* MAIN CAROUSEL STYLING ==================================================== */
 
@@ -63,6 +63,29 @@
   left: 100px;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: black;
+}
+
 
 .main-pic {
   -webkit-transition: all 1s ease-in-out;
@@ -81,18 +104,13 @@
   border-radius: 50%;
   margin: 10px;
   border-width: 5px;
-  border-color: cyan;
+  border-color: #17E9E0;
   border-style: solid;
 }
 
 #carouselExampleIndicators ol {
   margin-right: 50px;
 }
-
-.carousel-item img:hover {
-
-}
-
 
 /* MAIN CAROUSEL THUMBNAILS ===================================================== */
 
@@ -112,18 +130,19 @@
 }
 
 .style-thumb {
-  max-height: 70px;
+  width: 45px;
+  height: auto;
   object-fit: contain;
 }
 
 .active-thumb {
-  box-shadow: 0 6px 0 cyan;
+  box-shadow: 0 6px 0 #17E9E0;
 }
 
 .thumbNav {
   position: absolute;
   font-size: large;
-  left: 55px;
+  left: 50px;
   z-index: 2;
   text-align: center;
 }
@@ -132,6 +151,151 @@
 }
 .down-button {
   bottom: 15px;
+}
+
+/* Product Info Styles  =====================================================*/
+.styles-thumb {
+  height: auto;
+  width: 55px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.style-title {
+  font-size: larger;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.style-title, .product-info-align {
+  margin-left: 8px;
+}
+
+.product-top {
+  margin-top: 50px;
+}
+
+.img-cont {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: black;
+  margin: 8px;
+}
+
+.img-cont.active {
+  box-shadow: 5px 5px 5px cyan;
+}
+
+.sale-price {
+  color: red;
+  text-decoration: line-through;
+}
+
+.new-price {
+  color: black;
+  text-decoration: none;
+}
+
+.style-tnail {
+  position: absolute;
+  z-index: 5;
+}
+
+.read-all-reviews {
+  font-size: small;
+  text-decoration: underline;
+  padding-bottom: 20px;
+}
+
+.read-all-reviews:hover {
+  color: red;
+}
+
+.product-buttons {
+  display: inline-block;
+  margin: 10px;
+}
+
+.add-to-cart {
+  width: 63%;
+}
+
+.button-text {
+  margin-right: 90px;
+}
+
+.size-but {
+  min-width: 35%;
+}
+
+.feature-div {
+  border-width: 1px;
+  border-style: solid;
+  border-right: rgba(128, 128, 128, 0.419);
+  border-top: rgba(128, 128, 128, 0.419);
+  border-bottom: rgba(128, 128, 128, 0.419);
+}
+
+.feature-span {
+  line-height: 30px;
+  color: #443695;
+}
+
+.item-title {
+  font-size: 50px;
+}
+
+/* Reformatting React-Bootstrap Buttons =====================================================*/
+
+.btn-primary {
+  color: #443695;
+  background-color: #2E4C80;
+  background-color: #17E9E0;
+  border-color: #2E4C80;
+  border-color: #17E9E0;
+}
+
+.btn-primary:hover {
+  color: #443695;
+  background-color: #2E4C80;
+  background-color: #FCCD04;
+  border-color: #2E4C80;
+  border-color: #FCCD04;
+}
+
+.btn-primary[disabled] {
+  color: #bbaec0;
+  background-color: #A64AC9;
+}
+
+/* Font Awesome Styles  =====================================================*/
+
+.fa-pd {
+  padding: 15px;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa-facebook {
+  color: #3B5998;
+}
+
+.fa-twitter {
+  color: #55ACEE;
+}
+
+.fa-pinterest {
+  color: #cb2027;
+}
+
+.fa-instagram {
+  color: #125688;
 }
 
 /* Related Products cards  =====================================================*/
@@ -237,41 +401,129 @@
 
 /* Raings and Reviews components  =====================================================*/
 .ratings-reviews-container {
-  margin-top: 100px;
+  margin: 150px 0 100px;
   display: flex;
   justify-content: center;
 }
 
 .ratings-container {
   width: 300px;
-  margin-right: 75px;
+  margin-right: 20px;
+  position: relative;
+  bottom: 50px;
+}
+
+.ratings-container h3 {
+  position: relative;
+  bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .reviews-container {
-  width: 600px;
+  width: 700px;
+  height: 650px;
+  overflow-y: scroll;
+  padding: 15px;
+  border-bottom: .01px dotted #A64AC9;
+  margin-bottom: 40px;
 }
 
 .average-ratings {
   display: flex;
+}
 
+#more-reviews-button {
+  padding: 17px;
+  margin-right: 25px;
+}
+
+#less-reviews-button {
+  padding: 17px;
+  margin-right: 25px;
+  display: none;
+}
+
+#add-reviews-button {
+  padding: 17px;
 }
 
 .single-star-outline {
   height: 19px;
-  width: 16px;
-  position: absolute;
+  width: 17px;
+  position: relative;
+  bottom: 4px;
 }
 
 .single-star-fill {
   display: inline-block;
-  height: 19px;
-  background-color: #333333;
+  height: 15px;
+  background-color: #FCCD04;
 }
 
 .single-star-container {
   height: 19px;
-  width: 16px;
+  width: 17px;
   display: inline-block;
+}
+
+/* ------ individual review styling ------- */
+
+.single-review-container {
+  width: 630px;
+  border-bottom: 1px solid #A64AC9;
+  margin-bottom: 35px;
+}
+
+.single-review-container span {
+  text-decoration: underline;
+
+}
+
+.single-review-container h3, p{
+  padding-bottom: 10px;
+}
+
+.single-review-container h3 {
+  font-size: 24px;
+}
+
+.single-review-container p {
+  font-size: 16px;
+}
+
+.review-response {
+  background-color: rgba(233, 233, 233, 0.801);
+  padding: 15px 10px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.review-response h5 {
+  font-size: 16px;
+}
+
+.review-response p {
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}
+
+.single-review-container span:hover {
+  cursor: pointer;
+}
+
+.review-counter {
+  position: relative;
+  left: 20px;
+}
+
+.review-date-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 7px;
+}
+
+.review-date-container p {
+  font-size: 13px;
 }
 
 .review-photos-container {
@@ -283,9 +535,29 @@
   cursor: pointer;
 }
 
+.review-char-select {
+  margin-left: 10px;
+  width: 140px;
+}
+
+.review-sort-dropdown {
+  border: none;
+  outline: 0px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+/* ----- ratings styling ----- */
+
 .average-ratings h1 {
   font-size: 65px;
   margin-right: 15px;
+}
+
+.recommend-percent {
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .rating-sliders {
@@ -306,9 +578,77 @@
   height: 9px;
 }
 
+/* Document Styling  =====================================================*/
+
+
+.rating-characteristic {
+  margin-bottom: 2px;
+}
+
+.rating-grey-slider-container {
+  display: flex;
+}
+
+.rating-grey-slider {
+  width: 85px;
+  height: 8px;
+  background-color: rgb(236, 236, 236);
+}
+
+.rating-char-values {
+  position: relative;
+  bottom: 12px;
+  width: 265px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating-char-values p {
+  font-size: 13px;
+}
+
+.rating-triangle {
+  position: relative;
+  bottom: 21px;
+  font-size: 30px;
+}
+
+.review-buttons-container {
+  margin-left: 20px;
+}
+
+/* ----- Rating & Reviews Coloring ----- */
+.progress-bar {
+  background-color: #FCCD04;
+  color: white;
+}
+
+.review-button-yellow {
+  color: #443695;
+  background-color: #FCCD04;
+  border: 1px solid #FCCD04;
+}
+
+.review-button-teal {
+  color: #443695;
+  background-color: #17E9E0;
+  border: 1px solid #17E9E0;
+}
+
+.review-button-yellow:hover {
+  background-color: #fcce04;
+  border: 1px solid #FCCD04;
+}
+
+.review-button-teal:hover {
+  background-color: #17E9E0;
+  border: 1px solid #17E9E0;
+}
+
 /* Questions and Answers components ================================ */
 
-/* Container styles */
+/* QA Container styles */
 .questions-answers-container, .search-questions-container, .questions-list-container, .question-container, .question-form-container, .answer-form-container, .answers-list-container, .answer-container {
   padding: 10px;
 }
@@ -348,7 +688,7 @@
   justify-content: center;
 }
 
-/* Text styles */
+/* QA Text styles */
 .question-helpful, .add-answer, .answer-username, .answer-helpful, .answer-report, .no-answers {
   font-size: 85%;
 }
@@ -356,7 +696,7 @@
   font-weight: bold;
 }
 
-/* Box styles */
+/* QA Box Model styles */
 .add-answer, .answer-report, .answer-helpful {
   border-left: 1px solid #443695;
 }
@@ -391,7 +731,7 @@
   text-align: center;
 }
 
-/* Button styles */
+/* QA Button styles */
 .toggle-show-answers {
   font-size: 75%;
   text-transform: uppercase;
@@ -411,7 +751,7 @@
   border-color: #A64AC9;
 }
 
-/* Hover styles */
+/* QA Hover styles */
 .helpful-text:hover, .answer-report:hover, .add-answer:hover,.toggle-show-answers:hover, .answer-photos:hover, .toggle-show-questions:hover, .add-question:hover {
   cursor: pointer;
 }
@@ -427,18 +767,34 @@
   color: #443695;
 }
 
-/* Default Settings for Team */
-h3.header-color {
+/* ------- Default Coloring Scheme -------- */
+
+.header-color {
+  color: #A64AC9;
+}
+
+h3.header-color{
   color: #A64AC9;
   font-family: poppy;
 }
+
+
 .body-color {
-  color: #443695;
+color: #443695;
 }
+
+.border-color {
+  color: #A64AC9;
+}
+
 .clickable-color {
   color: #17E9E0;
 }
+
 .clickable-color:hover {
   color: #FCCD04;
 }
+
+
+
 
