@@ -813,6 +813,10 @@
 
 /* ------- Default Coloring Scheme -------- */
 
+.item-title {
+  font-size: 50px;
+}
+
 .header-color {
   color: #A64AC9;
 }
