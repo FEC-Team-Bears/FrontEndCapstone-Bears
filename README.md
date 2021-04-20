@@ -1,4 +1,36 @@
-# Project Catwalk (FEC Team Bears)
+# Pop Shop - Sleek and Functional e-Commerce Product Page
+
+## In Action
+
+![](https://thumbs.gfycat.com/NarrowHelplessArgentineruddyduck-size_restricted.gif)
+
+# User Stories
+We worked with a lot of feedback at every stage of this project, here are the user stories we decided to explore:
+
+## Implemented:
+- As a user, I want a fun, colourful ui.
+- As a user, I want to be able to see a rating for the currently selected item at the top of the page.
+- As a user, I want to be able to see the name, style, price, features, and description of the product without scrolling down.
+- As a user, I want to be able to make a post about the product to a variety of social media platforms.
+- As a user, I want to be able to see previews of other styles of the selected product.
+- As a user, I want to be able to see a variety of images for the selected product with a variety of views/zooms.
+- As a user, I want to be able to add items to my cart after selecting the style, size, and quantity and I want these items to stay in my cart in between sessions.
+
+- As a user, I want to be able to view related items to my currently selected item.
+- As a user, I want to be able to add multiple items to a list that represents an outfit.
+
+- As a user, I want to be able to view questions and answers posted by other users related to my currently selected item.
+- As a user, I want to be able to ask questions and post answers which are viewable by other users related to my currently selected item.
+
+- As a user, I want to be able to read reviews posted by other users for my currently selected product.
+- As a user, I want to be able to write reviews that can be seen by other users for my currently selected product.
+
+
+## Coming Soon:
+- As a user, I want to be able to click the back button and return to the last item I was looking at.
+- As a user, I want to be prompted to sign in once I get a certain distance into the purchasing process.
+- As a user, I want to be able to view all items that are currently on sale.
+
 
 ## Table of Contents
 

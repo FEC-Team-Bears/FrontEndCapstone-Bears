@@ -9,7 +9,7 @@ var Overview = ({ productId, productDetails, getStyles, styles, reviews }) => {
   const [product, getProduct] = useState([]);
   const [style, getStyle] = useState(0);
 
-  let fetchProduct = (product = '21111') => {
+  let fetchProduct = (product = '24156') => {
     axios
       .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${product}/styles`, {
         headers: {
