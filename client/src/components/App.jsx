@@ -9,7 +9,7 @@ import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 
 const App = (props) => {
-  const [productId, changeProductId] = useState(21111);
+  const [productId, changeProductId] = useState(24156);
   const [productImage, getProductImage] = useState();
   const [reviews, getAllReviews] = useState([]);
   const [styles, getStyles] = useState([]);
