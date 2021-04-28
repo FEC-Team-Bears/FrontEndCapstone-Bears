@@ -1,10 +1,18 @@
 # Pop Shop - Sleek and Functional e-Commerce Product Page
 
-## In Action
+## Table of Contents
+
+1. [In-Action](#In-Action)
+2. [User-Stories](#User-Stories)
+3. [Stack](#Stack)
+4. [Lessons-Learned](#Lessons-Learned)
+5. [Installation](#Installation)
+
+## In-Action
 
 ![](https://thumbs.gfycat.com/NarrowHelplessArgentineruddyduck-size_restricted.gif)
 
-# User Stories
+# User-Stories
 We worked with a lot of feedback at every stage of this project, here are the user stories we decided to explore:
 
 ## Implemented:
@@ -31,10 +39,10 @@ We worked with a lot of feedback at every stage of this project, here are the us
 - As a user, I want to be prompted to sign in once I get a certain distance into the purchasing process.
 - As a user, I want to be able to view all items that are currently on sale.
 
+# Stack
 
-## Table of Contents
 
-1. [Installation](#Installation)
+# Lessons-Learned
 
 ## Installation
 
