@@ -63,7 +63,7 @@ We worked with a lot of feedback at every stage of this project, here are the us
 
 # Front-End
 
-We designed our website to have a fun, primary color scheme which catches the eye and stands out from the crowd. We developed smooth transitions between different views and products resulting in an enjoyable, and consistent user experience. Similar to modern social media sites, we designed our side to be composed of many small, modular components. Whether it be buttons, reveiw ratings, or thumbnail components, re-usability was a primary focus and contributes to the scalability of Pop Shop
+We designed our website to have a fun, primary color scheme which catches the eye and stands out from the crowd. We developed smooth transitions between different views and products resulting in an enjoyable, and consistent user experience. Similar to modern social media sites, we designed our site to be composed of many small, modular components. Whether it be buttons, reveiw ratings, or thumbnail components, re-usability was a primary focus and contributes to the scalability of Pop Shop
 
 # Deployment
 
@@ -97,7 +97,7 @@ This project is the result of four, ambitous software engineers all eager to cre
 
 # Contributors
 
-[Steve Gackstetter](https://github.com/stevehackreactor)| [Cindy Ryoo](https://github.com/cindyryoo7)| [John Cooke](https://github.com/john-cooke832)| [Matt Collinsl](https://github.com/matt-collins087)
+[Steve Gackstetter](https://github.com/stevehackreactor)| [Cindy Ryoo](https://github.com/cindyryoo7)| [John Cooke](https://github.com/john-cooke832)| [Matt Collins](https://github.com/matt-collins087)
 
 ## Installation
 
