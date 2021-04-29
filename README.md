@@ -41,8 +41,45 @@ We worked with a lot of feedback at every stage of this project, here are the us
 
 # Stack
 
+<table>
+  <tr>
+    <td>Languages</td>
+    <td><img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/> <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/></td>
+  </tr>
+  <tr>
+    <td>Frameworks & Libraries</td>
+    <td><img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/> <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/> <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-%237952B3?&style=for-the-badge&logo=Bootstrap&logoColor=white"/> <img alt="Material Ui" src="https://img.shields.io/badge/-Material--UI-%230081CB?&style=for-the-badge&logo=material-ui&logoColor=white"/></td>
+  </tr>
+  <tr>
+  <tr>
+    <td>Testing</td>
+    <td><img alt="Jest" src="https://img.shields.io/badge/-jest-%23C21325?&style=for-the-badge&logo=jest&logoColor=white"/></td>
+  </tr>
+</table>
+
+# Front-End
+
+We designed our website to have a fun, primary color scheme which catches the eye and stands out from the crowd. We developed smooth transitions between different views and products resulting in an enjoyable, and consistent user experience. Similar to modern social media sites, we designed our side to be composed of many small, modular components. Whether it be buttons, reveiw ratings, or thumbnail components, re-usability was a primary focus and contributes to the scalability of Pop Shop
+
+# Deployment
+
+This site is currently being dockerized for deployment to an AWS TC2 instance.
+
+# Work Flow
+
+## Git Workflow
+![](https://thumbs.gfycat.com/GrippingLazyGannet-size_restricted.gif)
+
+We have one main branch that branches out to staging. Our staging branch is where we merge our features until we have a batch of tested, functioning features in staging at which point we will merge staging to main.
 
 # Lessons-Learned
+This project is the result of four, ambitous software engineers all eager to create a viable product and learn from the experience. As hungry developers, we learned a lot throughout this process. Here is some of what we learned:
+
+## Challenges
+
+## Learnings
+
+## Potential Improvements
 
 ## Installation
 
