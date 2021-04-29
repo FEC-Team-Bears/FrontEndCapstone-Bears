@@ -5,6 +5,9 @@
 1. [In-Action](#In-Action)
 2. [User-Stories](#User-Stories)
 3. [Stack](#Stack)
+4. [Front-End](#Front-End)
+5. [Deployment](#Deployment)
+6. [Workflow](#Workflow)
 4. [Lessons-Learned](#Lessons-Learned)
 5. [Installation](#Installation)
 
@@ -76,10 +79,24 @@ We have one main branch that branches out to staging. Our staging branch is wher
 This project is the result of four, ambitous software engineers all eager to create a viable product and learn from the experience. As hungry developers, we learned a lot throughout this process. Here is some of what we learned:
 
 ## Challenges
+- Each of us selected new technologies to use during this project. Among them, React Hooks, Material UI, Bootstrap, and JCarousel. We gained insight on assessing new technologies prior to using them in addition to practical experience with these libraries.
+- Creating the various carousels on the site led us towards the JCarousel library which is a JQuery plug-in. Unfortunately, the use of JQuery caused some longer load times than we wanted on our site. Currently we are writing our own carousel library in order to avoid having to use JQuery as a library.
+- Whilst working on this project, we used CSS for styling beyond standard Bootstrap and Material UI styles. Although we adhered to our agreed upon naming conventions for components and styles related to those components, we did end up running into some styling collisions. To fix this, we plan on using individual stylesheets for each component. Alternatively, we could use Tailwind.
 
 ## Learnings
+- The importance of start-of-project planning was very apparent by day 3 of this project when our file structure began to gain complexity. Naming, file structure, and library use conventions had not been a part of our initial planning portion of this project.  It will definitely be a big part of the day 1 planning process for each of us from now on.
+- Time-Boxing became more and more important as we began to travel into uncharted territory. Being unable to decisively predict the time to implement some feature created speedbumps in our development process. After reflecting on this, our team decided to make hard cutoffs for certain functionality/features that were not a part of the core functionality of the site in order to keep us on track for our deadline.
 
 ## Potential Improvements
+- Make this page a multi-page site using React Router. Enabling the user to navigate between products via the back and forward buttons on their browser.
+- Create a log in functionality.
+- Store user's cart information in a visually available location
+- Improve accessibility of the page by following accessibility guidelines in lighthouse
+- Continue to build out unit tests, end-to-end testing, and CCID testing.
+
+# Contributors
+
+[Steve Gackstetter](https://github.com/stevehackreactor)| [Cindy Ryoo](https://github.com/cindyryoo7)| [John Cooke](https://github.com/john-cooke832)| [Matt Collinsl](https://github.com/matt-collins087)
 
 ## Installation
 
