@@ -7,9 +7,10 @@
 3. [Stack](#Stack)
 4. [Front-End](#Front-End)
 5. [Deployment](#Deployment)
-6. [Workflow](#Workflow)
-4. [Lessons-Learned](#Lessons-Learned)
-5. [Installation](#Installation)
+6. [Work-Flow](#Work-Flow)
+7. [Lessons-Learned](#Lessons-Learned)
+8. [Contributors](#Contributors)
+9. [Installation](#Installation)
 
 ## In-Action
 
@@ -68,7 +69,7 @@ We designed our website to have a fun, primary color scheme which catches the ey
 
 This site is currently being dockerized for deployment to an AWS TC2 instance.
 
-# Work Flow
+# Work-Flow
 
 ## Git Workflow
 ![](https://thumbs.gfycat.com/GrippingLazyGannet-size_restricted.gif)
