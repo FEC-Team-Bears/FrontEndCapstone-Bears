@@ -14,12 +14,12 @@
 
 ## In-Action
 
-![](https://thumbs.gfycat.com/NarrowHelplessArgentineruddyduck-size_restricted.gif)
+![Demo of Product Overview](https://thumbs.gfycat.com/NarrowHelplessArgentineruddyduck-size_restricted.gif)
 
-# User-Stories
+## User-Stories
 We worked with a lot of feedback at every stage of this project, here are the user stories we decided to explore:
 
-## Implemented:
+## Implemented
 - As a user, I want a fun, colourful ui.
 - As a user, I want to be able to see a rating for the currently selected item at the top of the page.
 - As a user, I want to be able to see the name, style, price, features, and description of the product without scrolling down.
@@ -38,21 +38,27 @@ We worked with a lot of feedback at every stage of this project, here are the us
 - As a user, I want to be able to write reviews that can be seen by other users for my currently selected product.
 
 
-## Coming Soon:
+## Coming Soon
 - As a user, I want to be able to click the back button and return to the last item I was looking at.
 - As a user, I want to be prompted to sign in once I get a certain distance into the purchasing process.
 - As a user, I want to be able to view all items that are currently on sale.
 
-# Stack
+## Stack
 
 <table>
   <tr>
     <td>Languages</td>
-    <td><img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/> <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/></td>
+    <td><img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+    <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
+    <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
+    <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/></td>
   </tr>
   <tr>
     <td>Frameworks & Libraries</td>
-    <td><img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/> <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/> <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-%237952B3?&style=for-the-badge&logo=Bootstrap&logoColor=white"/> <img alt="Material Ui" src="https://img.shields.io/badge/-Material--UI-%230081CB?&style=for-the-badge&logo=material-ui&logoColor=white"/></td>
+    <td><img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+    <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/>
+    <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-%237952B3?&style=for-the-badge&logo=Bootstrap&logoColor=white"/>
+    <img alt="Material Ui" src="https://img.shields.io/badge/-Material--UI-%230081CB?&style=for-the-badge&logo=material-ui&logoColor=white"/></td>
   </tr>
   <tr>
   <tr>
@@ -61,7 +67,7 @@ We worked with a lot of feedback at every stage of this project, here are the us
   </tr>
 </table>
 
-# Front-End
+## Front-End
 
 We designed our website to have a fun, primary color scheme which catches the eye and stands out from the crowd. We developed smooth transitions between different views and products resulting in an enjoyable, and consistent user experience. Similar to modern social media sites, we designed our site to be composed of many small, modular components. Whether it be buttons, reveiw ratings, or thumbnail components, re-usability was a primary focus and contributes to the scalability of Pop Shop
 
@@ -72,11 +78,11 @@ This site is currently being dockerized for deployment to an AWS TC2 instance.
 # Work-Flow
 
 ## Git Workflow
-![](https://thumbs.gfycat.com/GrippingLazyGannet-size_restricted.gif)
+![Gif showing Git History](https://thumbs.gfycat.com/GrippingLazyGannet-size_restricted.gif)
 
 We have one main branch that branches out to staging. Our staging branch is where we merge our features until we have a batch of tested, functioning features in staging at which point we will merge staging to main.
 
-# Lessons-Learned
+## Lessons-Learned
 This project is the result of four, ambitous software engineers all eager to create a viable product and learn from the experience. As hungry developers, we learned a lot throughout this process. Here is some of what we learned:
 
 ## Challenges
@@ -86,7 +92,8 @@ This project is the result of four, ambitous software engineers all eager to cre
 
 ## Learnings
 - The importance of start-of-project planning was very apparent by day 3 of this project when our file structure began to gain complexity. Naming, file structure, and library use conventions had not been a part of our initial planning portion of this project.  It will definitely be a big part of the day 1 planning process for each of us from now on.
-- Time-Boxing became more and more important as we began to travel into uncharted territory. Being unable to decisively predict the time to implement some feature created speedbumps in our development process. After reflecting on this, our team decided to make hard cutoffs for certain functionality/features that were not a part of the core functionality of the site in order to keep us on track for our deadline.
+- Time-Boxing became more and more important as we began to travel into uncharted territory. Being unable to decisively predict the time to implement some feature created speedbumps in our development process.
+- After reflecting on this, our team decided to make hard cutoffs for certain functionality/features that were not a part of the core functionality of the site in order to keep us on track for our deadline.
 
 ## Potential Improvements
 - Make this page a multi-page site using React Router. Enabling the user to navigate between products via the back and forward buttons on their browser.
@@ -95,7 +102,7 @@ This project is the result of four, ambitous software engineers all eager to cre
 - Improve accessibility of the page by following accessibility guidelines in lighthouse
 - Continue to build out unit tests, end-to-end testing, and CCID testing.
 
-# Contributors
+## Contributors
 
 [Steve Gackstetter](https://github.com/stevehackreactor)| [Cindy Ryoo](https://github.com/cindyryoo7)| [John Cooke](https://github.com/john-cooke832)| [Matt Collins](https://github.com/matt-collins087)
 
