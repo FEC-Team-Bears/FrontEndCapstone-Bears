@@ -69,7 +69,9 @@ We worked with a lot of feedback at every stage of this project, here are the us
 
 ## Front-End
 
-We designed our website to have a fun, primary color scheme which catches the eye and stands out from the crowd. We developed smooth transitions between different views and products resulting in an enjoyable, and consistent user experience. Similar to modern social media sites, we designed our site to be composed of many small, modular components. Whether it be buttons, reveiw ratings, or thumbnail components, re-usability was a primary focus and contributes to the scalability of Pop Shop
+- We designed our website to have a fun, primary color scheme which catches the eye and stands out from the crowd.
+- We developed smooth transitions between different views and products resulting in an enjoyable, and consistent user experience. Similar to modern social media sites, we designed our site to be composed of many small, modular components.
+- Whether it be buttons, reveiw ratings, or thumbnail components, re-usability was a primary focus and contributes to the scalability of Pop Shop
 
 ## Deployment
 
