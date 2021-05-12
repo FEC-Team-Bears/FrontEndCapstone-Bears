@@ -27,7 +27,11 @@ const Review = ({ review }) => {
         <StarRating review={review} />
         <p>{Moment(review.date).format('MMMM DD, YYYY')}</p>
       </div>
+<<<<<<< HEAD
+      <h4 className="header-color">{ review.summary }</h4>
+=======
       <h4 className="header-color">{review.summary}</h4>
+>>>>>>> 5abb57c9b0eedce0af2c35a75b656f753a0aa96e
       <p>{review.body}</p>
       {(review.response !== null && review.response.length > 0) ?
         <div className="review-response">

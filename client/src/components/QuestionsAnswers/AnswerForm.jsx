@@ -164,7 +164,7 @@ const AnswerForm = ({ show, productId, productName, question, handleClose }) => 
             }
             <div id="preview" />
             <br /><br />
-            <Button variant='danger' onClick={ handleFormClose }>Close</Button>{' '}
+            <Button variant='warning' className='review-button-yellow' onClick={ handleFormClose }>Close</Button>{' '}
             <Button variant='primary' type='submit'>Submit</Button>
           </Form>
         </Modal.Body>

@@ -188,7 +188,11 @@ const NewReview = ({ reviews, productId, reviewChar, newReview, setNewReview, sh
           </Form>
         </Modal.Body>
         <Modal.Footer>
+<<<<<<< HEAD
+          <Button variant="warning" className='review-button-yellow' onClick={handleClose}>
+=======
           <Button variant="secondary" className="review-button-yellow" onClick={handleClose}>
+>>>>>>> 5abb57c9b0eedce0af2c35a75b656f753a0aa96e
             Close
           </Button>
           <Button variant="primary" className="review-button-teal" onClick={() => {

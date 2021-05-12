@@ -58,6 +58,17 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
       </div>
       <p className="recommend-percent">{recommendPercent}% of reviews recommend this product</p>
       <div className="rating-sliders">
+<<<<<<< HEAD
+        <p className="body-color">5 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('5')} />
+        <p className="body-color">4 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('4')} />
+        <p className="body-color">3 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('3')} />
+        <p className="body-color">2 Stars</p>
+        <ProgressBar variant="custom" now={collectAllReviews('2')} />
+        <p className="body-color">1 Stars</p>
+=======
         <p className="rating-star-color">5 Stars</p>
         <ProgressBar variant="custom" now={collectAllReviews('5')} />
         <p className="rating-star-color">4 Stars</p>
@@ -67,6 +78,7 @@ const RatingsList = ({ reviews, reviewMetaData }) => {
         <p className="rating-star-color">2 Stars</p>
         <ProgressBar variant="custom" now={collectAllReviews('2')} />
         <p className="rating-star-color">1 Stars</p>
+>>>>>>> 5abb57c9b0eedce0af2c35a75b656f753a0aa96e
         <ProgressBar variant="custom" now={collectAllReviews('1')} />
       </div>
       {reviewCharsKeys.map((char, index) => {
