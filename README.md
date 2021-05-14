@@ -75,7 +75,7 @@ We worked with a lot of feedback at every stage of this project, here are the us
 
 ## Deployment
 
-This site is currently being dockerized for deployment to an AWS TC2 instance.
+This site is currently being dockerized for deployment to an AWS EC2 instance.
 
 ## Work-Flow
 
