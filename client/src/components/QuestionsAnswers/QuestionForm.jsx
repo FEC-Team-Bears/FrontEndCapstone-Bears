@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Modal, Button, Form, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
 import API_KEY from '/config.js';
-import { Modal, Button, Form, InputGroup } from 'react-bootstrap';
 
-const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => {
-  const [show, setShow] = useState(false);
+const QuestionForm = ({ productId, show, productName, handleNewQuestion, handleClose }) => {
   const [validated, setValidated] = useState(false);
   const [question, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
@@ -44,15 +43,12 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
     setNickname('');
     setEmail('');
   };
-  const handleShow = () => {
-    setShow(true);
-  };
-  const handleClose = () => {
+  const handleFormClose = () => {
     if (question.concat(nickname, email) === '') {
-      setShow(false);
+      handleClose();
     } else if (confirm('Are you sure you want to exit? Your changes will not be saved.')) {
       clearInputFields();
-      setShow(false);
+      handleClose();
     }
   };
   const handleQuestionChange = (e) => {
@@ -71,21 +67,17 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
       e.stopPropagation();
     } else {
       e.preventDefault();
-      setShow(false);
+      handleClose();
       submitQuestion();
     }
     setValidated(true);
   };
 
   return (
-    <div>
-      {!length
-        ? <Button onClick={ handleShow }>Submit a New Question</Button>
-        : <Button onClick={ handleShow }>Add a Question + </Button>
-      }
+    <div className='question-form-container'>
       <Modal
         show={ show }
-        onHide={ handleClose }
+        onHide={ handleFormClose }
         backdrop='static'
         keyboard={ false }
         centered >
@@ -139,7 +131,7 @@ const QuestionForm = ({ productId, productName, length, handleNewQuestion }) => 
               </InputGroup>
               <Form.Text>For authentication reasons, you will not be emailed.</Form.Text>
             </Form.Group>
-            <Button variant='danger' onClick={handleClose}>Close</Button>{' '}
+            <Button variant='warning' className='review-button-yellow' onClick={ handleFormClose }>Close</Button>{' '}
             <Button variant='primary' type='submit'>Submit</Button>
           </Form>
         </Modal.Body>

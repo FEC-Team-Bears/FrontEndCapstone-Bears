@@ -5,12 +5,11 @@ import API_KEY from '/config.js';
 import Overview from './Overview/Overview.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 import YourOutfit from './YourOutfit/YourOutfit.jsx';
-import QuestionsList from './QuestionsAnswers/QuestionsList.jsx';
+import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 import RatingsReviews from './ReviewsRatings/RatingsReviews.jsx';
 
-
 const App = (props) => {
-  const [productId, changeProductId] = useState(21111);
+  const [productId, changeProductId] = useState(24156);
   const [productImage, getProductImage] = useState();
   const [reviews, getAllReviews] = useState([]);
   const [styles, getStyles] = useState([]);
@@ -97,10 +96,8 @@ const App = (props) => {
         productId={ productId }
         reviews={ reviews } />
       <LazyLoad>
-        <QuestionsList
-          productId={ productId }
-          productImage={ productImage }
-          productDetails={ productDetails } />
+        <QuestionsAnswers
+          productId={ productId } />
       </LazyLoad>
       <LazyLoad>
         <RatingsReviews

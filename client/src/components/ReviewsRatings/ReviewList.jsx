@@ -81,7 +81,7 @@ const ReviewList = ({ reviews, productId, reviewChar, loadReviews, loadMetaData,
     <div>
       <h5 className='review-counter'>{reviews.length} reviews, sorted by&nbsp;
         <select className="review-sort-dropdown header-color" onChange={(e) => setSortCount(e.target.value)}>
-          <option value="1">helpful</option>
+          <option value="1">helpfulness</option>
           <option value="2">newest</option>
           <option value="3">relevance</option>
         </select>
